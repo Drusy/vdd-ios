@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StateEmptyViewController" customModule="VolantDesDomes" customModuleProvider="target">
+            <connections>
+                <outlet property="emptySubtitleLabel" destination="afN-af-DvN" id="UZU-tj-DbJ"/>
+                <outlet property="emptyTitleLabel" destination="dEF-Kb-cgb" id="gy5-7h-wXO"/>
+                <outlet property="view" destination="r7m-RA-SuT" id="X2O-a6-R6s"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="r7m-RA-SuT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aucune donnée" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEF-Kb-cgb">
+                    <rect key="frame" x="32" y="299" width="311" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Revenez plus tard" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afN-af-DvN">
+                    <rect key="frame" x="32" y="335" width="311" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="afN-af-DvN" firstAttribute="leading" secondItem="drU-DC-3Re" secondAttribute="leading" constant="32" id="0aX-CH-Y8D"/>
+                <constraint firstItem="dEF-Kb-cgb" firstAttribute="leading" secondItem="drU-DC-3Re" secondAttribute="leading" constant="32" id="JhH-iV-wKm"/>
+                <constraint firstItem="dEF-Kb-cgb" firstAttribute="centerY" secondItem="drU-DC-3Re" secondAttribute="centerY" multiplier="0.9" id="Ros-LY-Fvs"/>
+                <constraint firstItem="drU-DC-3Re" firstAttribute="trailing" secondItem="dEF-Kb-cgb" secondAttribute="trailing" constant="32" id="ZSz-7D-qcV"/>
+                <constraint firstItem="drU-DC-3Re" firstAttribute="trailing" secondItem="afN-af-DvN" secondAttribute="trailing" constant="32" id="lwf-v2-vEq"/>
+                <constraint firstItem="afN-af-DvN" firstAttribute="top" secondItem="dEF-Kb-cgb" secondAttribute="bottom" constant="16" id="u9i-VW-auX"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="drU-DC-3Re"/>
+        </view>
+    </objects>
+</document>

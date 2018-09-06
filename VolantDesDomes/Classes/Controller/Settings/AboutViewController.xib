@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutViewController" customModule="VolantDesDomes" customModuleProvider="target">
+            <connections>
+                <outlet property="activeDescriptionLabel" destination="3EO-VE-EBP" id="qZW-st-XEl"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="24J-MV-Wdn">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w9k-1M-twR">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="528.5"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="BVe-lB-kim">
+                                    <rect key="frame" x="112.5" y="24" width="150" height="150"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="150" id="0su-bF-uVU"/>
+                                        <constraint firstAttribute="height" constant="150" id="xDn-KH-4Ag"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3EO-VE-EBP" customClass="ActiveLabel" customModule="ActiveLabel">
+                                    <rect key="frame" x="28.5" y="247.5" width="319" height="183"/>
+                                    <string key="text">L'application du Volant des Dômes utilise les données provenant du site https://volantdesdomes.fr
+
+Produit par @Drusy chez @Openium
+
+Icônes par @FlatIcons, @Freepik et @PopcornsArts
+</string>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volant des Dômes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mH7-uT-ATi">
+                                    <rect key="frame" x="8" y="198" width="359" height="25.5"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="openium" translatesAutoresizingMaskIntoConstraints="NO" id="dRp-Vx-fAM">
+                                    <rect key="frame" x="24" y="454.5" width="327" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="eap-Uw-KUO"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="dRp-Vx-fAM" firstAttribute="leading" secondItem="w9k-1M-twR" secondAttribute="leading" constant="24" id="2qQ-nM-SgS"/>
+                                <constraint firstAttribute="trailing" secondItem="mH7-uT-ATi" secondAttribute="trailing" constant="8" id="LIH-Ok-Rjb"/>
+                                <constraint firstItem="BVe-lB-kim" firstAttribute="top" secondItem="w9k-1M-twR" secondAttribute="top" constant="24" id="NEV-cs-Yk2"/>
+                                <constraint firstItem="3EO-VE-EBP" firstAttribute="width" secondItem="w9k-1M-twR" secondAttribute="width" multiplier="85%" id="Oof-8R-6gD"/>
+                                <constraint firstItem="3EO-VE-EBP" firstAttribute="centerX" secondItem="w9k-1M-twR" secondAttribute="centerX" id="P0h-7n-H6D"/>
+                                <constraint firstAttribute="bottom" secondItem="dRp-Vx-fAM" secondAttribute="bottom" constant="24" id="T62-95-XIU"/>
+                                <constraint firstItem="mH7-uT-ATi" firstAttribute="top" secondItem="BVe-lB-kim" secondAttribute="bottom" constant="24" id="cJJ-0W-UIW"/>
+                                <constraint firstAttribute="trailing" secondItem="dRp-Vx-fAM" secondAttribute="trailing" constant="24" id="cKZ-JV-r71"/>
+                                <constraint firstItem="mH7-uT-ATi" firstAttribute="leading" secondItem="w9k-1M-twR" secondAttribute="leading" constant="8" id="ehJ-9o-lsb"/>
+                                <constraint firstItem="BVe-lB-kim" firstAttribute="centerX" secondItem="w9k-1M-twR" secondAttribute="centerX" id="o7C-VH-xJH"/>
+                                <constraint firstItem="dRp-Vx-fAM" firstAttribute="top" secondItem="3EO-VE-EBP" secondAttribute="bottom" constant="24" id="raO-UW-r78"/>
+                                <constraint firstItem="3EO-VE-EBP" firstAttribute="width" secondItem="w9k-1M-twR" secondAttribute="width" multiplier="50%" id="swz-nV-1BC"/>
+                                <constraint firstItem="3EO-VE-EBP" firstAttribute="top" secondItem="mH7-uT-ATi" secondAttribute="bottom" constant="24" id="wE1-3k-0w1"/>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="Oof-8R-6gD"/>
+                                    <exclude reference="swz-nV-1BC"/>
+                                </mask>
+                            </variation>
+                            <variation key="widthClass=regular">
+                                <mask key="constraints">
+                                    <include reference="swz-nV-1BC"/>
+                                </mask>
+                            </variation>
+                            <variation key="heightClass=compact-widthClass=compact">
+                                <mask key="constraints">
+                                    <include reference="Oof-8R-6gD"/>
+                                </mask>
+                            </variation>
+                            <variation key="heightClass=regular-widthClass=compact">
+                                <mask key="constraints">
+                                    <include reference="Oof-8R-6gD"/>
+                                </mask>
+                            </variation>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="w9k-1M-twR" firstAttribute="top" secondItem="24J-MV-Wdn" secondAttribute="top" id="Hi4-7C-0dq"/>
+                        <constraint firstAttribute="trailing" secondItem="w9k-1M-twR" secondAttribute="trailing" id="PSB-QH-Ewv"/>
+                        <constraint firstAttribute="bottom" secondItem="w9k-1M-twR" secondAttribute="bottom" id="V2e-Xu-jld"/>
+                        <constraint firstItem="w9k-1M-twR" firstAttribute="width" secondItem="24J-MV-Wdn" secondAttribute="width" id="bm9-Ml-ODy"/>
+                        <constraint firstItem="w9k-1M-twR" firstAttribute="leading" secondItem="24J-MV-Wdn" secondAttribute="leading" id="lDa-lA-E0J"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="24J-MV-Wdn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7oo-OB-yXE"/>
+                <constraint firstAttribute="bottom" secondItem="24J-MV-Wdn" secondAttribute="bottom" id="Si1-xr-jx6"/>
+                <constraint firstItem="24J-MV-Wdn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iJD-1e-ydR"/>
+                <constraint firstAttribute="trailing" secondItem="24J-MV-Wdn" secondAttribute="trailing" id="kCH-1N-dE5"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="logo" width="400" height="457"/>
+        <image name="openium" width="250" height="72"/>
+    </resources>
+</document>

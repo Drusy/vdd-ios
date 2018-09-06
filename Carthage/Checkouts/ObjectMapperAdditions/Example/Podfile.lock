@@ -1,0 +1,57 @@
+PODS:
+  - APExtensions (4.1.1):
+    - APExtensions/Abstractions (= 4.1.1)
+    - APExtensions/Core (= 4.1.1)
+    - APExtensions/Storyboard (= 4.1.1)
+    - APExtensions/ViewState (= 4.1.1)
+  - APExtensions/Abstractions (4.1.1)
+  - APExtensions/Core (4.1.1)
+  - APExtensions/Storyboard (4.1.1)
+  - APExtensions/ViewState (4.1.1)
+  - Nimble (7.0.3)
+  - ObjectMapper (3.1.0)
+  - ObjectMapper+Realm (0.5):
+    - ObjectMapper
+    - RealmSwift
+  - ObjectMapperAdditions (4.0.0):
+    - ObjectMapper
+    - ObjectMapperAdditions/Core (= 4.0.0)
+    - ObjectMapperAdditions/Realm (= 4.0.0)
+  - ObjectMapperAdditions/Core (4.0.0):
+    - ObjectMapper
+  - ObjectMapperAdditions/Realm (4.0.0):
+    - ObjectMapper
+    - ObjectMapperAdditions/Core
+    - RealmSwift
+  - Quick (1.2.0)
+  - Realm (3.1.1):
+    - Realm/Headers (= 3.1.1)
+  - Realm/Headers (3.1.1)
+  - RealmSwift (3.1.1):
+    - Realm (= 3.1.1)
+
+DEPENDENCIES:
+  - APExtensions
+  - Nimble
+  - ObjectMapper
+  - ObjectMapper+Realm
+  - ObjectMapperAdditions (from `../`)
+  - Quick
+
+EXTERNAL SOURCES:
+  ObjectMapperAdditions:
+    :path: ../
+
+SPEC CHECKSUMS:
+  APExtensions: e706c0e9935d05514655fce1f2b418192820fb78
+  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
+  ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
+  ObjectMapper+Realm: 3188789fb77c189c7a83cb625333a607eb61a08f
+  ObjectMapperAdditions: 68ad495d6d21328e918879160df3ac7d9061a182
+  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  Realm: 42d1c38a5b1bbcc828b48a7ce702cb86fc68adf4
+  RealmSwift: d31937ca6a6ee54acde64ec839523c0a3c04924b
+
+PODFILE CHECKSUM: 1ecf833443c847fcd86247e5d9f0623760369e1f
+
+COCOAPODS: 1.4.0

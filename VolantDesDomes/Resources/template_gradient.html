@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="stylesheet" href="bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="gutenberg.css" type="text/css" />
+    <link rel="stylesheet" href="template.css" type="text/css" />
+    <link rel="stylesheet" href="custom.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Roboto" rel="stylesheet">
+
+    <style type="text/css">
+        
+    </style>
+</head>
+<body>
+    <div id="primary" class="boxed-layout-header page-header header-small" data-parallax="active" style="transform: translate3d(0px, 0px, 0px);">
+        <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 text-center">
+                <h1 class="hestia-title entry-title">{{ title }}</h1>
+                <h4 class="author">Publié par <a><strong class="fn">{{ user }}</strong></a> <time class="date updated published" >{{ date }}</time>
+                </h4>
+            </div>
+        </div>
+        </div>
+<!--        <div class="header-filter" style="background-image: url({{ pictureURL }});"></div>-->
+        <div class="header-filter header-filter-gradient"></div>
+    </div>
+
+    <div class="main  main-raised default">
+        <div class="blog-post ">
+            <div class="container">
+                <article class="section section-text">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="entry-content" itemprop="text">
+                                {{ content }}
+                            </div>
+                            <footer class="entry-footer">
+                                <div class="section section-blog-info">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="entry-categories">
+                                                Catégories : {{ categories }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+<!--                                {% if author %}-->
+<!--                                <div class="author-bio well well-sm">-->
+<!--                                    <div class="page-header"><h3>About {{ author.name }}</h3></div>-->
+<!--                                    <p><img src="{{ author.avatar }}" class="profile-pic" />{{ author.content }}</p>-->
+<!--                                </div>-->
+<!--                                {% endif %}-->
+                            </footer>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

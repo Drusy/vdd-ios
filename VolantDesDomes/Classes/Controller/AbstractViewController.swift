@@ -35,9 +35,13 @@ class AbstractViewController: UIViewController {
         guard let urlString = urlString else { return }
         guard let url = URL(string: urlString) else { return }
         
-        present(SFSafariViewController(url: url),
-                animated: true,
-                completion: nil)
+        if url.scheme == "https" || url.scheme == "http" {
+            present(SFSafariViewController(url: url),
+                    animated: true,
+                    completion: nil)
+        } else if UIApplication.shared.canOpenURL(url) {   
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     func share(title: String? = nil, content: String? = nil, link: String? = nil, image: UIImage? = nil, fromView view: UIView? = nil) -> UIActivityViewController {

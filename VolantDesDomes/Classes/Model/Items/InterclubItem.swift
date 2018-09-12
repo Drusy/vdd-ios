@@ -10,7 +10,8 @@ import UIKit
 
 class InterclubItem {
     enum ItemType {
-        case national
+        case vdd1
+        case vdd2
         case vdd3
         case vdd4
         case vdd5
@@ -36,7 +37,8 @@ class InterclubItem {
     
     static func items() -> [InterclubItem] {
         return [
-            InterclubItem.nationalItem(),
+            InterclubItem.vdd1Item(),
+            InterclubItem.vdd2Item(),
             InterclubItem.vdd3Item(),
             InterclubItem.vdd4Item(),
             InterclubItem.vdd5Item(),
@@ -65,13 +67,23 @@ class InterclubItem {
     
     // MARK: -
     
-    fileprivate static func nationalItem() -> InterclubItem {
-        let item = InterclubItem(type: .national)
+    fileprivate static func vdd1Item() -> InterclubItem {
+        let item = InterclubItem(type: .vdd1)
         
-        item.title = "Collectif National"
-        item.subtitle = "VDD 1 / VDD 2"
-        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/collectif-national"
+        item.title = "Nationale 2"
+        item.subtitle = "VDD 1"
+        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/nationale-2-vdd-1"
 
+        return item
+    }
+    
+    fileprivate static func vdd2Item() -> InterclubItem {
+        let item = InterclubItem(type: .vdd2)
+        
+        item.title = "Nationale 3"
+        item.subtitle = "VDD 2"
+        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/nationale-3-vdd-2"
+        
         return item
     }
     
@@ -120,7 +132,7 @@ class InterclubItem {
         
         item.title = "Départementale 2"
         item.subtitle = "VDD 7"
-        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/departementale-1-vdd6-2"
+        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/departementale-2-vdd7"
         
         return item
     }

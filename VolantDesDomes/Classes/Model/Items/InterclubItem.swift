@@ -72,7 +72,7 @@ class InterclubItem {
         
         item.title = "Nationale 2"
         item.subtitle = "VDD 1"
-        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/nationale-2-vdd-1"
+        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/vdd1"
 
         return item
     }
@@ -80,9 +80,9 @@ class InterclubItem {
     fileprivate static func vdd2Item() -> InterclubItem {
         let item = InterclubItem(type: .vdd2)
         
-        item.title = "Nationale 3"
+        item.title = "Régionale 1"
         item.subtitle = "VDD 2"
-        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/nationale-3-vdd-2"
+        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/vdd2"
         
         return item
     }
@@ -90,9 +90,9 @@ class InterclubItem {
     fileprivate static func vdd3Item() -> InterclubItem {
         let item = InterclubItem(type: .vdd3)
         
-        item.title = "Régionale 1"
+        item.title = "Régionale 2"
         item.subtitle = "VDD 3"
-        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/regionale-1-vdd-3"
+        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/vdd3"
 
         return item
     }
@@ -102,7 +102,7 @@ class InterclubItem {
         
         item.title = "Régionale 3"
         item.subtitle = "VDD 4"
-        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/regionale-3-vdd-4"
+        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/vdd4"
 
         return item
     }
@@ -112,7 +112,7 @@ class InterclubItem {
         
         item.title = "Départementale 1"
         item.subtitle = "VDD 5"
-        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/departementale-1-vdd5"
+        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/vdd5"
 
         return item
     }
@@ -122,7 +122,7 @@ class InterclubItem {
         
         item.title = "Départementale 1"
         item.subtitle = "VDD 6"
-        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/departementale-1-vdd6"
+        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/vdd6"
         
         return item
     }
@@ -132,7 +132,7 @@ class InterclubItem {
         
         item.title = "Départementale 2"
         item.subtitle = "VDD 7"
-        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/departementale-2-vdd7"
+        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/vdd7"
         
         return item
     }
@@ -142,7 +142,7 @@ class InterclubItem {
         
         item.title = "Départementale 3"
         item.subtitle = "VDD 8"
-        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/departementale-3-vdd8"
+        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/vdd8"
         
         return item
     }
@@ -152,7 +152,7 @@ class InterclubItem {
         
         item.title = "Départementale 4"
         item.subtitle = "VDD 9"
-        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/departementale-4-vdd9"
+        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/vdd9"
         
         return item
     }

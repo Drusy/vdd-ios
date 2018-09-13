@@ -61,7 +61,7 @@ class InterclubsPageViewController: AbstractViewController {
     
     func select(item: InterclubItem) {
         if let stringUrl = item.url, let url = URL(string: stringUrl) {
-            let viewController = PageDetailViewController(title: item.title, url: url)
+            let viewController = PageDetailViewController(title: "\(item.title ?? "") - \(item.subtitle ?? "")", url: url)
             navigationController?.pushViewController(viewController, animated: true)
         }
     }

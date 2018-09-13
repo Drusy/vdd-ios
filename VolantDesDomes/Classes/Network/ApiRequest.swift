@@ -80,7 +80,7 @@ class ApiRequest {
     static let bearerRetrierSessionManager = BearerRetrierSessionManager()
     static let bearerAdapterSessionManager = BearerAdapterSessionManager()
     static var hostURL: String {
-        return "https://beta.volantdesdomes.fr"
+        return "https://volantdesdomes.fr"
     }
     
     static let headers: [String: String] = [

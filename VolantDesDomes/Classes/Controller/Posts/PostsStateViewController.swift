@@ -29,7 +29,7 @@ class PostsStateViewController: AbstractStateViewController<PostsState>, UISearc
             title: "Une erreur est survenue lors du chargement des articles",
             subtitle: "Touchez pour réessayer")
         errorViewController.touchHandler = { [weak self] in
-            self?.load()
+            self?.setNeedsStateTransition(to: .loading, animated: true)
         }
         return errorViewController
     }()

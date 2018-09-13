@@ -89,17 +89,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         let oldPosts = realm.objects(WPPost.self)
-        
+        let oldPostsIdentifiers = oldPosts.map { $0.id }
+
         ApiRequest.request(with: WPPost.Router.getPage(page: 1, count: 10)).rx
             .objectArray()
             .retry(.exponentialDelayed(maxCount: 3, initial: 1, multiplier: 1))
             .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: { (items: [WPPost]) in
-                    let newPostsIdentifiers = items.map { $0.id }
-                    let newPosts = oldPosts.filter({ oldPost in
-                        return newPostsIdentifiers.contains(oldPost.id) == false
-                    })
+                    let newPosts = items.filter { newPost in
+                        return oldPostsIdentifiers.contains(newPost.id) == false
+                    }
                     
                     print("Background fetch: \(newPosts.count) new posts")
                     

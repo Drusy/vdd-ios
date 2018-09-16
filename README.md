@@ -1,4 +1,4 @@
-# Volant des Dômes - App iOS
+# Volant des Dômes - iOS App
 
 The official iOS app of the badminton club of Clermont-Ferrand: Volant des Dômes
 

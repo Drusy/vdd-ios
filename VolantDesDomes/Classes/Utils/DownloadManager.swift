@@ -49,9 +49,12 @@ class DownloadManager {
                 }
                 
                 return Observable.zip(observables)
+            }
+            .flatMap { (postsByCategory: [[WPPost]]) -> Observable<[WPMedia]> in
+                return ApiRequest.mediasRequestObservable(for: postsByCategory.flatMap { $0 })
         }
         
-        let users = ApiRequest.request(with: WPUser.Router.get).rx
+        let users = ApiRequest.request(with: WPUser.Router.getAll).rx
             .objectArray()
             .retry(.exponentialDelayed(maxCount: 3, initial: 1, multiplier: 1))
             .observeOn(MainScheduler.instance)
@@ -60,18 +63,9 @@ class DownloadManager {
                     realm.add(items, update: true)
                 }
             })
+
         
-        let medias = ApiRequest.request(with: WPMedia.Router.getAll).rx
-            .objectArray()
-            .retry(.exponentialDelayed(maxCount: 3, initial: 1, multiplier: 1))
-            .observeOn(MainScheduler.instance)
-            .do(onNext: { (items: [WPMedia]) in
-                try! realm.write {
-                    realm.add(items, update: true)
-                }
-            })
-        
-        return Observable.zip(categories, users, medias)
+        return Observable.zip(users, categories)
             .ignoreElements()
             .observeOn(MainScheduler.instance)
             .do(onCompleted: {

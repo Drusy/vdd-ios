@@ -206,6 +206,9 @@ class PostsViewController: AbstractViewController {
                 
                 return strongSelf.request().rx.objectArray()
             }
+            .flatMap { (posts: [WPPost]) -> Observable<[WPPost]> in
+                return ApiRequest.mediasRequestObservable(for: posts).map { _ in posts }
+            }
             .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] (posts: [WPPost]) in
@@ -229,6 +232,9 @@ class PostsViewController: AbstractViewController {
         
         request().rx
             .objectArray()
+            .flatMap { (posts: [WPPost]) -> Observable<[WPPost]> in
+                return ApiRequest.mediasRequestObservable(for: posts).map { _ in posts }
+            }
             .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] (posts: [WPPost]) in
@@ -248,6 +254,9 @@ class PostsViewController: AbstractViewController {
         
         request().rx
             .objectArray()
+            .flatMap { (posts: [WPPost]) -> Observable<[WPPost]> in
+                return ApiRequest.mediasRequestObservable(for: posts).map { _ in posts }
+            }
             .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] (posts: [WPPost]) in

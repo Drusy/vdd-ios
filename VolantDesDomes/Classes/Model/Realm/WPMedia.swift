@@ -80,10 +80,11 @@ extension WPMedia {
         case getAll
         case getPage(Int, Int)
         case get(Int)
+        case getUIDs([Int])
         
         var method: HTTPMethod {
             switch self {
-            case .get, .getAll, .getPage:
+            case .get, .getAll, .getPage, .getUIDs:
                 return .get
             }
         }
@@ -96,14 +97,14 @@ extension WPMedia {
         
         var lastSegmentPath: String {
             switch self {
-            case .get, .getAll, .getPage:
+            case .get, .getAll, .getPage, .getUIDs:
                 return "/media"
             }
         }
         
         var encoding: ParameterEncoding {
             switch self {
-            case .get, .getAll, .getPage:
+            case .get, .getAll, .getPage, .getUIDs:
                 return URLEncoding.default
             }
         }
@@ -118,6 +119,13 @@ extension WPMedia {
             urlRequest.allHTTPHeaderFields = ApiRequest.headers
             
             switch self {
+            case .getUIDs(let uids):
+                let parameters: [String: Any] = [
+                    "include": uids,
+                    "per_page": min(uids.count, 100)
+                ]
+                urlRequest = try encoding.encode(urlRequest, with: parameters)
+                
             case .get(let parent):
                 let parameters: [String: Any] = [
                     "parent": parent

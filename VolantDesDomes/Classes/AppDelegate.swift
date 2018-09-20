@@ -94,6 +94,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ApiRequest.request(with: WPPost.Router.getPage(page: 1, count: 10)).rx
             .objectArray()
             .retry(.exponentialDelayed(maxCount: 3, initial: 1, multiplier: 1))
+            .flatMap { (posts: [WPPost]) -> Observable<[WPPost]> in
+                return ApiRequest.mediasRequestObservable(for: posts).map { _ in posts }
+            }
             .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: { (items: [WPPost]) in

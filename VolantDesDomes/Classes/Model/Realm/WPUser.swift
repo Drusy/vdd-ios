@@ -44,11 +44,11 @@ class WPUser: Object, StaticMappable {
 
 extension WPUser {
     enum Router: URLRequestConvertible, Queryable {
-        case get
+        case getAll
         
         var method: HTTPMethod {
             switch self {
-            case .get:
+            case .getAll:
                 return .get
             }
         }
@@ -61,14 +61,14 @@ extension WPUser {
         
         var lastSegmentPath: String {
             switch self {
-            case .get:
+            case .getAll:
                 return "/users"
             }
         }
         
         var encoding: ParameterEncoding {
             switch self {
-            case .get:
+            case .getAll:
                 return URLEncoding.default
             }
         }
@@ -83,7 +83,7 @@ extension WPUser {
             urlRequest.allHTTPHeaderFields = ApiRequest.headers
             
             switch self {
-            case .get:
+            case .getAll:
                 let parameters: [String: Any] = [
                     "per_page": 100
                 ]

@@ -11,6 +11,7 @@ import Alamofire
 import ObjectMapper
 import RxAlamofire
 import RxSwift
+import RealmSwift
 
 class BearerRetrier: RequestRetrier {
     
@@ -174,5 +175,26 @@ class ApiRequest {
         }
         
         sessionManager.upload(multipartFormData: multipartFormData, with: urlRequest, encodingCompletion: encodingCompletionHandler)
+    }
+    
+    // MARK: - Helpers
+    
+    static func mediasRequestObservable(for posts: [WPPost]) -> Observable<[WPMedia]> {
+        let realm = try? Realm()
+        let ids = posts.compactMap { $0.featuredMediaId > 0 ? $0.featuredMediaId : nil }
+        
+        if ids.isEmpty {
+            return Observable.empty()
+        } else {
+            return ApiRequest.request(with: WPMedia.Router.getUIDs(ids)).rx
+                .objectArray()
+                .retry(.exponentialDelayed(maxCount: 3, initial: 1, multiplier: 1))
+                .observeOn(MainScheduler.instance)
+                .do(onNext: { (items: [WPMedia]) in
+                    try? realm?.write {
+                        realm?.add(items, update: true)
+                    }
+                })
+        }
     }
 }

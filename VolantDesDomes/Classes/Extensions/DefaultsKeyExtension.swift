@@ -13,5 +13,5 @@ extension DefaultsKeys {
     static let categoryParallax = DefaultsKey<Bool>("categoryParallax", defaultValue: true)
     static let newPostsNotification = DefaultsKey<Bool>("newPostsNotification", defaultValue: true)
     static let appOpenCount = DefaultsKey<Int>("appOpenCount")
-    static let forceCategoryLoading = DefaultsKey<Bool>("forceCategoryLoading", defaultValue: true)
+    static let forceCategoryLoading = DefaultsKey<Bool>("forceCategoryLoading", defaultValue: false)
 }

@@ -88,17 +88,23 @@ class SettingsViewController: FormViewController {
             }.onChange { row in
                 Defaults[.categoryParallax] = row.value ?? false
             }
-            <<< SwitchRow(SettingTag.forceCategoryLoading.rawValue) {
-                $0.title = "Forcer le rafraichissement"
-                $0.value = Defaults[.forceCategoryLoading]
-            }.onChange { row in
-                Defaults[.forceCategoryLoading] = row.value ?? false
-            }
             <<< SwitchRow(SettingTag.newPostNotifications.rawValue) {
                 $0.title = "Notifications"
                 $0.value = Defaults[.newPostsNotification]
             }.onChange { row in
                 Defaults[.newPostsNotification] = row.value ?? false
+            }
+            <<< SwitchRow(SettingTag.forceCategoryLoading.rawValue) {
+                $0.title = "Forcer le rafraichissement"
+                $0.value = Defaults[.forceCategoryLoading]
+                }.onChange { row in
+                    Defaults[.forceCategoryLoading] = row.value ?? false
+                    
+                    if Defaults[.forceCategoryLoading] {
+                        SVProgressHUD.showInfo(withStatus: "Le téléchargement des articles se fera au premier plan")
+                    } else {
+                        SVProgressHUD.showInfo(withStatus: "Le téléchargement des articles se fera en tâche de fond")
+                    }
             }
             <<< LabelRow(SettingTag.notificationNotAuthorized.rawValue) {
                 $0.title = "Veuillez autoriser les notifications dans les paramètres systèmes"

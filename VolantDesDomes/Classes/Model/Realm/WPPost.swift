@@ -25,7 +25,7 @@ class WPPost: Object, StaticMappable {
     @objc dynamic var content: WPContent?
     @objc dynamic var excerpt: WPContent?
     @objc dynamic var authorId: Int = 0
-    @objc dynamic var featuredMediaId: Int = 0
+    @objc dynamic var featuredMediaId: Int = -1
     @objc dynamic var commentStatus: String?
     @objc dynamic var pingStatus: String?
     @objc dynamic var sticky: Bool = false

@@ -84,6 +84,9 @@ class PostsStateViewController: AbstractStateViewController<PostsState>, UISearc
         
         request.rx
             .objectArray()
+            .flatMap { (posts: [WPPost]) -> Observable<[WPPost]> in
+                return ApiRequest.mediasRequestObservable(for: posts).map { _ in posts }
+            }
             .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] (posts: [WPPost]) in
@@ -112,12 +115,8 @@ class PostsStateViewController: AbstractStateViewController<PostsState>, UISearc
     override func loadAppearanceState() -> PostsState {
         if didLoadOnce && contentViewController.posts.isEmpty == false {
             return .ready
-        } else if category != nil {
-            if Defaults[.forceCategoryLoading] == false && contentViewController.posts.isEmpty == false {
-                return .ready
-            } else {
-                return .loading
-            }
+        } else if Defaults[.forceCategoryLoading] == false && contentViewController.posts.isEmpty == false {
+            return .ready
         } else {
             return .loading
         }

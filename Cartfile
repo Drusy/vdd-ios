@@ -1,5 +1,5 @@
 github "ReactiveX/RxSwift" ~> 4.2
-github "RxSwiftCommunity/RxAlamofire" ~> 4.1
+github "red282/RxAlamofire" "xcode-10"
 github "RxSwiftCommunity/RxDataSources" ~> 3.0
 github "RxSwiftCommunity/RxRealm" ~> 0.7
 github "RxSwiftCommunity/RxSwiftExt" ~> 3.3

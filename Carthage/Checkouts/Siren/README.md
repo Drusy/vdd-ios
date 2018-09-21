@@ -2,9 +2,9 @@
 
 ### Notify users when a new version of your app is available and prompt them to upgrade.
 
-![Travis CI Status](https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master)
+[![Travis CI Status](https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master)](https://travis-ci.org/ArtSabintsev/Siren)
 
-![Swift Support](https://img.shields.io/badge/Swift-2.3%2C%203.1%2C%203.2%2C%204.1-orange.svg) ![Documentation](https://github.com/ArtSabintsev/Siren/blob/master/docs/badge.svg)
+![Swift Support](https://img.shields.io/badge/Swift-4.2%2C%204.1%2C%203.2%2C%203.1%202.3-orange.svg) ![Documentation](https://github.com/ArtSabintsev/Siren/blob/master/docs/badge.svg)
 
 [![CocoaPods](https://img.shields.io/cocoapods/v/Siren.svg)](https://cocoapods.org/pods/Siren)  [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-Compatible-brightgreen.svg)](https://swift.org/package-manager/)
 
@@ -65,54 +65,28 @@ If a new version is available, an alert can be presented to the user informing t
 
 | Swift Version |  Branch Name  | Will Continue to Receive Updates?
 | ------------- | ------------- |  -------------
-| 4.1  | master   | **Yes**
+| 4.2  | master | **Yes**
+| 4.1  | swift4.1 | No
 | 3.2  | swift3.2 | No
 | 3.1  | swift3.1 | No
 | 2.3  | swift2.3 | No  
 
 ### CocoaPods
-For Swift 4.1 support:
 ```ruby
 pod 'Siren'
-```
-
-For Swift 3.2 support:
-```ruby
-pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift3.2'
-```
-
-For Swift 3.1 support:
-```ruby
-pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift3.1'
-```
-
-For Swift 2.3 support:
-```ruby
-pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift2.3'
+pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift4.1' # Swift 4.1
+pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift3.2' # Swift 3.2
+pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift3.1' # Swift 3.1
+pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift2.3' # Swift 2.3
 ```
 
 ### Carthage
-For Swift 4.1 support:
 ```swift
-github "ArtSabintsev/Siren"
-```
-
-For Swift 3.2 support:
-
-```swift
-github "ArtSabintsev/Siren", "swift3.2"
-```
-
-For Swift 3.1 support:
-
-```swift
-github "ArtSabintsev/Siren", "swift3.1"
-```
-
-For Swift 2.3 support:
-
-```ruby
-github "ArtSabintsev/Siren", "swift2.3"
+github "ArtSabintsev/Siren" // Swift 4.2
+github "ArtSabintsev/Siren", "swift4.1" // Swift 4.1
+github "ArtSabintsev/Siren", "swift3.2" // Swift 3.2
+github "ArtSabintsev/Siren", "swift3.1" // Swift 3.1
+github "ArtSabintsev/Siren", "swift2.3" // Swift 2.3
 ```
 
 ### Swift Package Manager
@@ -159,7 +133,8 @@ func applicationDidBecomeActive(application: UIApplication) {
 	/*
 	    Perform daily (.daily) or weekly (.weekly) checks for new version of your app.
 	    Useful if user returns to your app from the background after extended period of time.
-    	 Place in applicationDidBecomeActive(_:).	*/
+    	    Place in applicationDidBecomeActive(_:).
+	 */
 
     Siren.shared.checkVersion(checkType: .daily)
 }

@@ -1256,6 +1256,58 @@
     }
 }
 
+#pragma mark - Session suspend and resume
+
+- (void)testSuspendAndResume {
+    NSURL *urlA = CUSTOM_REALM_URL(@"a");
+    NSURL *urlB = CUSTOM_REALM_URL(@"b");
+    RLMSyncUser *user = [self logInUserForCredentials:[RLMObjectServerTests basicCredentialsWithName:NSStringFromSelector(_cmd)
+                                                                                            register:self.isParent]
+                                               server:[RLMObjectServerTests authServerURL]];
+    RLMRealm *realmA = [self openRealmForURL:urlA user:user];
+    RLMRealm *realmB = [self openRealmForURL:urlB user:user];
+    if (self.isParent) {
+        [self waitForDownloadsForRealm:realmA];
+        [self waitForDownloadsForRealm:realmB];
+        CHECK_COUNT(0, SyncObject, realmA);
+        CHECK_COUNT(0, SyncObject, realmB);
+
+        // Suspend the session for realm A and then add an object to each Realm
+        RLMSyncSession *sessionA = [RLMSyncSession sessionForRealm:realmA];
+        [sessionA suspend];
+
+        [self addSyncObjectsToRealm:realmA descriptions:@[@"child-A1"]];
+        [self addSyncObjectsToRealm:realmB descriptions:@[@"child-B1"]];
+        [self waitForUploadsForRealm:realmB];
+
+        RLMRunChildAndWait();
+
+        // A should still be 1 since it's suspended. If it wasn't suspended, it
+        // should have downloaded before B due to the ordering in the child.
+        [self waitForDownloadsForRealm:realmB];
+        CHECK_COUNT(1, SyncObject, realmA);
+        CHECK_COUNT(3, SyncObject, realmB);
+
+        // A should see the other two from the child after resuming
+        [sessionA resume];
+        [self waitForDownloadsForRealm:realmA];
+        CHECK_COUNT(3, SyncObject, realmA);
+    } else {
+        // Child shouldn't see the object in A
+        [self waitForDownloadsForRealm:realmA];
+        [self waitForDownloadsForRealm:realmB];
+        CHECK_COUNT(0, SyncObject, realmA);
+        CHECK_COUNT(1, SyncObject, realmB);
+
+        [self addSyncObjectsToRealm:realmA descriptions:@[@"child-A2", @"child-A3"]];
+        [self waitForUploadsForRealm:realmA];
+        [self addSyncObjectsToRealm:realmB descriptions:@[@"child-B2", @"child-B3"]];
+        [self waitForUploadsForRealm:realmB];
+        CHECK_COUNT(2, SyncObject, realmA);
+        CHECK_COUNT(3, SyncObject, realmB);
+    }
+}
+
 #pragma mark - Client reset
 
 /// Ensure that a client reset error is propagated up to the binding successfully.
@@ -1602,6 +1654,7 @@
         [realm deleteAllObjects];
         [realm commitWriteTransaction];
         [self waitForUploadsForRealm:realm];
+        [self waitForDownloadsForRealm:realm];
 
         path = realm.configuration.pathOnDisk;
     }
@@ -1803,6 +1856,177 @@
         XCTestExpectation *ex3 = [[XCTKVOExpectation alloc] initWithKeyPath:@"state" object:subscription expectedValue:@(RLMSyncSubscriptionStateInvalidated)];
         [self waitForExpectations:@[ex3] timeout:20.0];
     }
+}
+
+#pragma mark - Certificate pinning
+
+- (void)attemptLoginWithUsername:(NSString *)userName callback:(void (^)(RLMSyncUser *, NSError *))callback {
+    NSURL *url = [RLMObjectServerTests secureAuthServerURL];
+    RLMSyncCredentials *creds = [RLMObjectServerTests basicCredentialsWithName:userName register:YES];
+
+    XCTestExpectation *expectation = [self expectationWithDescription:@"HTTP login"];
+    [RLMSyncUser logInWithCredentials:creds authServerURL:url
+                         onCompletion:^(RLMSyncUser *user, NSError *error) {
+                             NSLog(@"onCompletion %@ %@", user, error);
+                             callback(user, error);
+                             [expectation fulfill];
+                         }];
+    [self waitForExpectationsWithTimeout:4.0 handler:nil];
+}
+
+- (void)testHTTPSLoginFailsWithoutCertificate {
+    [self attemptLoginWithUsername:NSStringFromSelector(_cmd) callback:^(RLMSyncUser *user, NSError *error) {
+        XCTAssertNil(user);
+        XCTAssertNotNil(error);
+        XCTAssertEqualObjects(error.domain, NSURLErrorDomain);
+        XCTAssertEqual(error.code, NSURLErrorServerCertificateUntrusted);
+    }];
+}
+
+static NSURL *certificateURL(NSString *filename) {
+    return [NSURL fileURLWithPath:[[[@(__FILE__) stringByDeletingLastPathComponent]
+                                    stringByAppendingPathComponent:@"certificates"]
+                                   stringByAppendingPathComponent:filename]];
+}
+
+- (void)testHTTPSLoginFailsWithIncorrectCertificate {
+    RLMSyncManager.sharedManager.pinnedCertificatePaths = @{@"localhost": certificateURL(@"not-localhost.cer")};
+    [self attemptLoginWithUsername:NSStringFromSelector(_cmd) callback:^(RLMSyncUser *user, NSError *error) {
+        XCTAssertNil(user);
+        XCTAssertNotNil(error);
+        XCTAssertEqualObjects(error.domain, NSURLErrorDomain);
+        XCTAssertEqual(error.code, NSURLErrorServerCertificateUntrusted);
+    }];
+}
+
+- (void)testHTTPSLoginFailsWithInvalidPathToCertificate {
+    RLMSyncManager.sharedManager.pinnedCertificatePaths = @{@"localhost": certificateURL(@"nonexistent.pem")};
+    [self attemptLoginWithUsername:NSStringFromSelector(_cmd) callback:^(RLMSyncUser *user, NSError *error) {
+        XCTAssertNil(user);
+        XCTAssertNotNil(error);
+        XCTAssertEqualObjects(error.domain, NSCocoaErrorDomain);
+        XCTAssertEqual(error.code, NSFileReadNoSuchFileError);
+    }];
+}
+
+- (void)testHTTPSLoginFailsWithDifferentValidCert {
+    RLMSyncManager.sharedManager.pinnedCertificatePaths = @{@"localhost": certificateURL(@"localhost-other.cer")};
+    [self attemptLoginWithUsername:NSStringFromSelector(_cmd) callback:^(RLMSyncUser *user, NSError *error) {
+        XCTAssertNil(user);
+        XCTAssertNotNil(error);
+        XCTAssertEqualObjects(error.domain, NSURLErrorDomain);
+        XCTAssertEqual(error.code, NSURLErrorServerCertificateUntrusted);
+    }];
+}
+
+- (void)testHTTPSLoginFailsWithFileThatIsNotACert {
+    RLMSyncManager.sharedManager.pinnedCertificatePaths = @{@"localhost": certificateURL(@"../test-ros-server.js")};
+    [self attemptLoginWithUsername:NSStringFromSelector(_cmd) callback:^(RLMSyncUser *user, NSError *error) {
+        XCTAssertNil(user);
+        XCTAssertNotNil(error);
+        XCTAssertEqualObjects(error.domain, NSOSStatusErrorDomain);
+        XCTAssertEqual(error.code, errSecUnknownFormat);
+    }];
+}
+
+- (void)testHTTPSLoginDoesNotUseCertificateForDifferentDomain {
+    RLMSyncManager.sharedManager.pinnedCertificatePaths = @{@"example.com": certificateURL(@"localhost.cer")};
+    [self attemptLoginWithUsername:NSStringFromSelector(_cmd) callback:^(RLMSyncUser *user, NSError *error) {
+        XCTAssertNil(user);
+        XCTAssertNotNil(error);
+        XCTAssertEqualObjects(error.domain, NSURLErrorDomain);
+        XCTAssertEqual(error.code, NSURLErrorServerCertificateUntrusted);
+    }];
+}
+
+- (void)testHTTPSLoginSucceedsWithValidSelfSignedCertificate {
+    RLMSyncManager.sharedManager.pinnedCertificatePaths = @{@"localhost": certificateURL(@"localhost.cer")};
+
+    [self attemptLoginWithUsername:NSStringFromSelector(_cmd) callback:^(RLMSyncUser *user, NSError *error) {
+        XCTAssertNotNil(user);
+        XCTAssertNil(error);
+    }];
+}
+
+- (void)testConfigurationFromUserAutomaticallyUsesCert {
+    RLMSyncManager.sharedManager.pinnedCertificatePaths = @{@"localhost": certificateURL(@"localhost.cer")};
+
+    __block RLMSyncUser *user;
+    [self attemptLoginWithUsername:NSStringFromSelector(_cmd) callback:^(RLMSyncUser *u, NSError *error) {
+        XCTAssertNotNil(u);
+        XCTAssertNil(error);
+        user = u;
+    }];
+
+    RLMRealmConfiguration *config = [user configuration];
+    XCTAssertEqualObjects(config.syncConfiguration.realmURL.scheme, @"realms");
+    XCTAssertEqualObjects(config.syncConfiguration.pinnedCertificateURL, certificateURL(@"localhost.cer"));
+
+    // Verify that we can actually open the Realm
+    auto realm = [self openRealmWithConfiguration:config];
+    NSError *error;
+    [self waitForUploadsForRealm:realm error:&error];
+    XCTAssertNil(error);
+}
+
+- (void)verifyOpenSucceeds:(RLMRealmConfiguration *)config {
+    auto realm = [self openRealmWithConfiguration:config];
+    NSError *error;
+    [self waitForUploadsForRealm:realm error:&error];
+    XCTAssertNil(error);
+}
+
+- (void)verifyOpenFails:(RLMRealmConfiguration *)config {
+    [self openRealmWithConfiguration:config];
+
+    XCTestExpectation *expectation = [self expectationWithDescription:@"wait for error"];
+    RLMSyncManager.sharedManager.errorHandler = ^(NSError *error, __unused RLMSyncSession *session) {
+        XCTAssertTrue([error.domain isEqualToString:RLMSyncErrorDomain]);
+        XCTAssertFalse([[error.userInfo[kRLMSyncUnderlyingErrorKey] domain] isEqualToString:RLMSyncErrorDomain]);
+        [expectation fulfill];
+    };
+
+    [self waitForExpectationsWithTimeout:20.0 handler:nil];
+}
+
+- (void)testConfigurationFromInsecureUserAutomaticallyUsesCert {
+    RLMSyncManager.sharedManager.pinnedCertificatePaths = @{@"localhost": certificateURL(@"localhost.cer")};
+
+    RLMSyncUser *user = [self logInUserForCredentials:[RLMSyncTestCase basicCredentialsWithName:NSStringFromSelector(_cmd)
+                                                                                       register:YES]
+                                               server:[RLMSyncTestCase authServerURL]];
+
+    RLMRealmConfiguration *config = [user configurationWithURL:[NSURL URLWithString:@"realms://localhost:9443/~/default"]];
+    XCTAssertEqualObjects(config.syncConfiguration.realmURL.scheme, @"realms");
+    XCTAssertEqualObjects(config.syncConfiguration.pinnedCertificateURL, certificateURL(@"localhost.cer"));
+
+    [self verifyOpenSucceeds:config];
+}
+
+- (void)testOpenSecureRealmWithNoCert {
+    RLMSyncUser *user = [self logInUserForCredentials:[RLMSyncTestCase basicCredentialsWithName:NSStringFromSelector(_cmd)
+                                                                                       register:YES]
+                                               server:[RLMSyncTestCase authServerURL]];
+    [self verifyOpenFails:[user configurationWithURL:[NSURL URLWithString:@"realms://localhost:9443/~/default"]]];
+}
+
+- (void)testOpenSecureRealmWithIncorrectCert {
+    RLMSyncManager.sharedManager.pinnedCertificatePaths = @{@"localhost": certificateURL(@"not-localhost.cer")};
+
+    RLMSyncUser *user = [self logInUserForCredentials:[RLMSyncTestCase basicCredentialsWithName:NSStringFromSelector(_cmd)
+                                                                                       register:YES]
+                                               server:[RLMSyncTestCase authServerURL]];
+    [self verifyOpenFails:[user configurationWithURL:[NSURL URLWithString:@"realms://localhost:9443/~/default"]]];
+}
+
+- (void)DISABLE_testOpenSecureRealmWithMissingCertFile {
+    // FIXME: this currently crashes inside the sync library
+    RLMSyncManager.sharedManager.pinnedCertificatePaths = @{@"localhost": certificateURL(@"nonexistent.pem")};
+
+    RLMSyncUser *user = [self logInUserForCredentials:[RLMSyncTestCase basicCredentialsWithName:NSStringFromSelector(_cmd)
+                                                                                       register:YES]
+                                               server:[RLMSyncTestCase authServerURL]];
+    [self verifyOpenFails:[user configurationWithURL:[NSURL URLWithString:@"realms://localhost:9443/~/default"]]];
 }
 
 @end

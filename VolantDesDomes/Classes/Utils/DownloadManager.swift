@@ -64,7 +64,6 @@ class DownloadManager {
                 }
             })
 
-        
         return Observable.zip(users, categories)
             .ignoreElements()
             .observeOn(MainScheduler.instance)

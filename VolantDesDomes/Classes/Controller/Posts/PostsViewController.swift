@@ -199,7 +199,7 @@ class PostsViewController: AbstractViewController {
             .map { self.refreshControl.isRefreshing }
             .filter { $0 == true }
             .flatMapLatest { [weak self] _ -> Observable<([WPPost])> in
-                guard let strongSelf = self else { return Observable.empty() }
+                guard let strongSelf = self else { return Observable.just([]) }
                 
                 strongSelf.page = 1
                 strongSelf.tableView.allowsSelection = false
@@ -260,7 +260,6 @@ class PostsViewController: AbstractViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] (posts: [WPPost]) in
-
                     try? self?.realm.write {
                         self?.realm.add(posts, update: true)
                     }

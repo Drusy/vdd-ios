@@ -184,7 +184,7 @@ class ApiRequest {
         let ids = posts.compactMap { $0.featuredMediaId > 0 ? $0.featuredMediaId : nil }
         
         if ids.isEmpty {
-            return Observable.empty()
+            return Observable.just([])
         } else {
             return ApiRequest.request(with: WPMedia.Router.getUIDs(ids)).rx
                 .objectArray()

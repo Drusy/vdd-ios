@@ -244,6 +244,10 @@ static NSURL *syncDirectoryForChildProcess() {
     return [NSURL URLWithString:@"http://127.0.0.1:9080"];
 }
 
++ (NSURL *)secureAuthServerURL {
+    return [NSURL URLWithString:@"https://localhost:9443"];
+}
+
 + (RLMSyncCredentials *)basicCredentialsWithName:(NSString *)name register:(BOOL)shouldRegister {
     return [RLMSyncCredentials credentialsWithUsername:name
                                               password:@"a"
@@ -454,7 +458,7 @@ static NSURL *syncDirectoryForChildProcess() {
         XCTFail(@"Upload waiter did not queue; session was invalid or errored out.");
         return;
     }
-    [self waitForExpectations:@[ex] timeout:2.0];
+    [self waitForExpectations:@[ex] timeout:20.0];
     if (error)
         *error = completionError;
 }
@@ -472,7 +476,7 @@ static NSURL *syncDirectoryForChildProcess() {
         XCTFail(@"Download waiter did not queue; session was invalid or errored out.");
         return;
     }
-    [self waitForExpectations:@[ex] timeout:2.0];
+    [self waitForExpectations:@[ex] timeout:20.0];
     if (error)
         *error = completionError;
 }

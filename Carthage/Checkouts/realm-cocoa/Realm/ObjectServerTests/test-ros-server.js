@@ -1,5 +1,7 @@
 const ROS = require('realm-object-server');
 const fs = require('fs');
+const https = require('https');
+const os = require('os');
 const path = require('path');
 
 // Bypass the mandatory email prompt.
@@ -15,6 +17,20 @@ process.env.ROS_SUPERAGENT_RETRY_DELAY = '0';
 
 // Enable timestamps in the logs
 process.env.ROS_LOG_TIMESTAMP = '1';
+
+// Accept invalid TLS certificates so that the ROS services can talk to each
+// other despite using a self-signed certificate
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
+if (!process.env.SYNC_WORKER_FEATURE_TOKEN) {
+    try {
+        require(os.homedir() + '/.ros-feature-token.js');
+    }
+    catch (e) {
+        console.error('ROS feature token not found. Running Object Server tests requires setting the SYNC_WORKER_FEATURE_TOKEN environment variable.');
+        process.exit(1);
+    }
+}
 
 // A "email handler" which actually just writes the tokens to files that the
 // tests can read
@@ -45,6 +61,12 @@ server.start({
 
     address: '0.0.0.0',
     port: 9080,
+    httpsPort: 9443,
+
+    https: true,
+    httpsKeyPath: __dirname + '/certificates/localhost-cert-key.pem',
+    httpsCertChainPath: __dirname + '/certificates/localhost-cert.pem',
+
     dataPath: process.argv[2],
     authProviders: [
         new ROS.auth.DebugAuthProvider(),
@@ -54,6 +76,7 @@ server.start({
         }),
     ],
     autoKeyGen: true,
+    serviceAgent: new https.Agent({rejectUnauthorized: false})
 }).then(() => {
     console.log('started');
     fs.closeSync(1);

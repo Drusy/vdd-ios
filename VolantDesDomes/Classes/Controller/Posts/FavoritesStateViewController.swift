@@ -19,7 +19,7 @@ enum FavoritesState: Equatable {
 class FavoritesStateViewController: AbstractStateViewController<FavoritesState> {
 
     lazy var loadingViewController: StateLoadingViewController = {
-        return StateLoadingViewController(string: "Chargement des articles en cours")
+        return StateLoadingViewController(loadingString: "Chargement des articles en cours")
     }()
     lazy var emptyViewController: StateEmptyViewController = {
         let emptyViewController = StateEmptyViewController(

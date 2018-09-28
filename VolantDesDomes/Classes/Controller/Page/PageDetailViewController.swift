@@ -57,6 +57,13 @@ class PageDetailViewController: AbstractViewController {
     
     // MARK: -
     
+    override func themeUpdated() {
+        super.themeUpdated()
+        
+        view.backgroundColor = StyleManager.shared.backgroundColor
+        activityIndicator.color = StyleManager.shared.textColor
+    }
+    
     override func update() {
         super.update()
         

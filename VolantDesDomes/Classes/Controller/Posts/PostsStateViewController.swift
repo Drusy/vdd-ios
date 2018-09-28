@@ -22,7 +22,7 @@ enum PostsState: Equatable {
 class PostsStateViewController: AbstractStateViewController<PostsState>, UISearchBarDelegate {
 
     lazy var loadingViewController: StateLoadingViewController = {
-        return StateLoadingViewController(string: "Chargement des articles en cours")
+        return StateLoadingViewController(loadingString: "Chargement des articles en cours")
     }()
     lazy var errorViewController: StateErrorViewController = {
         let errorViewController = StateErrorViewController(

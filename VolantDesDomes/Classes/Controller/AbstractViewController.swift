@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 import RxSwift
 import SafariServices
+import SwiftyUserDefaults
 
 class AbstractViewController: UIViewController {
 
@@ -25,7 +26,46 @@ class AbstractViewController: UIViewController {
         update()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        Defaults[.darkTheme] ? enableDarkMode() : disableDarkMode()
+        
+        _ = NotificationCenter.default.rx
+            .notification(Notification.Name.darkModeEnabled)
+            .takeUntil(rx.methodInvoked(#selector(viewWillDisappear(_:))))
+            .subscribe(onNext: { [weak self] notification in
+                self?.enableDarkMode()
+            })
+        
+        _ = NotificationCenter.default.rx
+            .notification(Notification.Name.darkModeDisabled)
+            .takeUntil(rx.methodInvoked(#selector(viewWillDisappear(_:))))
+            .subscribe(onNext: { [weak self] notification in
+                self?.disableDarkMode()
+            })
+        
+        _ = NotificationCenter.default.rx
+            .notification(Notification.Name.themeUpdated)
+            .startWith(Notification(name: .themeUpdated))
+            .takeUntil(rx.methodInvoked(#selector(viewWillDisappear(_:))))
+            .subscribe(onNext: { [weak self] notification in
+                self?.themeUpdated()
+            })
+    }
+    
     // MARK: -
+    
+    func enableDarkMode() {
+        
+    }
+    
+    func disableDarkMode() {
+
+    }
+    
+    func themeUpdated() {
+    }
     
     func update() {
     

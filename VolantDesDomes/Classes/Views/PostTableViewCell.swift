@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import SwiftyAttributes
+import RxSwift
 
 class PostTableViewCell: UITableViewCell, CellIdentifiable {
 
@@ -19,8 +20,13 @@ class PostTableViewCell: UITableViewCell, CellIdentifiable {
     @IBOutlet weak var excerptLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     
+    let disposeBag = DisposeBag()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        contentView.backgroundColor = .clear
+        backgroundColor = .clear
         
         roundedView.layer.cornerRadius = 6
         roundedView.layer.masksToBounds = true
@@ -30,6 +36,14 @@ class PostTableViewCell: UITableViewCell, CellIdentifiable {
         shadowView.layer.shadowOffset = CGSize(width: 1, height: 1)
         shadowView.layer.shadowOpacity = 0.15
         shadowView.layer.shadowRadius = 3
+        
+        NotificationCenter.default.rx
+            .notification(Notification.Name.themeUpdated)
+            .startWith(Notification(name: .themeUpdated))
+            .subscribe(onNext: { [weak self] notification in
+                self?.themeUpdated()
+            })
+            .disposed(by: disposeBag)
     }
     
     override func prepareForReuse() {
@@ -59,6 +73,13 @@ class PostTableViewCell: UITableViewCell, CellIdentifiable {
     }
     
     // MARK: -
+    
+    func themeUpdated() {
+        titleLabel.textColor = StyleManager.shared.textColor
+        excerptLabel.textColor = StyleManager.shared.subtitleColor
+        authorLabel.textColor = StyleManager.shared.textColor
+        roundedView.backgroundColor = StyleManager.shared.backgroundContentColor
+    }
 
     func configure(with post: WPPost) {
         titleLabel.text = post.titleHtmlStripped

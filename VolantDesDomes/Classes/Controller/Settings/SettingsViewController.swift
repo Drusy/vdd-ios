@@ -23,6 +23,7 @@ class SettingsViewController: FormViewController {
         case newPostNotifications
         case notificationNotAuthorized
         case systemSettingsButton
+        case darkTheme
     }
     
     var authorized = true
@@ -32,7 +33,6 @@ class SettingsViewController: FormViewController {
 
         navigationItem.title = "Paramètres"
         
-        setupFormStyle()
         setupForm()
         update()
     }
@@ -46,6 +46,16 @@ class SettingsViewController: FormViewController {
             .subscribe(onNext: { [weak self] notification in
                 self?.update()
             })
+        
+        _ = NotificationCenter.default.rx
+            .notification(Notification.Name.themeUpdated)
+            .startWith(Notification(name: .themeUpdated))
+            .takeUntil(rx.methodInvoked(#selector(viewWillDisappear(_:))))
+            .subscribe(onNext: { [weak self] notification in
+                self?.setupFormStyle()
+                self?.tableView.reloadData()
+                self?.tableView.backgroundColor = StyleManager.shared.groupTableViewBackgroundColor
+            })
     }
     
     // MARK: - Form
@@ -54,18 +64,27 @@ class SettingsViewController: FormViewController {
         TextRow.defaultCellUpdate = { cell, row in
             cell.tintColor = cell.titleLabel?.textColor
             cell.textField.textColor = StyleManager.shared.tintColor
+            cell.titleLabel?.textColor = StyleManager.shared.textColor
+            cell.backgroundColor = StyleManager.shared.backgroundContentColor
+            
+            row.placeholderColor = StyleManager.shared.subtitleColor
         }
         
         SwitchRow.defaultCellUpdate = { cell, row in
             cell.switchControl?.onTintColor = StyleManager.shared.tintColor
+            cell.textLabel?.textColor = StyleManager.shared.textColor
+            cell.backgroundColor = StyleManager.shared.backgroundContentColor
         }
         
         LabelRow.defaultCellUpdate = { cell, row in
             cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.textColor = StyleManager.shared.textColor
+            cell.backgroundColor = StyleManager.shared.backgroundContentColor
         }
         
         ButtonRow.defaultCellUpdate = { cell, row in
             cell.tintColor = StyleManager.shared.tintColor
+            cell.backgroundColor = StyleManager.shared.backgroundContentColor
         }
     }
     
@@ -74,10 +93,11 @@ class SettingsViewController: FormViewController {
         let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
         let build = Bundle.main.infoDictionary!["CFBundleVersion"] as! String
         
-        form +++ Section("Général")
+        form +++ Section("⚙️ Général")
             <<< TextRow(SettingTag.licence.rawValue) {
                 $0.title = "Licence FFBad"
                 $0.placeholder = "Numero de licence"
+                $0.placeholderColor = StyleManager.shared.subtitleColor
                 $0.value = Defaults[.userFFBadLicence]
             }.onChange { row in
                 Defaults[.userFFBadLicence] = row.value
@@ -117,6 +137,16 @@ class SettingsViewController: FormViewController {
                 $0.hidden = Condition(booleanLiteral: self.authorized)
             }.onCellSelection { _, _ in
                 self.systemSettings()
+            }
+        
+        form +++ Section("🎨 Apparence")
+            <<< SwitchRow(SettingTag.forceCategoryLoading.rawValue) {
+                $0.title = "Thème sombre"
+                $0.value = Defaults[.darkTheme]
+            }.onChange { row in
+                Defaults[.darkTheme] = row.value ?? false
+                NotificationCenter.default.post(name: Defaults[.darkTheme] ? .darkModeEnabled : .darkModeDisabled, object: nil)
+                NotificationCenter.default.post(name: .themeUpdated, object: nil)
             }
             
         form +++ Section(header: "🏸 \(appName)", footer: "Version \(version) (\(build))")

@@ -23,6 +23,8 @@ class CalendarPageViewController: AbstractViewController {
     @IBOutlet weak var perrierButton: UIButton!
     @IBOutlet weak var aubiereButton: UIButton!
     @IBOutlet weak var calendarButton: UIButton!
+    @IBOutlet weak var calendarAuthorizationFailedTitleLabel: UILabel!
+    @IBOutlet weak var calendarAuthorizationFailedSubtitleLabel: UILabel!
     
     let eventStore = EKEventStore()
     
@@ -56,6 +58,14 @@ class CalendarPageViewController: AbstractViewController {
     }
     
     // MARK: -
+    
+    override func themeUpdated() {
+        super.themeUpdated()
+        
+        calendarAuthorizationFailedTitleLabel.textColor = StyleManager.shared.textColor
+        calendarAuthorizationFailedSubtitleLabel.textColor = StyleManager.shared.subtitleColor
+        view.backgroundColor = StyleManager.shared.backgroundColor
+    }
     
     override func update() {
         super.update()

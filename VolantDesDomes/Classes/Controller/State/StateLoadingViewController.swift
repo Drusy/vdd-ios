@@ -13,14 +13,10 @@ class StateLoadingViewController: AbstractViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var loadingLabel: UILabel!
     
-    var string: String
-    var tintColor: UIColor
-    var backgroundColor: UIColor
+    var loadingString: String
     
-    init(string: String, tintColor: UIColor = .black, backgroundColor: UIColor = .white) {
-        self.string = string
-        self.tintColor = tintColor
-        self.backgroundColor = backgroundColor
+    init(loadingString: String) {
+        self.loadingString = loadingString
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -35,12 +31,17 @@ class StateLoadingViewController: AbstractViewController {
     
     // MARK: -
     
+    override func themeUpdated() {
+        super.themeUpdated()
+        
+        loadingLabel.textColor = StyleManager.shared.textColor
+        activityIndicator.color = StyleManager.shared.textColor
+        view.backgroundColor = StyleManager.shared.backgroundColor
+    }
+    
     override func update() {
         super.update()
         
-        loadingLabel.textColor = tintColor
-        activityIndicator.color = tintColor
-        loadingLabel.text = string
-        view.backgroundColor = backgroundColor
+        loadingLabel.text = loadingString
     }
 }

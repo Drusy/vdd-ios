@@ -54,6 +54,22 @@ class TabBarViewController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        Defaults[.darkTheme] ? enableDarkMode() : disableDarkMode()
+        
+        _ = NotificationCenter.default.rx
+            .notification(Notification.Name.darkModeEnabled)
+            .takeUntil(rx.methodInvoked(#selector(viewWillDisappear(_:))))
+            .subscribe(onNext: { [weak self] notification in
+                self?.enableDarkMode()
+            })
+        
+        _ = NotificationCenter.default.rx
+            .notification(Notification.Name.darkModeDisabled)
+            .takeUntil(rx.methodInvoked(#selector(viewWillDisappear(_:))))
+            .subscribe(onNext: { [weak self] notification in
+                self?.disableDarkMode()
+            })
+        
         if  Defaults[.appOpenCount] >= 5 {
             if #available(iOS 10.3, *){
                 Defaults[.appOpenCount] = 0
@@ -64,6 +80,16 @@ class TabBarViewController: UITabBarController {
     }
     
     // MARK: -
+    
+    func enableDarkMode() {
+        tabBar.barStyle = .black
+        tabBar.tintColor = StyleManager.shared.tintColor
+    }
+    
+    func disableDarkMode() {
+        tabBar.barStyle = .default
+        tabBar.tintColor = StyleManager.shared.tintColor
+    }
     
     func setupTabBar() {
         favoritesViewController.tabBarItem = UITabBarItem(
@@ -112,13 +138,16 @@ extension TabBarViewController: UITabBarControllerDelegate  {
             return false
         }
 
-        if fromView != toView {
+        if fromView != toView {            
+            UIView.setAnimationsEnabled(false)
             UIView.transition(
                 from: fromView,
                 to: toView,
                 duration: 0.2,
                 options: [.transitionCrossDissolve],
-                completion: nil)
+                completion: { _ in
+                    UIView.setAnimationsEnabled(true)
+            })
         }
         
         return true

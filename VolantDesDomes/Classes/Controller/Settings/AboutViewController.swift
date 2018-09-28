@@ -24,6 +24,15 @@ class AboutViewController: AbstractViewController {
     
     // MARK: -
     
+    override func enableDarkMode() {
+        setupActiveLabel()
+    }
+    
+    override func disableDarkMode() {
+        setupActiveLabel()
+    }
+    
+    
     func setupActiveLabel() {
         activeDescriptionLabel.customize { label in
             label.enabledTypes = [.url, .mention]

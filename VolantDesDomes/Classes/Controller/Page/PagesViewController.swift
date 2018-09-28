@@ -40,6 +40,12 @@ class PagesViewController: AbstractViewController {
     
     // MARK: -
     
+    override func themeUpdated() {
+        super.themeUpdated()
+        
+        view.backgroundColor = StyleManager.shared.backgroundColor
+    }
+    
     override func update() {
         super.update()
     }

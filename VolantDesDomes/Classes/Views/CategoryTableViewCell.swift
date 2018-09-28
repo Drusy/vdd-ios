@@ -26,6 +26,10 @@ class CategoryTableViewCell: UITableViewCell, CellIdentifiable {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        backgroundColor = .clear
+        contentView.backgroundColor = .clear
+        shadowView.backgroundColor = .clear
+        
         roundedView.layer.cornerRadius = 6
         roundedView.layer.masksToBounds = true
         roundedView.clipsToBounds = true

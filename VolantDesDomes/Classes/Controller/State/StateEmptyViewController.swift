@@ -15,16 +15,10 @@ class StateEmptyViewController: AbstractViewController {
     
     var titleString: String
     var subtitleString: String
-    var titleColor: UIColor
-    var subtitleColor: UIColor
-    var backgroundColor: UIColor
     
-    init(title: String, subtitle: String, titleColor: UIColor = .black, subtitleColor: UIColor = .darkGray, backgroundColor: UIColor = .white) {
+    init(title: String, subtitle: String) {
         self.titleString = title
         self.subtitleString = subtitle
-        self.titleColor = titleColor
-        self.subtitleColor = subtitleColor
-        self.backgroundColor = backgroundColor
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -39,13 +33,18 @@ class StateEmptyViewController: AbstractViewController {
 
     // MARK: -
     
+    override func themeUpdated() {
+        super.themeUpdated()
+        
+        emptyTitleLabel.textColor = StyleManager.shared.textColor
+        emptySubtitleLabel.textColor = StyleManager.shared.subtitleColor
+        view.backgroundColor = StyleManager.shared.backgroundColor
+    }
+    
     override func update() {
         super.update()
         
         emptyTitleLabel.text = titleString
         emptySubtitleLabel.text = subtitleString
-        emptyTitleLabel.textColor = titleColor
-        emptySubtitleLabel.textColor = subtitleColor
-        view.backgroundColor = backgroundColor
     }
 }

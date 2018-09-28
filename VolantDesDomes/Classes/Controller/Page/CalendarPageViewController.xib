@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,6 +14,8 @@
             <connections>
                 <outlet property="aubiereButton" destination="vZO-uJ-Kzi" id="S6J-uF-yPp"/>
                 <outlet property="brugiereButton" destination="lEH-jP-Etd" id="M05-Na-Hx5"/>
+                <outlet property="calendarAuthorizationFailedSubtitleLabel" destination="kfE-Ac-Gzu" id="n2S-6d-15A"/>
+                <outlet property="calendarAuthorizationFailedTitleLabel" destination="jWh-Gr-PBV" id="IXN-4Y-xUH"/>
                 <outlet property="calendarButton" destination="OAy-xe-nFL" id="caL-cg-XIz"/>
                 <outlet property="calendarDeniedView" destination="lYq-6X-yUv" id="Nrm-am-2jO"/>
                 <outlet property="perrierButton" destination="dDO-OP-B2a" id="MS2-xi-5q3"/>
@@ -54,6 +56,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="kfE-Ac-Gzu" firstAttribute="top" secondItem="jWh-Gr-PBV" secondAttribute="bottom" constant="8" id="0hd-9g-9bN"/>
                                                 <constraint firstItem="jWh-Gr-PBV" firstAttribute="top" secondItem="lYq-6X-yUv" secondAttribute="top" constant="24" id="8p4-HW-viK"/>
@@ -172,13 +175,13 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="343" height="100"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Créneaux" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SrA-RF-1mf">
-                                                            <rect key="frame" x="32" y="30" width="279" height="20.5"/>
+                                                            <rect key="frame" x="32" y="29.5" width="279" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voir la page complète" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yNs-ha-mHC">
-                                                            <rect key="frame" x="32" y="58.5" width="279" height="17"/>
+                                                            <rect key="frame" x="32" y="58" width="279" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -225,7 +228,7 @@
                                     </constraints>
                                 </stackView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="Gch-wY-1pg" secondAttribute="bottom" id="4Qo-iF-r8a"/>
                                 <constraint firstItem="Gch-wY-1pg" firstAttribute="top" secondItem="gHi-JQ-KZh" secondAttribute="top" constant="16" id="Sbu-Do-SLB"/>

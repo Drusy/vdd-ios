@@ -130,6 +130,12 @@ class PostsViewController: AbstractViewController {
             refreshControl.isRefreshing == false
     }
     
+    override func themeUpdated() {
+        super.themeUpdated()
+
+        view.backgroundColor = StyleManager.shared.backgroundColor
+    }
+    
     override func update() {
         super.update()
         

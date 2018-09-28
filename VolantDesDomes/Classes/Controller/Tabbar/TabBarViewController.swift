@@ -111,14 +111,17 @@ extension TabBarViewController: UITabBarControllerDelegate  {
         guard let fromView = selectedViewController?.view, let toView = viewController.view else {
             return false
         }
-
+        
         if fromView != toView {
+            UIView.setAnimationsEnabled(false)
             UIView.transition(
                 from: fromView,
                 to: toView,
                 duration: 0.2,
                 options: [.transitionCrossDissolve],
-                completion: nil)
+                completion: { _ in
+                    UIView.setAnimationsEnabled(true)
+            })
         }
         
         return true

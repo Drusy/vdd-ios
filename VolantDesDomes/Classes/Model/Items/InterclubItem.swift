@@ -18,7 +18,6 @@ class InterclubItem {
         case vdd6
         case vdd7
         case vdd8
-        case vdd9
     }
     
     static let cellHeight: CGFloat = 150
@@ -44,8 +43,7 @@ class InterclubItem {
             InterclubItem.vdd5Item(),
             InterclubItem.vdd6Item(),
             InterclubItem.vdd7Item(),
-            InterclubItem.vdd8Item(),
-            InterclubItem.vdd9Item()
+            InterclubItem.vdd8Item()
         ]
     }
     
@@ -110,7 +108,7 @@ class InterclubItem {
     fileprivate static func vdd5Item() -> InterclubItem {
         let item = InterclubItem(type: .vdd5)
         
-        item.title = "Départementale 1"
+        item.title = "Départementale élite"
         item.subtitle = "VDD 5"
         item.url = "\(ApiRequest.hostURL)/index.php/interclubs/vdd5"
 
@@ -140,19 +138,9 @@ class InterclubItem {
     fileprivate static func vdd8Item() -> InterclubItem {
         let item = InterclubItem(type: .vdd8)
         
-        item.title = "Départementale 3"
+        item.title = "Départementale 4/5"
         item.subtitle = "VDD 8"
         item.url = "\(ApiRequest.hostURL)/index.php/interclubs/vdd8"
-        
-        return item
-    }
-    
-    fileprivate static func vdd9Item() -> InterclubItem {
-        let item = InterclubItem(type: .vdd9)
-        
-        item.title = "Départementale 4"
-        item.subtitle = "VDD 9"
-        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/vdd9"
         
         return item
     }

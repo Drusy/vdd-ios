@@ -27,7 +27,7 @@ class CategoriesViewController: AbstractViewController {
                                                   left: 0,
                                                   bottom: 12,
                                                   right: 0)
-            tableView.addSubview(refreshControl)
+            tableView.refreshControl = refreshControl
         }
     }
     
@@ -47,7 +47,9 @@ class CategoriesViewController: AbstractViewController {
         return controller
     }()
     lazy var refreshControl: UIRefreshControl = {
-        return UIRefreshControl()
+        let refresh = UIRefreshControl()
+        refresh.tintColor = .black
+        return refresh
     }()
     var categories: Results<WPCategory> {
         var results = self.realm

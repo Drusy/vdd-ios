@@ -32,7 +32,7 @@ class PostsViewController: AbstractViewController {
             tableView.estimatedRowHeight = 280
             
             if canRefresh {
-                tableView.addSubview(refreshControl)
+                tableView.refreshControl = refreshControl
             }
         }
     }
@@ -80,7 +80,9 @@ class PostsViewController: AbstractViewController {
     }
     
     lazy var refreshControl: UIRefreshControl = {
-        return UIRefreshControl()
+        let refresh = UIRefreshControl()
+        refresh.tintColor = .black
+        return refresh
     }()
     
     init(category: WPCategory? = nil) {

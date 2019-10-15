@@ -1,6 +1,6 @@
 // MXScrollView.m
 //
-// Copyright (c) 2017 Maxime Epain
+// Copyright (c) 2019 Maxime Epain
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -65,6 +65,10 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
     self.directionalLockEnabled = YES;
     self.bounces = YES;
     
+    if (@available(iOS 11.0, *)) {
+        self.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+    
     self.panGestureRecognizer.cancelsTouchesInView = NO;
     
     self.observedViews = [NSMutableArray array];
@@ -108,15 +112,24 @@ static void * const kMXScrollViewKVOContext = (void*)&kMXScrollViewKVOContext;
         return NO;
     }
     
+    UIView *otherView = otherGestureRecognizer.view;
+    // WKWebView on he MXScrollView
+    if ([otherView isKindOfClass:NSClassFromString(@"WKContentView")]) {
+        otherView = otherView.superview;
+    }
     // Consider scroll view pan only
-    if (![otherGestureRecognizer.view isKindOfClass:[UIScrollView class]]) {
+    if (![otherView isKindOfClass:[UIScrollView class]]) {
         return NO;
     }
     
-    UIScrollView *scrollView = (id)otherGestureRecognizer.view;
+    UIScrollView *scrollView = (id)otherView;
     
     // Tricky case: UITableViewWrapperView
     if ([scrollView.superview isKindOfClass:[UITableView class]]) {
+        return NO;
+    }
+    //tableview on the MXScrollView
+    if ([scrollView.superview isKindOfClass:NSClassFromString(@"UITableViewCellContentView")]) {
         return NO;
     }
     

@@ -26,7 +26,11 @@ class PostTableViewCell: UITableViewCell, CellIdentifiable {
         roundedView.layer.masksToBounds = true
         
         shadowView.backgroundColor = .clear
-        shadowView.layer.shadowColor = UIColor.black.cgColor
+        if #available(iOS 13.0, *) {
+            shadowView.layer.shadowColor = UIColor.label.cgColor
+        } else {
+            shadowView.layer.shadowColor = UIColor.black.cgColor
+        }
         shadowView.layer.shadowOffset = CGSize(width: 1, height: 1)
         shadowView.layer.shadowOpacity = 0.15
         shadowView.layer.shadowRadius = 3

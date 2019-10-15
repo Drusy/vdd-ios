@@ -192,7 +192,7 @@ class ApiRequest {
                 .observeOn(MainScheduler.instance)
                 .do(onNext: { (items: [WPMedia]) in
                     try? realm?.write {
-                        realm?.add(items, update: true)
+                        realm?.add(items, update: .all)
                     }
                 })
         }

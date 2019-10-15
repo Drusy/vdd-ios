@@ -18,6 +18,7 @@ profile
 DerivedData
 *.hmap
 *.ipa
+*.o
 
 # Bundler
 .bundle
@@ -28,6 +29,9 @@ Carthage
 
 # AppCode
 .idea
+
+# SPM
+.build
 
 # Cocoapods
 # We recommend against adding the Pods directory to your .gitignore. However
@@ -40,3 +44,4 @@ Carthage
 Pods/
 Podfile.lock
 Demo/RxSwiftExtDemo/RxSwiftExtPlayground.playground/Pages/not.xcplaygroundpage/timeline.xctimeline
+Package.resolved

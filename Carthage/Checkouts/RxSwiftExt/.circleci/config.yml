@@ -8,7 +8,7 @@ jobs:
       XCODE_TEST_REPORTS: /tmp/xcode-test-results
       LANG: en_US.UTF-8
     macos:
-      xcode: '9.2.0'
+      xcode: '10.2.0'
     steps:
       - checkout
       - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS $XCODE_TEST_REPORTS
@@ -17,12 +17,6 @@ jobs:
             - v1-dep-{{ .Branch }}-
             - v1-dep-master-
             - v1-dep-
-      - run:
-          name: Update Homebrew
-          command: brew update
-      - run:
-          name: Install Swiftlint
-          command: brew install swiftlint
       - run: 
           name: Bootstrap Carthage
           command: scripts/bootstrap-if-needed.sh
@@ -32,13 +26,16 @@ jobs:
             - Carthage
       - run:
           name: Test macOS
-          command: xcodebuild test -scheme RxSwiftExt-macOS -workspace RxSwiftExt.xcworkspace -sdk macosx -destination "arch=x86_64" | xcpretty -c -r html --output $XCODE_TEST_REPORTS/macOS.html
+          command: set -o pipefail && xcodebuild test -scheme RxSwiftExt-macOS -workspace RxSwiftExt.xcworkspace -sdk macosx -destination "arch=x86_64" | xcpretty -c -r html --output $XCODE_TEST_REPORTS/macOS.html
       - run:
           name: Test iOS
-          command: xcodebuild test -scheme RxSwiftExt-iOS -workspace RxSwiftExt.xcworkspace -sdk iphonesimulator -destination "name=iPhone X" | xcpretty -c -r html --output $XCODE_TEST_REPORTS/iOS.html
+          command: set -o pipefail && xcodebuild test -scheme RxSwiftExt-iOS -workspace RxSwiftExt.xcworkspace -sdk iphonesimulator -destination "name=iPhone X" | xcpretty -c -r html --output $XCODE_TEST_REPORTS/iOS.html
       - run:
           name: Test tvOS
-          command: xcodebuild test -scheme RxSwiftExt-tvOS -workspace RxSwiftExt.xcworkspace -sdk appletvsimulator -destination "name=Apple TV 4K (at 1080p)" | xcpretty -c -r html --output $XCODE_TEST_REPORTS/tvOS.html
+          command: set -o pipefail && xcodebuild test -scheme RxSwiftExt-tvOS -workspace RxSwiftExt.xcworkspace -sdk appletvsimulator -destination "name=Apple TV 4K (at 1080p)" | xcpretty -c -r html --output $XCODE_TEST_REPORTS/tvOS.html
+      - run:
+          name: Test SPM
+          command: swift test
       - store_artifacts:
           path: /tmp/xcode-test-results
   "RxSwiftExt Release":
@@ -48,7 +45,7 @@ jobs:
     environment:
       LANG: en_US.UTF-8
     macos:
-      xcode: '9.2.0'
+      xcode: '10.2.0'
     steps:
       - checkout
       - run:

@@ -1,6 +1,6 @@
 // UIScrollViewExample.swift
 //
-// Copyright (c) 2017 Maxime Epain
+// Copyright (c) 2019 Maxime Epain
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -33,12 +33,16 @@ class UIScrollViewExample: UITableViewController, MXParallaxHeaderDelegate {
         // Parallax Header        
         tableView.parallaxHeader.view = headerView // You can set the parallax header view from the floating view
         tableView.parallaxHeader.height = 300
-        tableView.parallaxHeader.mode = MXParallaxHeaderMode.fill
-        tableView.parallaxHeader.minimumHeight = 20
-        
+        tableView.parallaxHeader.mode = .fill
         tableView.parallaxHeader.delegate = self
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        tableView.parallaxHeader.minimumHeight = view.safeAreaInsets.top
+    }
+    
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

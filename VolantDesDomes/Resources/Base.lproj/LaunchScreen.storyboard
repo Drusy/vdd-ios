@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,33 +16,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="ZqF-1U-bgo">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="OBN-VO-X88">
-                                <rect key="frame" x="46.5" y="38.5" width="281" height="457"/>
+                                <rect key="frame" x="56.5" y="-190" width="262.5" height="914"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="OBN-VO-X88" firstAttribute="centerY" secondItem="ZqF-1U-bgo" secondAttribute="centerY" multiplier="80%" id="071-3J-Hw4"/>
-                            <constraint firstAttribute="trailing" secondItem="ZqF-1U-bgo" secondAttribute="trailing" id="4Ze-5j-FMg"/>
-                            <constraint firstItem="OBN-VO-X88" firstAttribute="centerX" secondItem="ZqF-1U-bgo" secondAttribute="centerX" id="4fH-ts-yCX"/>
-                            <constraint firstItem="ZqF-1U-bgo" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="8hY-FQ-RRT"/>
-                            <constraint firstItem="OBN-VO-X88" firstAttribute="width" secondItem="ZqF-1U-bgo" secondAttribute="width" multiplier="75%" id="hG1-DP-DbN"/>
-                            <constraint firstItem="ZqF-1U-bgo" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="ldd-a2-kwP"/>
-                            <constraint firstAttribute="bottom" secondItem="ZqF-1U-bgo" secondAttribute="bottom" id="ryK-Hf-Z1m"/>
+                            <constraint firstItem="OBN-VO-X88" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.8" id="2jK-Yo-7eM"/>
+                            <constraint firstItem="OBN-VO-X88" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="MkO-P0-SCa"/>
+                            <constraint firstItem="OBN-VO-X88" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="70%" id="rRF-QR-bO6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
     <resources>
-        <image name="background" width="360" height="640"/>
         <image name="logo" width="400" height="457"/>
     </resources>
 </document>

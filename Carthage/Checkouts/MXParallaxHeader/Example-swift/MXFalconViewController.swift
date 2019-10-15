@@ -1,6 +1,6 @@
 // MXFalconViewController.swift
 //
-// Copyright (c) 2017 Maxime Epain
+// Copyright (c) 2019 Maxime Epain
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -32,16 +32,11 @@ class MXFalconViewController: UIViewController, MXParallaxHeaderDelegate {
 
         parallaxHeader?.delegate = self
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // MARK: - MXParallaxHeaderDelegate
 
     func parallaxHeaderDidScroll(_ parallaxHeader: MXParallaxHeader) {
-        let angle = parallaxHeader.progress * CGFloat(M_PI) * 2
+        let angle = parallaxHeader.progress * CGFloat(Double.pi) * 2
         self.falcon.transform = CGAffineTransform.identity.rotated(by: angle)
     }
 

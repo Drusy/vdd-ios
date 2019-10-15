@@ -23,6 +23,7 @@
 #include "util/templated_test_case.hpp"
 #include "util/test_file.hpp"
 
+#include "impl/object_accessor_impl.hpp"
 #include "impl/realm_coordinator.hpp"
 #include "binding_context.hpp"
 #include "object_schema.hpp"
@@ -40,7 +41,39 @@
 #include "sync/sync_session.hpp"
 #endif
 
+namespace realm {
+class TestHelper {
+public:
+    static SharedGroup& get_shared_group(SharedRealm const& shared_realm)
+    {
+        return *Realm::Internal::get_shared_group(*shared_realm);
+    }
+};
+}
+
 using namespace realm;
+using namespace std::string_literals;
+
+namespace {
+    using AnyDict = std::map<std::string, util::Any>;
+    using AnyVec = std::vector<util::Any>;
+}
+
+struct TestContext : CppContext {
+    std::map<std::string, AnyDict> defaults;
+
+    using CppContext::CppContext;
+    TestContext(TestContext& parent, realm::Property const& prop)
+            : CppContext(parent, prop)
+            , defaults(parent.defaults)
+    { }
+
+    void will_change(Object const&, Property const&) {}
+    void did_change() {}
+    std::string print(util::Any) { return "not implemented"; }
+    bool allow_missing(util::Any) { return false; }
+};
+
 
 TEST_CASE("notifications: async delivery") {
     _impl::RealmCoordinator::assert_no_open_realms();
@@ -1873,7 +1906,7 @@ TEST_CASE("results: notifications after move") {
     }
 }
 
-TEST_CASE("results: implicit background notifier") {
+TEST_CASE("results: notifier with no callbacks") {
     _impl::RealmCoordinator::assert_no_open_realms();
 
     InMemoryTestFile config;
@@ -1893,6 +1926,11 @@ TEST_CASE("results: implicit background notifier") {
     results.last(); // force evaluation and creation of TableView
 
     SECTION("refresh() does not block due to implicit notifier") {
+        // Create and then immediately remove a callback because
+        // `automatic_change_notifications = false` makes Results not implicitly
+        // create a notifier
+        results.add_notification_callback([](CollectionChangeSet const&, std::exception_ptr) {});
+
         auto r2 = coordinator->get_realm();
         r2->begin_transaction();
         r2->read_group().get_table("class_object")->add_empty_row();
@@ -1902,6 +1940,8 @@ TEST_CASE("results: implicit background notifier") {
     }
 
     SECTION("refresh() does not attempt to deliver stale results") {
+        results.add_notification_callback([](CollectionChangeSet const&, std::exception_ptr) {});
+
         // Create version 1
         r->begin_transaction();
         table->add_empty_row();
@@ -1917,6 +1957,29 @@ TEST_CASE("results: implicit background notifier") {
         // Give it a chance to deliver the async query results (and fail, becuse
         // they're for version 1 and the realm is at 2)
         r->refresh();
+    }
+
+    SECTION("should not pin the source version even after the Realm has been closed") {
+        auto r2 = coordinator->get_realm();
+        REQUIRE(r != r2);
+        r->close();
+
+        auto& shared_group = TestHelper::get_shared_group(r2);
+        // There's always at least 2 live versions because the previous version
+        // isn't clean up until the *next* commit
+        REQUIRE(shared_group.get_number_of_versions() == 2);
+
+        auto table = r2->read_group().get_table("class_object");
+
+        r2->begin_transaction();
+        table->add_empty_row();
+        r2->commit_transaction();
+        r2->begin_transaction();
+        table->add_empty_row();
+        r2->commit_transaction();
+
+        // Would now be 3 if the closed Realm is still pinning the version it was at
+        REQUIRE(shared_group.get_number_of_versions() == 2);
     }
 }
 
@@ -2767,9 +2830,171 @@ TEMPLATE_TEST_CASE("results: aggregate", ResultsFromTable, ResultsFromQuery, Res
     }
 }
 
-TEST_CASE("results: limit") {
+TEST_CASE("results: set property value on all objects", "[batch_updates]") {
+
+    InMemoryTestFile config;
+    config.automatic_change_notifications = false;
+    config.cache = false;
+    config.schema = Schema{
+        {"AllTypes", {
+            {"pk", PropertyType::Int, Property::IsPrimary{true}},
+            {"bool", PropertyType::Bool},
+            {"int", PropertyType::Int},
+            {"float", PropertyType::Float},
+            {"double", PropertyType::Double},
+            {"string", PropertyType::String},
+            {"data", PropertyType::Data},
+            {"date", PropertyType::Date},
+            {"object", PropertyType::Object|PropertyType::Nullable, "AllTypes"},
+            {"list", PropertyType::Array|PropertyType::Object, "AllTypes"},
+
+            {"bool array", PropertyType::Array|PropertyType::Bool},
+            {"int array", PropertyType::Array|PropertyType::Int},
+            {"float array", PropertyType::Array|PropertyType::Float},
+            {"double array", PropertyType::Array|PropertyType::Double},
+            {"string array", PropertyType::Array|PropertyType::String},
+            {"data array", PropertyType::Array|PropertyType::Data},
+            {"date array", PropertyType::Array|PropertyType::Date},
+            {"object array", PropertyType::Array|PropertyType::Object, "AllTypes"},
+        }, {
+           {"parents", PropertyType::LinkingObjects|PropertyType::Array, "AllTypes", "object"},
+        }}
+    };
+    config.schema_version = 0;
+    auto realm = Realm::get_shared_realm(config);
+    auto table = realm->read_group().get_table("class_AllTypes");
+    realm->begin_transaction();
+    table->add_empty_row(2);
+    realm->commit_transaction();
+    Results r(realm, *table);
+
+    TestContext ctx(realm);
+
+    SECTION("non-existing property name") {
+        realm->begin_transaction();
+        REQUIRE_THROWS_AS(r.set_property_value(ctx, "i dont exist", util::Any(false)), Results::InvalidPropertyException);
+        realm->cancel_transaction();
+    }
+
+    SECTION("readonly property") {
+        realm->begin_transaction();
+        REQUIRE_THROWS_AS(r.set_property_value(ctx, "parents", util::Any(false)), ReadOnlyPropertyException);
+        realm->cancel_transaction();
+    }
+
+    SECTION("primarykey property") {
+        realm->begin_transaction();
+        REQUIRE_THROWS_AS(r.set_property_value(ctx, "pk", util::Any(1)), std::logic_error);
+        realm->cancel_transaction();
+    }
+
+    SECTION("set property values removes object from Results") {
+        realm->begin_transaction();
+        Results results(realm, table->where().equal(2,0));
+        CHECK(results.size() == 2);
+        r.set_property_value(ctx, "int", util::Any(INT64_C(42)));
+        CHECK(results.size() == 0);
+        realm->cancel_transaction();
+    }
+
+    SECTION("set property value") {
+        realm->begin_transaction();
+
+        r.set_property_value<util::Any>(ctx, "bool", util::Any(true));
+        for (size_t i = 0; i < r.size(); i++) {
+            CHECK(r.get(i).get_bool(1) == true);
+        }
+
+        r.set_property_value(ctx, "int", util::Any(INT64_C(42)));
+        for (size_t i = 0; i < r.size(); i++) {
+            CHECK(r.get(i).get_int(2) == 42);
+        }
+
+        r.set_property_value(ctx, "float", util::Any(1.23f));
+        for (size_t i = 0; i < r.size(); i++) {
+            CHECK(r.get(i).get_float(3) == 1.23f);
+        }
+
+        r.set_property_value(ctx, "double", util::Any(1.234));
+        for (size_t i = 0; i < r.size(); i++) {
+            CHECK(r.get(i).get_double(4) == 1.234);
+        }
+
+        r.set_property_value(ctx, "string", util::Any(std::string("abc")));
+        for (size_t i = 0; i < r.size(); i++) {
+            CHECK(r.get(i).get_string(5) == "abc");
+        }
+
+        r.set_property_value(ctx, "data", util::Any(std::string("abc")));
+        for (size_t i = 0; i < r.size(); i++) {
+            CHECK(r.get(i).get_binary(6) == BinaryData("abc", 3));
+        }
+
+        util::Any timestamp = Timestamp(1, 2);
+        r.set_property_value(ctx, "date", timestamp);
+        for (size_t i = 0; i < r.size(); i++) {
+            CHECK(r.get(i).get_timestamp(7) == any_cast<Timestamp>(timestamp));
+        }
+
+        size_t object_ndx = table->add_empty_row();
+        Object linked_obj(realm, "AllTypes", object_ndx);
+        r.set_property_value(ctx, "object", util::Any(linked_obj));
+        for (size_t i = 0; i < r.size(); i++) {
+            CHECK(r.get(i).get_link(8) == object_ndx);
+        }
+
+        size_t list_object_ndx = table->add_empty_row();
+        Object list_object(realm, "AllTypes", list_object_ndx);
+        r.set_property_value(ctx, "list", util::Any(AnyVector{list_object, list_object}));
+        for (size_t i = 0; i < r.size(); i++) {
+            auto list = r.get(i).get_linklist(9);
+            CHECK(list->size() == 2);
+            CHECK(list->get(0).get_index() == list_object_ndx);
+            CHECK(list->get(1).get_index() == list_object_ndx);
+        }
+
+        auto check_array = [&](size_t col, auto... values) {
+            size_t rows = r.size();
+            for (size_t i = 0; i < rows; ++i) {
+                RowExpr row = r.get(i);
+                auto table = row.get_subtable(col);
+                size_t j = 0;
+                for (auto& value : {values...}) {
+                    CAPTURE(j);
+                    REQUIRE(j < row.get_subtable_size(col));
+                    REQUIRE(value == table->get<typename std::decay<decltype(value)>::type>(0, j));
+                    ++j;
+                }
+            }
+        };
+
+        r.set_property_value(ctx, "bool array", util::Any(AnyVec{true, false}));
+        check_array(10, true, false);
+
+        r.set_property_value(ctx, "int array", util::Any(AnyVec{INT64_C(5), INT64_C(6)}));
+        check_array(11, INT64_C(5), INT64_C(6));
+
+        r.set_property_value(ctx, "float array", util::Any(AnyVec{1.1f, 2.2f}));
+        check_array(12, 1.1f, 2.2f);
+
+        r.set_property_value(ctx, "double array", util::Any(AnyVec{3.3, 4.4}));
+        check_array(13, 3.3, 4.4);
+
+        r.set_property_value(ctx, "string array", util::Any(AnyVec{"a"s, "b"s, "c"s}));
+        check_array(14, StringData("a"), StringData("b"), StringData("c"));
+ 
+        r.set_property_value(ctx, "data array", util::Any(AnyVec{"d"s, "e"s, "f"s}));
+        check_array(15, BinaryData("d",1), BinaryData("e",1), BinaryData("f",1));
+
+        r.set_property_value(ctx, "date array", util::Any(AnyVec{Timestamp(10,20), Timestamp(20,30), Timestamp(30,40)}));
+        check_array(16, Timestamp(10,20), Timestamp(20,30), Timestamp(30,40));
+    }
+}
+
+TEST_CASE("results: limit", "[limit]") {
     InMemoryTestFile config;
     config.cache = false;
+    config.automatic_change_notifications = false;
     config.schema = Schema{
         {"object", {
             {"value", PropertyType::Int},
@@ -2778,7 +3003,6 @@ TEST_CASE("results: limit") {
 
     auto realm = Realm::get_shared_realm(config);
     auto table = realm->read_group().get_table("class_object");
-    Results r(realm, *table);
 
     realm->begin_transaction();
     table->add_empty_row(8);
@@ -2786,6 +3010,7 @@ TEST_CASE("results: limit") {
         table->set_int(0, i, (i + 2) % 4);
     }
     realm->commit_transaction();
+    Results r(realm, *table);
 
     SECTION("unsorted") {
         REQUIRE(r.limit(0).size() == 0);
@@ -2826,10 +3051,67 @@ TEST_CASE("results: limit") {
         REQUIRE_ORDER(sorted.limit(8), 2, 3, 0, 1);
     }
 
+    SECTION("notifications on results using all descriptor types") {
+        r = r.distinct({"value"}).sort({{"value", false}}).limit(2);
+        int notification_calls = 0;
+        auto token = r.add_notification_callback([&](CollectionChangeSet c, std::exception_ptr err) {
+            REQUIRE_FALSE(err);
+            if (notification_calls == 0) {
+                REQUIRE(c.empty());
+                REQUIRE(r.size() == 2);
+                REQUIRE(r.get(0).get_int(0) == 3);
+                REQUIRE(r.get(1).get_int(0) == 2);
+            } else if (notification_calls == 1) {
+                REQUIRE(!c.empty());
+                REQUIRE_INDICES(c.insertions, 0);
+                REQUIRE_INDICES(c.deletions, 1);
+                REQUIRE(c.moves.size() == 0);
+                REQUIRE(c.modifications.count() == 0);
+                REQUIRE(r.size() == 2);
+                REQUIRE(r.get(0).get_int(0) == 5);
+                REQUIRE(r.get(1).get_int(0) == 3);
+            }
+            ++notification_calls;
+        });
+        advance_and_notify(*realm);
+        REQUIRE(notification_calls == 1);
+        realm->begin_transaction();
+        table->add_empty_row(1);
+        table->set_int(0, 8, 5);
+        realm->commit_transaction();
+        advance_and_notify(*realm);
+        REQUIRE(notification_calls == 2);
+    }
+
+    SECTION("notifications on only limited results") {
+        r = r.limit(2);
+        int notification_calls = 0;
+        auto token = r.add_notification_callback([&](CollectionChangeSet c, std::exception_ptr err) {
+            REQUIRE_FALSE(err);
+            if (notification_calls == 0) {
+                REQUIRE(c.empty());
+                REQUIRE(r.size() == 2);
+            } else if (notification_calls == 1) {
+                REQUIRE(!c.empty());
+                REQUIRE(c.insertions.count() == 0);
+                REQUIRE(c.deletions.count() == 0);
+                REQUIRE(c.modifications.count() == 1);
+                REQUIRE_INDICES(c.modifications, 1);
+                REQUIRE(r.size() == 2);
+            }
+            ++notification_calls;
+        });
+        advance_and_notify(*realm);
+        REQUIRE(notification_calls == 1);
+        realm->begin_transaction();
+        table->set_int(0, 1, 5);
+        realm->commit_transaction();
+        advance_and_notify(*realm);
+        REQUIRE(notification_calls == 2);
+    }
+
     SECTION("does not support further filtering") {
         auto limited = r.limit(0);
-        REQUIRE_THROWS_AS(limited.add_notification_callback([](CollectionChangeSet, std::exception_ptr) { }),
-                          Results::UnimplementedOperationException);
         REQUIRE_THROWS_AS(limited.filter(table->where()), Results::UnimplementedOperationException);
     }
 }

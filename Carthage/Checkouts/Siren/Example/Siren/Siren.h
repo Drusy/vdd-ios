@@ -2,8 +2,8 @@
 //  Siren.h
 //  Siren
 //
-//  Created by Sabintsev, Arthur on 3/4/17.
-//  Copyright © 2017 Sabintsev iOS Projects. All rights reserved.
+//  Created by Arthur Sabintsev on 3/29/19.
+//  Copyright © 2019 Sabintsev iOS Projects. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

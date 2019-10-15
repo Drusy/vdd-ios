@@ -12,6 +12,6 @@ extension DefaultsKeys {
     static let userFFBadLicence = DefaultsKey<String?>("userFFBadLicence")
     static let categoryParallax = DefaultsKey<Bool>("categoryParallax", defaultValue: true)
     static let newPostsNotification = DefaultsKey<Bool>("newPostsNotification", defaultValue: true)
-    static let appOpenCount = DefaultsKey<Int>("appOpenCount")
+    static let appOpenCount = DefaultsKey<Int>("appOpenCount", defaultValue: 0)
     static let forceCategoryLoading = DefaultsKey<Bool>("forceCategoryLoading", defaultValue: false)
 }

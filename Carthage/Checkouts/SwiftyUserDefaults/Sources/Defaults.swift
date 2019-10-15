@@ -1,7 +1,7 @@
 //
 // SwiftyUserDefaults
 //
-// Copyright (c) 2015-2018 Radosław Pietruszewski, Łukasz Mróz
+// Copyright (c) 2015-present Radosław Pietruszewski, Łukasz Mróz
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -50,7 +50,7 @@ public extension UserDefaults {
     /// Use with caution!
     /// - Note: This method only removes keys on the receiver `UserDefaults` object.
     ///         System-defined keys will still be present afterwards.
-    public func removeAll() {
+    func removeAll() {
         for (key, _) in dictionaryRepresentation() {
             removeObject(forKey: key)
         }
@@ -68,13 +68,15 @@ internal extension UserDefaults {
 
         return try? JSONDecoder().decode(T.self, from: decodableData)
     }
-
+    
+    /// Encodes passed `encodable` and saves the resulting data into the user defaults for the key `key`.
+    /// Any error encoding will result in an assertion failure.
     func set<T: Encodable>(encodable: T, forKey key: String) {
-        let encoder = JSONEncoder()
-        if let data = try? encoder.encode(encodable) {
+        do {
+            let data = try JSONEncoder().encode(encodable)
             set(data, forKey: key)
-        } else {
-            assertionFailure("Encodable \(T.self) is not _actually_ encodable to any data...Please fix 😭")
+        } catch {
+            assertionFailure("Failure encoding encodable of type \(T.self): \(error.localizedDescription)")
         }
-    }
+    }    
 }

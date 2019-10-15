@@ -26,7 +26,7 @@ class WithUnretainedTests: XCTestCase {
             .next(220, 3),
             .next(225, 5),
             .next(230, 8),
-            completed(250)
+            .completed(250)
         ])
 
         tupleValues = scheduler.createColdObservable([
@@ -35,7 +35,7 @@ class WithUnretainedTests: XCTestCase {
             .next(220, (3, "c")),
             .next(225, (5, "d")),
             .next(230, (8, "e")),
-            completed(250)
+            .completed(250)
         ])
     }
 
@@ -48,13 +48,13 @@ class WithUnretainedTests: XCTestCase {
             .next(420, "\(testClassId), 3"),
             .next(425, "\(testClassId), 5"),
             .next(430, "\(testClassId), 8"),
-            completed(450)
+            .completed(450)
         ]
 
         let res = scheduler.start {
             self.values
                 .withUnretained(self.testClass)
-                .map { "\($0.0.id), \($0.1)" }
+                .map { "\($0.id), \($1)" }
         }
 
         XCTAssertEqual(res.events, correctValues)
@@ -78,7 +78,7 @@ class WithUnretainedTests: XCTestCase {
             .next(410, "\(testClassId), 1"),
             .next(415, "\(testClassId), 2"),
             .next(420, "\(testClassId), 3"),
-            completed(425)
+            .completed(425)
         ]
 
         let res = scheduler.start {
@@ -91,7 +91,7 @@ class WithUnretainedTests: XCTestCase {
                         self.testClass = nil
                     }
                 })
-                .map { "\($0.0.id), \($0.1)" }
+                .map { "\($0.id), \($1)" }
         }
 
         XCTAssertEqual(res.events, correctValues)
@@ -106,13 +106,13 @@ class WithUnretainedTests: XCTestCase {
             .next(420, "\(testClassId), 3, c"),
             .next(425, "\(testClassId), 5, d"),
             .next(430, "\(testClassId), 8, e"),
-            completed(450)
+            .completed(450)
         ]
 
         let res = scheduler.start {
             self.tupleValues
                 .withUnretained(self.testClass) { ($0, $1.0, $1.1) }
-                .map { "\($0.0.id), \($0.1), \($0.2)" }
+                .map { "\($0.id), \($1), \($2)" }
         }
 
         XCTAssertEqual(res.events, correctValues)

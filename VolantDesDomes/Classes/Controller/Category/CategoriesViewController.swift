@@ -10,7 +10,6 @@ import UIKit
 import RxSwift
 import RxRealm
 import RxCocoa
-import RxGesture
 import RealmSwift
 import SwiftyUserDefaults
 
@@ -48,7 +47,11 @@ class CategoriesViewController: AbstractViewController {
     }()
     lazy var refreshControl: UIRefreshControl = {
         let refresh = UIRefreshControl()
-        refresh.tintColor = .black
+        if #available(iOS 13.0, *) {
+            refresh.tintColor = .label
+        } else {
+            refresh.tintColor = .black
+        }
         return refresh
     }()
     var categories: Results<WPCategory> {
@@ -129,7 +132,7 @@ class CategoriesViewController: AbstractViewController {
             })
             .subscribe(onNext: { [weak self] (categories: [WPCategory]) in
                 try? self?.realm.write {
-                    self?.realm.add(categories, update: true)
+                    self?.realm.add(categories, update: .all)
                 }
                 
                 self?.tableView.allowsSelection = true

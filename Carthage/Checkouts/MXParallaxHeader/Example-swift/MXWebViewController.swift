@@ -1,6 +1,6 @@
 // MXChildViewController.swift
 //
-// Copyright (c) 2017 Maxime Epain
+// Copyright (c) 2019 Maxime Epain
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -21,28 +21,17 @@
 // THE SOFTWARE.
 
 import UIKit
+import WebKit
 import MXParallaxHeader
 
 class MXWebViewController: UIViewController {
-    
-    @IBOutlet weak var webView: UIWebView!
+
+    @IBOutlet weak var webView: WKWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let request = URLRequest(url: URL(string: "https://dribbble.com/search?q=spaceship")!)
-        webView.loadRequest(request)
-    }
-    
-    @IBAction func back(_ sender: AnyObject) {
-        webView.goBack()
-    }
-    
-    @IBAction func forward(_ sender: AnyObject) {
-        webView.goForward()
-    }
-    
-    @IBAction func refresh(_ sender: AnyObject) {
-        webView.reload()
+        webView.load(request)
     }
 }

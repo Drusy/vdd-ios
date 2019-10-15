@@ -44,13 +44,14 @@ class MapAtTests: XCTestCase {
     }
 
     func testResultSequenceHasValuesAtProvidedKeypath() {
-        //test elements values and type
-        let correctValues = [
-            next(0, "Bart"),
-            next(0, "Lisa"),
-            next(0, "Maggie"),
-            completed(0)
-        ]
+        // test elements values and type
+        let correctValues = Recorded.events([
+            .next(0, "Bart"),
+            .next(0, "Lisa"),
+            .next(0, "Maggie"),
+            .completed(0)
+        ])
+
         XCTAssertEqual(observer.events, correctValues)
     }
 }

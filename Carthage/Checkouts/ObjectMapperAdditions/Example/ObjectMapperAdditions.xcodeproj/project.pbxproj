@@ -23,6 +23,7 @@
 		B0B644821F2A11FC00C3739E /* MyRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B644801F2A11FC00C3739E /* MyRealmModel.swift */; };
 		B0D3A0331F7A54E90062AD2B /* TimestampTransformSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D3A0311F7A54BC0062AD2B /* TimestampTransformSpec.swift */; };
 		B0D3A03A1F7A5D740062AD2B /* ISO8601JustDateTransformSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D3A0381F7A5D710062AD2B /* ISO8601JustDateTransformSpec.swift */; };
+		E28C98D72255F4AA00C5DA49 /* ExampleEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28C98D62255F4AA00C5DA49 /* ExampleEnums.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D2D24CD2171632B006817DE /* DEPLOY PROCESS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = "DEPLOY PROCESS.md"; path = "../DEPLOY PROCESS.md"; sourceTree = "<group>"; };
+		0D2D24CE21716420006817DE /* podUpdate.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = podUpdate.command; sourceTree = "<group>"; };
+		0D2D24CF21716F8F006817DE /* checkBuild.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = checkBuild.command; path = ../checkBuild.command; sourceTree = "<group>"; };
 		1E6A5436B00ACF85E4A03951 /* podCheck.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = podCheck.command; path = ../podCheck.command; sourceTree = "<group>"; };
 		3306BDD26A7024542AF11D3D /* ObjectMapperAdditions.podspec */ = {isa = PBXFileReference; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = ObjectMapperAdditions.podspec; path = ../ObjectMapperAdditions.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		43260D3A6963AE16EDA55BBC /* Pods-ObjectMapperAdditions_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjectMapperAdditions_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ObjectMapperAdditions_Example/Pods-ObjectMapperAdditions_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -68,6 +72,8 @@
 		D46646B272B8B5A8181F666B /* .cocoadocs.yml */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = .cocoadocs.yml; path = ../.cocoadocs.yml; sourceTree = "<group>"; };
 		D99D6198B7EB09C279219FB2 /* podPush.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = podPush.command; path = ../podPush.command; sourceTree = "<group>"; };
 		DDEDDCD09D65355F843EFBC5 /* Pods_ObjectMapperAdditions_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ObjectMapperAdditions_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E289273E2256165A00CAA647 /* carthageUpdate.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = carthageUpdate.command; path = ../carthageUpdate.command; sourceTree = "<group>"; };
+		E28C98D62255F4AA00C5DA49 /* ExampleEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleEnums.swift; sourceTree = "<group>"; };
 		F253760DFAA3796C1818AA2F /* CHANGELOG.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,14 +125,15 @@
 				B06688E41F13EAB300A02878 /* _Images */,
 				607FACD31AFB9204008FA782 /* _Supporting Files */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
+				E28C98D62255F4AA00C5DA49 /* ExampleEnums.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				B0B644791F2A07A100C3739E /* MyModel.swift */,
 				B0B6447B1F2A07EC00C3739E /* MyOtherModel.swift */,
-				B0B644801F2A11FC00C3739E /* MyRealmModel.swift */,
 				B0B6447F1F2A11FC00C3739E /* MyOtherRealmModel.swift */,
+				B0B644801F2A11FC00C3739E /* MyRealmModel.swift */,
+				607FACD71AFB9204008FA782 /* ViewController.swift */,
 			);
 			name = "Example for ObjectMapperAdditions";
 			path = ObjectMapperAdditions;
@@ -167,11 +174,15 @@
 				5CAD258AE7CB612216344F76 /* .gitignore */,
 				C4D05D631BC1A7024D3C6249 /* .travis.yml */,
 				F253760DFAA3796C1818AA2F /* CHANGELOG.md */,
+				0D2D24CD2171632B006817DE /* DEPLOY PROCESS.md */,
 				9DFE7F9B21F6E89955E35AA5 /* LICENSE */,
 				3306BDD26A7024542AF11D3D /* ObjectMapperAdditions.podspec */,
+				E289273E2256165A00CAA647 /* carthageUpdate.command */,
+				0D2D24CF21716F8F006817DE /* checkBuild.command */,
 				1E6A5436B00ACF85E4A03951 /* podCheck.command */,
 				B02371051F2BA2D500EA36DE /* podInstall.command */,
 				D99D6198B7EB09C279219FB2 /* podPush.command */,
+				0D2D24CE21716420006817DE /* podUpdate.command */,
 				A7D8958764C84B431CB2CCEE /* README.md */,
 			);
 			name = "Podspec Metadata";
@@ -223,7 +234,6 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				30DBA9CF11A05D1EBE3DC1EF /* [CP] Embed Pods Frameworks */,
-				459E4FC5E1914F9EB870BAEA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -243,7 +253,6 @@
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
 				3A0E6AEB31E9F1C2B6EB8F85 /* [CP] Embed Pods Frameworks */,
-				DF2ADE62DC952B6FB3C8FD6E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -262,16 +271,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1020;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1020;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
@@ -281,6 +290,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -341,10 +351,9 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ObjectMapperAdditions_Example/Pods-ObjectMapperAdditions_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ObjectMapperAdditions_Example/Pods-ObjectMapperAdditions_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/APExtensions/APExtensions.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/ObjectMapper+Realm/ObjectMapper_Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapperAdditions/ObjectMapperAdditions.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
@@ -353,14 +362,13 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/APExtensions.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper_Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapperAdditions.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ObjectMapperAdditions_Example/Pods-ObjectMapperAdditions_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ObjectMapperAdditions_Example/Pods-ObjectMapperAdditions_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3A0E6AEB31E9F1C2B6EB8F85 /* [CP] Embed Pods Frameworks */ = {
@@ -369,7 +377,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ObjectMapperAdditions_Tests/Pods-ObjectMapperAdditions_Tests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ObjectMapperAdditions_Tests/Pods-ObjectMapperAdditions_Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
@@ -380,22 +388,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ObjectMapperAdditions_Tests/Pods-ObjectMapperAdditions_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		459E4FC5E1914F9EB870BAEA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ObjectMapperAdditions_Example/Pods-ObjectMapperAdditions_Example-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ObjectMapperAdditions_Tests/Pods-ObjectMapperAdditions_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B5B2F63AD54CECD6335D733B /* [CP] Check Pods Manifest.lock */ = {
@@ -416,21 +409,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DF2ADE62DC952B6FB3C8FD6E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ObjectMapperAdditions_Tests/Pods-ObjectMapperAdditions_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -438,6 +416,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E28C98D72255F4AA00C5DA49 /* ExampleEnums.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				B02194911F2BAB3200E228EB /* MyModel.swift in Sources */,
 				B0B6447C1F2A07EC00C3739E /* MyOtherModel.swift in Sources */,
@@ -492,6 +471,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -500,12 +480,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -538,6 +520,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -545,6 +528,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -553,12 +537,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -583,6 +569,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -598,8 +585,6 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.anton-plebanovich.ObjectMapperAdditions-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -614,8 +599,6 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.anton-plebanovich.ObjectMapperAdditions-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -633,8 +616,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ObjectMapperAdditions_Example.app/ObjectMapperAdditions_Example";
 			};
 			name = Debug;
@@ -649,8 +630,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ObjectMapperAdditions_Example.app/ObjectMapperAdditions_Example";
 			};
 			name = Release;

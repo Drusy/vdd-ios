@@ -1,6 +1,36 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+### [5.1.0](https://github.com/xmartlabs/Eureka/releases/tag/5.1.0)
+
+* Support for Xcode 11 and iOS 13
+* Added dark mode support
+
+### [5.0.1](https://github.com/xmartlabs/Eureka/releases/tag/5.0.1)
+
+* Added `quietly` parameter for use with non-ui validation (#1817)
+* RuleMinLength (and others) now pass for nil and empty strings. 
+* iOS deployment target back on iOS 9.0
+* Several other fixes
+
+### [5.0.0](https://github.com/xmartlabs/Eureka/releases/tag/5.0.0)
+
+* Bug fixes and stability improvements
+* iOS deployment target increased to iOS9.3
+
+### [4.3.1](https://github.com/xmartlabs/Eureka/releases/tag/4.3.1)
+
+* Bug fixes and stability improvements
+
+
+### [4.3.0](https://github.com/xmartlabs/Eureka/releases/tag/4.3.0)
+
+* Changes for Swift 4.2, Xcode 10 and iOS 12
+* Add ability to customise the text color of UIPickerView used by PickerRow
+* Make `onPresent` result discardable
+* Add `insert(row: after:)` method on Section which allows inserting rows after a hidden row
+* Other minor fixes
+
 ### [4.2.0](https://github.com/xmartlabs/Eureka/releases/tag/4.2.0)
 
 * Adding support for RowType.subtitle on FieldRow (#1468)

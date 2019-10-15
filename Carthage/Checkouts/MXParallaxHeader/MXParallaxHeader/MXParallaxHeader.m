@@ -1,6 +1,6 @@
 // MXParallaxHeader.m
 //
-// Copyright (c) 2017 Maxime Epain
+// Copyright (c) 2019 Maxime Epain
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -72,6 +72,8 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 
 - (void)setView:(UIView *)view {
     if (view != _view) {
+        [_view removeFromSuperview];
+        
         _view = view;
         [self updateConstraints];
     }
@@ -125,6 +127,11 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
     }
 }
 
+- (void)loadWithNibName:(NSString *)name bundle:(nullable NSBundle *)bundleOrNil options:(nullable NSDictionary<UINibOptionsKey, id> *)optionsOrNil {
+    UINib *nib = [UINib nibWithNibName:name bundle:bundleOrNil];
+    [nib instantiateWithOwner:self options:optionsOrNil];
+}
+
 #pragma mark Constraints
 
 - (void)updateConstraints {
@@ -161,53 +168,42 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 }
 
 - (void)setCenterModeConstraints {
-    
-    NSDictionary *binding = @{@"v" : self.view};
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:binding]];
-    
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.view
-                                                                 attribute:NSLayoutAttributeCenterY
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.contentView
-                                                                 attribute:NSLayoutAttributeCenterY
-                                                                multiplier:1
-                                                                  constant:0]];
-    
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.view
-                                                                 attribute:NSLayoutAttributeHeight
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:nil
-                                                                 attribute:NSLayoutAttributeNotAnAttribute
-                                                                multiplier:1
-                                                                  constant:self.height]];
+    [self.view.leadingAnchor constraintEqualToAnchor:self.contentView.leadingAnchor].active = YES;
+    [self.view.trailingAnchor constraintEqualToAnchor:self.contentView.trailingAnchor].active = YES;
+    [self.view.centerYAnchor constraintEqualToAnchor:self.contentView.centerYAnchor].active = YES;
+    [self.view.heightAnchor constraintEqualToConstant:self.height].active = YES;
 }
 
 - (void)setFillModeConstraints {
-    NSDictionary *binding = @{@"v" : self.view};
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:binding]];
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[v]|" options:0 metrics:nil views:binding]];
+    [self.view.leadingAnchor constraintEqualToAnchor:self.contentView.leadingAnchor].active = YES;
+    [self.view.trailingAnchor constraintEqualToAnchor:self.contentView.trailingAnchor].active = YES;
+    [self.view.topAnchor constraintEqualToAnchor:self.contentView.topAnchor].active = YES;
+    [self.view.bottomAnchor constraintEqualToAnchor:self.contentView.bottomAnchor].active = YES;
 }
 
 - (void)setTopFillModeConstraints {
-    NSDictionary *binding = @{@"v" : self.view};
-    NSDictionary *metrics = @{@"highPriority" : @(UILayoutPriorityDefaultHigh),
-                              @"height"       : @(self.height)};
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:binding]];
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[v(>=height)]-0.0@highPriority-|" options:0 metrics:metrics views:binding]];
+    [self.view.leadingAnchor constraintEqualToAnchor:self.contentView.leadingAnchor].active = YES;
+    [self.view.trailingAnchor constraintEqualToAnchor:self.contentView.trailingAnchor].active = YES;
+    [self.view.topAnchor constraintEqualToAnchor:self.contentView.topAnchor].active = YES;
+    [self.view.heightAnchor constraintGreaterThanOrEqualToConstant:self.height].active = YES;
+
+    NSLayoutConstraint *constraint = [self.view.bottomAnchor constraintEqualToAnchor:self.contentView.bottomAnchor];
+    constraint.priority = UILayoutPriorityDefaultHigh;
+    constraint.active = YES;
 }
 
 - (void)setTopModeConstraints {
-    NSDictionary *binding = @{@"v" : self.view};
-    NSDictionary *metrics = @{@"height" : @(self.height)};
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:binding]];
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[v(==height)]" options:0 metrics:metrics views:binding]];
+    [self.view.leadingAnchor constraintEqualToAnchor:self.contentView.leadingAnchor].active = YES;
+    [self.view.trailingAnchor constraintEqualToAnchor:self.contentView.trailingAnchor].active = YES;
+    [self.view.topAnchor constraintEqualToAnchor:self.contentView.topAnchor].active = YES;
+    [self.view.heightAnchor constraintEqualToConstant:self.height].active = YES;
 }
 
 - (void)setBottomModeConstraints {
-    NSDictionary *binding = @{@"v" : self.view};
-    NSDictionary *metrics = @{@"height" : @(self.height)};
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:binding]];
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[v(==height)]|" options:0 metrics:metrics views:binding]];
+    [self.view.leadingAnchor constraintEqualToAnchor:self.contentView.leadingAnchor].active = YES;
+    [self.view.trailingAnchor constraintEqualToAnchor:self.contentView.trailingAnchor].active = YES;
+    [self.view.bottomAnchor constraintEqualToAnchor:self.contentView.bottomAnchor].active = YES;
+    [self.view.heightAnchor constraintEqualToConstant:self.height].active = YES;
 }
 
 #pragma mark Private Methods
@@ -249,7 +245,6 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     
     if (context == kMXParallaxHeaderKVOContext) {
-        
         if ([keyPath isEqualToString:NSStringFromSelector(@selector(contentOffset))]) {
             [self layoutContentView];
         }

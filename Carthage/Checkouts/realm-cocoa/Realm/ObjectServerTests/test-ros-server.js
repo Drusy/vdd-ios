@@ -1,6 +1,7 @@
 const ROS = require('realm-object-server');
 const fs = require('fs');
-const https = require('https');
+const http = require('http');
+const httpProxy = require('http-proxy');
 const os = require('os');
 const path = require('path');
 
@@ -17,10 +18,6 @@ process.env.ROS_SUPERAGENT_RETRY_DELAY = '0';
 
 // Enable timestamps in the logs
 process.env.ROS_LOG_TIMESTAMP = '1';
-
-// Accept invalid TLS certificates so that the ROS services can talk to each
-// other despite using a self-signed certificate
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 if (!process.env.SYNC_WORKER_FEATURE_TOKEN) {
     try {
@@ -51,6 +48,44 @@ class PasswordEmailHandler {
     }
 }
 
+// A simple proxy server that runs in front of ROS and validates custom headers
+class HeaderValidationProxy {
+    constructor(listenPort, targetPort) {
+        this.proxy = httpProxy.createProxyServer({target: `http://127.0.0.1:${targetPort}`, ws: true});
+        this.proxy.on('error', e => {
+            console.log('proxy error', e);
+        });
+        this.server = http.createServer((req, res) => {
+            if (this.validate(req)) {
+                this.proxy.web(req, res);
+            }
+            else {
+                res.writeHead(400);
+                res.end('Missing X-Allow-Connection header');
+            }
+        });
+        this.server.on('upgrade', (req, socket, head) => {
+            if (this.validate(req)) {
+                this.proxy.ws(req, socket, head);
+            }
+            else {
+                socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
+            }
+        });
+        this.server.listen(listenPort);
+    }
+
+    stop() {
+        this.server.close();
+        this.proxy.close();
+    }
+
+    validate(req) {
+        return !!req.headers['x-allow-connection'];
+    }
+}
+
+
 const server = new ROS.BasicServer();
 server.start({
     // The desired logging threshold. Can be one of: all, trace, debug, detail, info, warn, error, fatal, off)
@@ -66,6 +101,7 @@ server.start({
     https: true,
     httpsKeyPath: __dirname + '/certificates/localhost-cert-key.pem',
     httpsCertChainPath: __dirname + '/certificates/localhost-cert.pem',
+    httpsForInternalComponents: false,
 
     dataPath: process.argv[2],
     authProviders: [
@@ -76,10 +112,10 @@ server.start({
         }),
     ],
     autoKeyGen: true,
-    serviceAgent: new https.Agent({rejectUnauthorized: false})
 }).then(() => {
     console.log('started');
     fs.closeSync(1);
 }).catch(err => {
     console.error(`Error starting Realm Object Server: ${err.message}`)
 });
+new HeaderValidationProxy(9081, 9080);

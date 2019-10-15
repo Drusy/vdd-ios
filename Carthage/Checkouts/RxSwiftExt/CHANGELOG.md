@@ -1,9 +1,40 @@
 Changelog
 =========
 
-master
------
+- added `reachedBottom(offset:)` for `UIScrollView`
+- `once` now uses a `NSRecursiveLock` instead of the deprecated `OSAtomicOr32OrigBarrier`
+- Simplify `filterMap(_:)` implementation and make callback throwing
+- `once` now uses a `NSRecursiveLock` instead of the deprecated `OSAtomicOr32OrigBarrier`
+- added `merge(with:)` for `Observable`
+- removed `flatMapSync` operator
+- added `apply` for `Completable` and `Maybe` 
+- added `mapTo` for `Single` and `Maybe`
+- added SPM support
 
+5.0.0
+-----
+- Update to RxSwift 5.0.
+- Requires the Swift 5 compiler (Xcode 10.2 and up).i
+- added `partition(_:)` operator
+- added `bufferWithTrigger` operator
+- added `fromAsync` operator for `Single`
+
+4.0.0
+------
+Version 4.x has been skipped to align with RxSwift versioning.
+
+RxSwiftExt 5.x supports Swift 5.x
+RxSwiftExt 3.x supports Swift 4.x
+
+3.4.0
+-----
+- Fix `withUnretained` so it allows proper destructuring
+- added `mapMany` operator
+- added `toSortedArray` operator
+- rolled `map(to:)` back to `mapTo(_:)` for `SharedSequenceConvertibleType`
+- added `unwrap()` operator for SharedSequence
+- added `apply(_:)` for `Single`
+- added `count` operator
 
 3.3.0
 -----

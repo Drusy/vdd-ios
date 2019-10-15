@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RxGesture
 
 class StateErrorViewController: AbstractViewController {
 
@@ -16,17 +15,11 @@ class StateErrorViewController: AbstractViewController {
     
     var titleString: String
     var subtitleString: String
-    var titleColor: UIColor
-    var subtitleColor: UIColor
-    var backgroundColor: UIColor
     var touchHandler: (() -> Void)?
     
-    init(title: String, subtitle: String, titleColor: UIColor = .black, subtitleColor: UIColor = .darkGray, backgroundColor: UIColor = .white) {
+    init(title: String, subtitle: String) {
         self.titleString = title
         self.subtitleString = subtitle
-        self.titleColor = titleColor
-        self.subtitleColor = subtitleColor
-        self.backgroundColor = backgroundColor
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -38,24 +31,20 @@ class StateErrorViewController: AbstractViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.rx
-            .tapGesture()
-            .when(.recognized)
-            .subscribe(onNext: { [weak self] _ in
-                self?.touchHandler?()
-            })
-            .disposed(by: disposeBag)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onViewTapped))
+        view.addGestureRecognizer(tapGesture)
     }
     
     // MARK: -
+    
+    @objc func onViewTapped() {
+        touchHandler?()
+    }
     
     override func update() {
         super.update()
         
         errorTitleLabel.text = titleString
         errorSubtitleLabel.text = subtitleString
-        errorTitleLabel.textColor = titleColor
-        errorSubtitleLabel.textColor = subtitleColor
-        view.backgroundColor = backgroundColor
     }
 }

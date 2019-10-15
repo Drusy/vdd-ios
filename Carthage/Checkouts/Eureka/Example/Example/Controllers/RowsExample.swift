@@ -16,9 +16,9 @@ class RowsExampleViewController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        URLRow.defaultCellUpdate = { cell, row in cell.textField.textColor = .blue }
-        LabelRow.defaultCellUpdate = { cell, row in cell.detailTextLabel?.textColor = .orange  }
-        CheckRow.defaultCellSetup = { cell, row in cell.tintColor = .orange }
+        URLRow.defaultCellUpdate = { cell, row in cell.textField.textColor = .systemBlue }
+        LabelRow.defaultCellUpdate = { cell, row in cell.detailTextLabel?.textColor = .systemOrange  }
+        CheckRow.defaultCellSetup = { cell, row in cell.tintColor = .systemOrange }
         DateRow.defaultRowInitializer = { row in row.minimumDate = Date() }
 
         form +++
@@ -57,7 +57,10 @@ class RowsExampleViewController: FormViewController {
             <<< StepperRow() {
                 $0.title = "StepperRow"
                 $0.value = 1.0
-            }
+              }.cellSetup({ (cell, row) in
+                cell.imageView?.image = #imageLiteral(resourceName: "selectedRectangle")
+              })
+          
 
             +++ Section("SegmentedRow examples")
 
@@ -146,7 +149,7 @@ class RowsExampleViewController: FormViewController {
                 $0.value = 👦🏼
                 $0.selectorTitle = "Choose a lazy Emoji!"
                 $0.optionsProvider = .lazy({ (form, completion) in
-                    let activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+                    let activityView = UIActivityIndicatorView(style: .gray)
                     form.tableView.backgroundView = activityView
                     activityView.startAnimating()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
@@ -241,7 +244,7 @@ class RowsExampleViewController: FormViewController {
                 $0.title = "LazyMultipleSelectorRow"
                 $0.value = [👦🏼, 🍐, 🐗]
                 $0.optionsProvider = .lazy({ (form, completion) in
-                    let activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+                    let activityView = UIActivityIndicatorView(style: .gray)
                     form.tableView.backgroundView = activityView
                     activityView.startAnimating()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {

@@ -81,7 +81,11 @@ class PostsViewController: AbstractViewController {
     
     lazy var refreshControl: UIRefreshControl = {
         let refresh = UIRefreshControl()
-        refresh.tintColor = .black
+        if #available(iOS 13.0, *) {
+            refresh.tintColor = .label
+        } else {
+            refresh.tintColor = .black
+        }
         return refresh
     }()
     
@@ -100,14 +104,8 @@ class PostsViewController: AbstractViewController {
         
         navigationItem.title = category?.name ?? "Articles"
         
-        errorFooterView?.rx
-            .tapGesture()
-            .when(.recognized)
-            .subscribe(onNext: { [weak self] _ in
-                self?.changeTableViewFooter(with: self?.loadingFooterView)
-                self?.paginate()
-            })
-            .disposed(by: disposeBag)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onViewTapped))
+        errorFooterView?.addGestureRecognizer(tapGesture)
         
         setupTableView()
         if canRefresh {
@@ -188,7 +186,7 @@ class PostsViewController: AbstractViewController {
     
     func onDataRefreshed(posts: [WPPost]) {
         try? realm.write {
-            realm.add(posts, update: true)
+            realm.add(posts, update: .all)
         }
         
         page += 1
@@ -263,7 +261,7 @@ class PostsViewController: AbstractViewController {
             .subscribe(
                 onNext: { [weak self] (posts: [WPPost]) in
                     try? self?.realm.write {
-                        self?.realm.add(posts, update: true)
+                        self?.realm.add(posts, update: .all)
                     }
                     
                     self?.page += 1
@@ -304,6 +302,13 @@ class PostsViewController: AbstractViewController {
         } else {
             block()
         }
+    }
+    
+    // MARK: - Actions
+    
+    @objc func onViewTapped() {
+        changeTableViewFooter(with: loadingFooterView)
+        paginate()
     }
 }
 

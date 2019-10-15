@@ -91,7 +91,7 @@ class PostsStateViewController: AbstractStateViewController<PostsState>, UISearc
             .subscribe(
                 onNext: { [weak self] (posts: [WPPost]) in
                     try? self?.realm.write {
-                        self?.realm.add(posts, update: true)
+                        self?.realm.add(posts, update: .all)
                     }
                     self?.didLoadOnce = true
                     self?.setNeedsStateTransition(to: .ready, animated: true)

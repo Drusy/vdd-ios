@@ -2,6 +2,56 @@
 All notable changes to this project will be documented in this file.
 `ObjectMapperAdditions` adheres to [Semantic Versioning](http://semver.org/).
 
+
+## [6.0.2](https://github.com/APUtils/ObjectMapperAdditions/releases/tag/6.0.2)
+Released on 07/25/2019.
+
+#### Added
+- MacOS support for Cocoapods and Carthage
+
+
+## [6.0.1](https://github.com/APUtils/ObjectMapperAdditions/releases/tag/6.0.1)
+Released on 05/23/2019.
+
+#### Fixed
+- Swift 5.0 support fix.
+
+#### Changed
+- Removed dependency on `ObjectMapper+Realm` framework.
+
+
+## [6.0.0](https://github.com/APUtils/ObjectMapperAdditions/releases/tag/6.0.0)
+Released on 04/04/2019.
+
+#### Added
+- Swift 5.0 support
+- EnumTypeCastTransform
+
+
+## [5.0.0](https://github.com/APUtils/ObjectMapperAdditions/releases/tag/5.0.0)
+Released on 12/30/2018.
+
+#### Added
+- Swift 4.2
+
+
+## [4.2.1](https://github.com/APUtils/ObjectMapperAdditions/releases/tag/4.2.1)
+Released on 10/13/2018.
+
+#### Added
+- Cocoapods support for tvOS 9.0
+
+
+## [4.2.0](https://github.com/APUtils/ObjectMapperAdditions/releases/tag/4.2.0)
+Released on 10/13/2018.
+
+#### Added
+- Cocoapods support for tvOS
+
+#### Fixed
+- Warnings
+
+
 ## [4.1.0](https://github.com/APUtils/ObjectMapperAdditions/releases/tag/4.1.0)
 Released on 03/27/2018.
 

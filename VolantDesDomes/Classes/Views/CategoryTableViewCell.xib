@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,29 +14,29 @@
             <rect key="frame" x="0.0" y="0.0" width="401" height="180"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="401" height="179.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="401" height="180"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ixr-4g-T0h">
-                        <rect key="frame" x="14" y="6" width="373" height="167.5"/>
+                        <rect key="frame" x="14" y="6" width="373" height="168"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="elU-ir-TcE">
-                                <rect key="frame" x="0.0" y="0.0" width="373" height="167.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="373" height="168"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Zt1-UE-Ewj">
-                                        <rect key="frame" x="0.0" y="0.0" width="373" height="167.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="373" height="168"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ljW-LQ-liT">
-                                        <rect key="frame" x="0.0" y="0.0" width="373" height="167.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="373" height="168"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Actualités" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8w2-ZX-I2p">
-                                                <rect key="frame" x="32" y="53" width="309" height="26.5"/>
+                                                <rect key="frame" x="32" y="54" width="309" height="26.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Les actualités du club" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3IQ-8B-QVi">
-                                                <rect key="frame" x="32" y="87.5" width="309" height="23"/>
+                                                <rect key="frame" x="32" y="88.5" width="309" height="23"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -56,7 +54,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="ljW-LQ-liT" firstAttribute="top" secondItem="elU-ir-TcE" secondAttribute="top" id="F7p-4h-ulq"/>
                                     <constraint firstItem="ljW-LQ-liT" firstAttribute="leading" secondItem="elU-ir-TcE" secondAttribute="leading" id="MgL-Sb-IYo"/>
@@ -69,7 +67,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="elU-ir-TcE" secondAttribute="trailing" id="fSf-ue-FSs"/>
                             <constraint firstItem="elU-ir-TcE" firstAttribute="top" secondItem="Ixr-4g-T0h" secondAttribute="top" id="iGq-NO-K2t"/>
@@ -78,6 +76,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="Ixr-4g-T0h" secondAttribute="trailing" constant="14" id="4CO-iM-dSN"/>
                     <constraint firstItem="Ixr-4g-T0h" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="SfK-uw-Gg6"/>
@@ -85,6 +84,7 @@
                     <constraint firstAttribute="bottom" secondItem="Ixr-4g-T0h" secondAttribute="bottom" constant="6" id="xbX-QN-dTc"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="backgroundImageBottomConstraint" destination="ihz-JC-H0g" id="c1y-0H-uoh"/>

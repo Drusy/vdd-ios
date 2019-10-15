@@ -29,7 +29,7 @@ class DownloadManager {
             .observeOn(MainScheduler.instance)
             .do(onNext: { (items: [WPCategory]) in
                 try! realm.write {
-                    realm.add(items, update: true)
+                    realm.add(items, update: .all)
                 }
             })
             .flatMap { categories -> Observable<[[WPPost]]> in
@@ -43,7 +43,7 @@ class DownloadManager {
                             .observeOn(MainScheduler.instance)
                             .do(onNext: { (items: [WPPost]) in
                                 try! realm.write {
-                                    realm.add(items, update: true)
+                                    realm.add(items, update: .all)
                                 }
                             })
                 }
@@ -60,7 +60,7 @@ class DownloadManager {
             .observeOn(MainScheduler.instance)
             .do(onNext: { (items: [WPUser]) in
                 try! realm.write {
-                    realm.add(items, update: true)
+                    realm.add(items, update: .all)
                 }
             })
 

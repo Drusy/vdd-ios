@@ -1,6 +1,6 @@
 // UIScrollViewExample.m
 //
-// Copyright (c) 2017 Maxime Epain
+// Copyright (c) 2019 Maxime Epain
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,8 +36,13 @@
     self.tableView.parallaxHeader.view = self.headerView; // You can set the parallax header view from the floating view.
     self.tableView.parallaxHeader.height = 300;
     self.tableView.parallaxHeader.mode = MXParallaxHeaderModeFill;
-    self.tableView.parallaxHeader.minimumHeight = 20;
     self.tableView.parallaxHeader.delegate = self;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    self.tableView.parallaxHeader.minimumHeight = self.topLayoutGuide.length;
 }
 
 #pragma mark <MXParallaxHeaderDelegate>

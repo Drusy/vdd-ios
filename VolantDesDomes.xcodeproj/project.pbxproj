@@ -75,8 +75,6 @@
 		F9561666212B286800458AD5 /* RxAlamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F9561661212B286500458AD5 /* RxAlamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F9561667212B286800458AD5 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9561663212B286600458AD5 /* RxDataSources.framework */; };
 		F9561668212B286800458AD5 /* RxDataSources.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F9561663212B286600458AD5 /* RxDataSources.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F9561669212B286800458AD5 /* RxGesture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9561662212B286600458AD5 /* RxGesture.framework */; };
-		F956166A212B286800458AD5 /* RxGesture.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F9561662212B286600458AD5 /* RxGesture.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F956166B212B286800458AD5 /* RxRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9561664212B286600458AD5 /* RxRealm.framework */; };
 		F956166C212B286800458AD5 /* RxRealm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F9561664212B286600458AD5 /* RxRealm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F956166E212B2BF100458AD5 /* Differentiator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F956166D212B2BED00458AD5 /* Differentiator.framework */; };
@@ -151,6 +149,8 @@
 		F9771F482153AC1200540546 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9771F3E2153AC1200540546 /* nanopb.framework */; };
 		F9771F492153AC1200540546 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9771F3F2153AC1200540546 /* FirebaseInstanceID.framework */; };
 		F9771F4A2153AC1200540546 /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9771F402153AC1200540546 /* FirebaseCoreDiagnostics.framework */; };
+		F98289742355C7A400283DA3 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F98289732355C7A100283DA3 /* RxRelay.framework */; };
+		F98289752355C7A400283DA3 /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F98289732355C7A100283DA3 /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F9DCB28E2140100B009C932B /* ActiveLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DCB28D21401005009C932B /* ActiveLabel.framework */; };
 		F9DCB28F2140100B009C932B /* ActiveLabel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F9DCB28D21401005009C932B /* ActiveLabel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F9DCB29321410BE0009C932B /* UIRefreshControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DCB29221410BE0009C932B /* UIRefreshControlExtension.swift */; };
@@ -177,6 +177,7 @@
 				F956166C212B286800458AD5 /* RxRealm.framework in Embed Frameworks */,
 				F95616242127240600458AD5 /* ObjectMapper.framework in Embed Frameworks */,
 				F956161A2127240600458AD5 /* Alamofire.framework in Embed Frameworks */,
+				F98289752355C7A400283DA3 /* RxRelay.framework in Embed Frameworks */,
 				F956161E2127240600458AD5 /* AlamofireObjectMapper.framework in Embed Frameworks */,
 				F95AFB812134DB0800FA5282 /* SwiftyAttributes.framework in Embed Frameworks */,
 				F9687A022133DDAD00608642 /* StateViewController.framework in Embed Frameworks */,
@@ -197,7 +198,6 @@
 				F9561666212B286800458AD5 /* RxAlamofire.framework in Embed Frameworks */,
 				F95616222127240600458AD5 /* MXParallaxHeader.framework in Embed Frameworks */,
 				F95616342127240700458AD5 /* Siren.framework in Embed Frameworks */,
-				F956166A212B286800458AD5 /* RxGesture.framework in Embed Frameworks */,
 				F956162C2127240600458AD5 /* RxCocoa.framework in Embed Frameworks */,
 				F956162A2127240600458AD5 /* RxBlocking.framework in Embed Frameworks */,
 				F96879DD212FFC5900608642 /* Hero.framework in Embed Frameworks */,
@@ -264,7 +264,6 @@
 		F9561659212B199900458AD5 /* Queryable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queryable.swift; sourceTree = "<group>"; };
 		F956165A212B199A00458AD5 /* ApiRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
 		F9561661212B286500458AD5 /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = Carthage/Build/iOS/RxAlamofire.framework; sourceTree = "<group>"; };
-		F9561662212B286600458AD5 /* RxGesture.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxGesture.framework; path = Carthage/Build/iOS/RxGesture.framework; sourceTree = "<group>"; };
 		F9561663212B286600458AD5 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
 		F9561664212B286600458AD5 /* RxRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRealm.framework; path = Carthage/Build/iOS/RxRealm.framework; sourceTree = "<group>"; };
 		F956166D212B2BED00458AD5 /* Differentiator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Differentiator.framework; path = Carthage/Build/iOS/Differentiator.framework; sourceTree = "<group>"; };
@@ -332,6 +331,7 @@
 		F9771F3E2153AC1200540546 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = nanopb.framework; sourceTree = "<group>"; };
 		F9771F3F2153AC1200540546 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		F9771F402153AC1200540546 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
+		F98289732355C7A100283DA3 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		F9DCB28D21401005009C932B /* ActiveLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ActiveLabel.framework; path = Carthage/Build/iOS/ActiveLabel.framework; sourceTree = "<group>"; };
 		F9DCB29221410BE0009C932B /* UIRefreshControlExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRefreshControlExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -345,6 +345,7 @@
 				F9771F482153AC1200540546 /* nanopb.framework in Frameworks */,
 				F956166E212B2BF100458AD5 /* Differentiator.framework in Frameworks */,
 				F9771F412153AC1200540546 /* Protobuf.framework in Frameworks */,
+				F98289742355C7A400283DA3 /* RxRelay.framework in Frameworks */,
 				F9771F432153AC1200540546 /* GoogleAppMeasurement.framework in Frameworks */,
 				F9771F492153AC1200540546 /* FirebaseInstanceID.framework in Frameworks */,
 				F9687A012133DDAD00608642 /* StateViewController.framework in Frameworks */,
@@ -374,7 +375,6 @@
 				F95AFB802134DB0800FA5282 /* SwiftyAttributes.framework in Frameworks */,
 				F95616212127240600458AD5 /* MXParallaxHeader.framework in Frameworks */,
 				F95616332127240700458AD5 /* Siren.framework in Frameworks */,
-				F9561669212B286800458AD5 /* RxGesture.framework in Frameworks */,
 				F956162B2127240600458AD5 /* RxCocoa.framework in Frameworks */,
 				F9687A1E2134072D00608642 /* ObjectMapperAdditionsRealm.framework in Frameworks */,
 				F95616292127240600458AD5 /* RxBlocking.framework in Frameworks */,
@@ -496,7 +496,6 @@
 				F956166D212B2BED00458AD5 /* Differentiator.framework */,
 				F9561661212B286500458AD5 /* RxAlamofire.framework */,
 				F9561663212B286600458AD5 /* RxDataSources.framework */,
-				F9561662212B286600458AD5 /* RxGesture.framework */,
 				F9561664212B286600458AD5 /* RxRealm.framework */,
 				F95616092127217F00458AD5 /* Alamofire.framework */,
 				F95616172127218100458AD5 /* AlamofireNetworkActivityIndicator.framework */,
@@ -508,6 +507,7 @@
 				F956160B2127217F00458AD5 /* RealmSwift.framework */,
 				F956160D2127217F00458AD5 /* RxBlocking.framework */,
 				F956160E2127217F00458AD5 /* RxCocoa.framework */,
+				F98289732355C7A100283DA3 /* RxRelay.framework */,
 				F95616132127218000458AD5 /* RxSwift.framework */,
 				F95616152127218000458AD5 /* RxSwiftExt.framework */,
 				F95616112127218000458AD5 /* RxTest.framework */,
@@ -872,7 +872,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Differentiator.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxAlamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxGesture.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxRealm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AlamofireNetworkActivityIndicator.framework",
@@ -897,6 +896,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyAttributes.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Eureka.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ActiveLabel.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -1117,6 +1117,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = QH6KR5PAQ7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1129,6 +1130,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.volantdesdomes.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8ad14950-df73-41dd-b68a-5e4626febce5";
@@ -1144,6 +1146,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = QH6KR5PAQ7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1156,6 +1159,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.volantdesdomes.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8ad14950-df73-41dd-b68a-5e4626febce5";

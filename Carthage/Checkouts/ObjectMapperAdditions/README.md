@@ -25,7 +25,7 @@ Please check [official guide](https://github.com/Carthage/Carthage#if-youre-buil
 Cartfile:
 
 ```
-github "APUtils/ObjectMapperAdditions"
+github "APUtils/ObjectMapperAdditions" ~> 6.0
 ```
 
 If you do not need Realm part, add those frameworks: `ObjectMapperAdditions`, `ObjectMapper`.
@@ -39,13 +39,13 @@ ObjectMapperAdditions is available through [CocoaPods](http://cocoapods.org).
 To install Core features, simply add the following line to your Podfile:
 
 ```ruby
-pod 'ObjectMapperAdditions/Core'
+pod 'ObjectMapperAdditions/Core', '~> 6.0'
 ```
 
 To add Realm transform to your project add the following line to your Podfile:
 
 ```ruby
-pod 'ObjectMapperAdditions/Realm'
+pod 'ObjectMapperAdditions/Realm', '~> 6.0'
 ```
 
 ## Usage
@@ -98,6 +98,8 @@ struct MyModel: Mappable {
 
 Right now there are 4 base type transforms you could use: `BoolTransform`, `DoubleTransform`, `IntTransform` and `StringTransform`. But for basic types it's easier to just use `TypeCastTransform` which will type cast to proper type automatically.
 
+Typecasting for `Bool`, `Double`, `Int` and `String` raw representable enums are also supported with `EnumTypeCastTransform`.
+
 Moreover this pod has extension to simplify creation of JSON with NULL values included from objects. Just call `.toJSON(shouldIncludeNilValues: true)` on `BaseMappable` object or array/set.
 
 Date transformers example usage:
@@ -113,13 +115,12 @@ See example and tests projects for more details.
 
 #### Realm Features
 
-This part of ObjectMapperAdditions solves issues that prevent simply using ObjectMapper and Realm in one model. There is already [ObjectMapper-Realm](https://github.com/Jakenberg/ObjectMapper-Realm) framework which allows to transform arrays of custom type to realm lists, but it can't transform simple type arrays nor optional values.
+This part of ObjectMapperAdditions solves issues that prevent simply using ObjectMapper and Realm in one model. `RealmListTransform` to transform custom types into realm lists was taken from [ObjectMapper-Realm](https://github.com/Jakenberg/ObjectMapper-Realm) but it can't transform simple type arrays nor optional values.
 
 ``` swift
 import Foundation
 import ObjectMapper
 import ObjectMapperAdditions
-import ObjectMapper_Realm
 import RealmSwift
 
 
@@ -137,7 +138,7 @@ class MyRealmModel: Object, Mappable {
     // However, new value should be assigned through `.append(_:)`
     var myOtherRealmModels = List<MyOtherRealmModel>()
     
-    // Strings array will be casted to List<RealmString>
+    // Strings array will be casted to List<String>
     var strings: List<String> = List<String>()
 
     required convenience init?(map: Map) { self.init() }
@@ -158,8 +159,8 @@ class MyRealmModel: Object, Mappable {
         string <- (map["string"], StringTransform())
         myOtherRealmModel <- map["myOtherRealmModel"]
         
-        // Using ObjectMapper+Realm's ListTransform to transform custom types
-        myOtherRealmModels <- (map["myOtherRealmModels"], ListTransform<MyOtherRealmModel>())
+        // Using ObjectMapper+Realm's RealmListTransform to transform custom types
+        myOtherRealmModels <- (map["myOtherRealmModels"], RealmListTransform<MyOtherRealmModel>())
         
         // Using ObjectMapperAdditions's RealmTypeCastTransform
         strings <- (map["strings"], RealmTypeCastTransform())
@@ -168,7 +169,8 @@ class MyRealmModel: Object, Mappable {
 
         isWriteRequired ? try? realm?.commitWrite() : ()
     }
-}```
+}
+```
 
 Swift optionals cast to realm optionals this way: `Int?` -> `RealmOptional<Int>`, `Double?` -> `RealmOptional<Double>`, `Bool?` -> `RealmOptional<Bool>`, etc.
 

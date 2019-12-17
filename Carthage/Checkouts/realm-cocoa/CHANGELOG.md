@@ -1,3 +1,61 @@
+3.21.0 Release notes (2019-11-04)
+=============================================================
+
+### Enhancements
+
+* Add prebuilt binaries for Xcode 11.2.
+
+### Compatibility
+
+* File format: Generates Realms with format v9 (Reads and upgrades all previous formats)
+* Realm Object Server: 3.21.0 or later.
+* Carthage release for Swift is built with Xcode 11.2.
+
+3.20.0 Release notes (2019-10-21)
+=============================================================
+
+### Enhancements
+
+* Add support for custom refresh token authentication. This allows a user to be
+  authorized with an externally-issued refresh token when ROS is configured to
+  recognize the external issuer as a refresh token validator.
+  ([PR #6311](https://github.com/realm/realm-cocoa/pull/6311)).
+
+### Compatibility
+
+* File format: Generates Realms with format v9 (Reads and upgrades all previous formats)
+* Realm Object Server: 3.21.0 or later.
+* Carthage release for Swift is built with Xcode 11.
+
+3.19.1 Release notes (2019-10-17)
+=============================================================
+
+### Enhancements
+
+* Improve performance of sync changeset integration. Transactions involving a
+  very large number of objects and cheap operations on each object are as much
+  as 20% faster.
+
+### Fixed
+
+* Fix a crash when a RLMArray/List of primitives was observed and then the
+  containing object was deleted before the first time that the background
+  notifier could run.
+  ([Issue #6234](https://github.com/realm/realm-cocoa/issues/6234, since 3.0.0)).
+* Remove an incorrect assertion that would cause crashes inside
+  `TableInfoCache::get_table_info()`, with messages like "Assertion failed: info.object_id_index == 0 [3, 0]".
+  (Since 3.18.0, [#6268](https://github.com/realm/realm-cocoa/issues/6268) and [#6257](https://github.com/realm/realm-cocoa/issues/6257)).
+
+### Compatibility
+
+* File format: Generates Realms with format v9 (Reads and upgrades all previous formats)
+* Realm Object Server: 3.21.0 or later.
+* Carthage release for Swift is built with Xcode 11.0.
+
+### Internal
+
+* Upgrade to REALM_SYNC_VERSION=4.7.11
+
 3.19.0 Release notes (2019-09-27)
 =============================================================
 

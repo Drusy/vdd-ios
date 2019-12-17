@@ -2,6 +2,60 @@
 
 -----
 
+## [5.12.0 - White Overflow](https://github.com/onevcat/Kingfisher/releases/tag/5.12.0) (2019-12-13)
+
+#### Add
+* Two error cases under `KingfisherError.CacheErrorReason` to give out the detail error information and reason when a failure happens when caching the file on disk. Check `.cannotCreateCacheFile` and `.cannotSetCacheFileAttribute` if you need to handle these errors. [#1365](https://github.com/onevcat/Kingfisher/pull/1365)
+
+#### Fix
+* A 32-bit `Int` overflow when calculating expiration duration when a large `days` value is set for `StorageExpiration`. [#1371](https://github.com/onevcat/Kingfisher/pull/1371)
+* The build config for SwiftUI sub-pod now only applies to the KingfisherSwiftUI scheme. [#1368](https://github.com/onevcat/Kingfisher/pull/1368)
+
+---
+
+## [5.11.0 - macCatalyst](https://github.com/onevcat/Kingfisher/releases/tag/5.11.0) (2019-11-30)
+
+#### Add
+* Support macCatalyst platform when building with Carthage. [#1356](https://github.com/onevcat/Kingfisher/pull/1356)
+
+#### Fix
+* Fix an issue that image orientation not correctly applied when an image processor used. [#1358](https://github.com/onevcat/Kingfisher/pull/1358)
+
+---
+
+## [5.10.1 - Repeat Count](https://github.com/onevcat/Kingfisher/releases/tag/5.10.1) (2019-11-20)
+
+#### Fix
+* Fix a wrong calculation of `repeatCount` of `AnimatedImageView`. Now it can play correct count for an animated image. [#1350](https://github.com/onevcat/Kingfisher/pull/1350)
+* Make sure to skip disk cache when `fromMemoryCacheOrRefresh` set. [#1351](https://github.com/onevcat/Kingfisher/pull/1351)
+* Fix a issue which prevents building with Xcode 10. [#1353](https://github.com/onevcat/Kingfisher/pull/1353)
+
+---
+
+## [5.10.0 - Rex Rabbit](https://github.com/onevcat/Kingfisher/releases/tag/5.10.0) (2019-11-17)
+
+#### Add
+* An `.alternativeSources` option to provide a list of alternative image loading `Source`s. These `Source`s act as a fallback when the original `Source` downloading fails where Kingfisher will try to load images from. [#1343](https://github.com/onevcat/Kingfisher/pull/1343)
+
+#### Fix
+* The `.waitForCache` option now also waits for caching for original image if the `.cacheOriginalImage` is also set. [#1344](https://github.com/onevcat/Kingfisher/pull/1344)
+* Now the `retrieveImage` methods in `ImageCache` calls its `callbackQueue` is `.mainCurrentOrAsync` by default instead of `.untouch`. It aligns the behavior of other parts in the framework. [#1338](https://github.com/onevcat/Kingfisher/pull/1338)
+* An issue that causes customize indicator not being placed with correct size. [#1345](https://github.com/onevcat/Kingfisher/pull/1345)
+* Performance improvement for loading progressive images. [#1332](https://github.com/onevcat/Kingfisher/pull/1332)
+
+---
+
+## [5.9.0 - Combination](https://github.com/onevcat/Kingfisher/releases/tag/5.9.0) (2019-10-24)
+
+#### Add
+* Introduce a `|>` operator for combining image processors. [#1320](https://github.com/onevcat/Kingfisher/pull/1320)
+
+#### Fix
+* Improve performance of reading task identifier when handling downloading side effect. [#1310](https://github.com/onevcat/Kingfisher/pull/1310)
+* Improve some type conversion to boost building. [#1321](https://github.com/onevcat/Kingfisher/pull/1321)
+
+---
+
 ## [5.8.3 - Carthage Cache](https://github.com/onevcat/Kingfisher/releases/tag/5.8.3) (2019-10-09)
 
 #### Fix

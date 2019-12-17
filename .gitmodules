@@ -1,0 +1,2 @@
+[submodule "Carthage/Checkouts/ObjectMapper"]
+	url = https://github.com/Hearst-DD/ObjectMapper.git

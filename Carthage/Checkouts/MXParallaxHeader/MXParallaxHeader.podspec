@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "MXParallaxHeader"
-  s.version          = "1.0.0"
+  s.version          = "1.1.0"
   s.summary          = "Simple parallax header for UIScrollView."
   s.description      = <<-DESC
   							MXParallaxHeader is a simple header class for UIScrolView.
@@ -26,6 +26,6 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '9.0'
   s.requires_arc = true
 
-  s.source_files = 'MXParallaxHeader/*.{m,h}'
+  s.source_files = 'Sources/*.{m,h}'
 
 end

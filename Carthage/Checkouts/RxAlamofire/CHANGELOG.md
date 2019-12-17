@@ -5,9 +5,17 @@ All notable changes to this project will be documented in this file.
 
 ## Master
 
+* Nothing yet!
+
+## 5.1.0
+
 #### Updated
 
+* Add response methods for `Observable<DownloadRequest>`.
+
 #### Fixed
+
+* Fixed exchange rate api error in example project
 
 ## 5.0.0
 

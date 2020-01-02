@@ -37,6 +37,6 @@ class StyleManager {
     }
     
     lazy var tintColor: UIColor = {
-        return UIColor(rgb: 0x1e77b2)
+        return UIColor(rgb: 0x209BD6)
     }()
 }

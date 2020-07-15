@@ -6,7 +6,7 @@
 //  Copyright © 2018 Openium. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import SwiftiumKit
 
 class StyleManager {

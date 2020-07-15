@@ -81,7 +81,7 @@ class PostDetailViewController: AbstractViewController {
         var contentRendered = currentPost.content?.rendered ?? ""
         contentRendered = contentRendered.replacingOccurrences(of: "file://", with: "http://")
         contentRendered = contentRendered.replacingOccurrences(of: "\"//", with: "\"https://")
-        contentRendered = contentRendered.replacingOccurrences(of: "href=\"/", with: "href=\"\(ApiRequest.hostURL)/")
+        contentRendered = contentRendered.replacingOccurrences(of: "href=\"/", with: "href=\"\(AlamofireService.hostURL)/")
 
         guard let url = Bundle.main.url(forResource: hasMedia ? "template_image" : "template_gradient", withExtension: "html") else { return contentRendered }
         guard var template = try? String(contentsOf: url) else { return contentRendered }

@@ -15,6 +15,7 @@ class AbstractViewController: UIViewController {
 
     let disposeBag = DisposeBag()
     
+    lazy var alamofireService = AlamofireService()
     lazy var realm: Realm = {
         return try! Realm()
     }()

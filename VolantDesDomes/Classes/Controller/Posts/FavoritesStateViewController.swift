@@ -47,7 +47,7 @@ class FavoritesStateViewController: AbstractStateViewController<FavoritesState> 
         }
     }
     
-    override func contentViewControllers(for state: FavoritesState) -> [UIViewController] {
+    override func children(for state: FavoritesState) -> [UIViewController] {
         switch state {
         case .ready:
             return [contentViewController]

@@ -2,10 +2,11 @@
 //  AlamofireObjectMapper+Rx.swift
 //  VolantDesDomes
 //
-//  Created by Drusy on 28/01/2017.
-//  Copyright © 2017 Openium. All rights reserved.
+//  Created by Drusy on 15/03/2019.
+//  Copyright © 2019 Openium. All rights reserved.
 //
 
+import Foundation
 import AlamofireObjectMapper
 import Alamofire
 import ObjectMapper
@@ -14,62 +15,46 @@ import RxSwift
 
 // MARK: SessionManager
 
-extension Reactive where Base: SessionManager {
+extension Reactive where Base: Session {
     
-    public func responseObject<T: BaseMappable>(_ method: Alamofire.HTTPMethod,
-                                                _ url: URLConvertible,
-                                                _ parameters: [String: Any]? = nil,
-                                                encoding: ParameterEncoding = JSONEncoding.default,
-                                                headers: [String: String]? = nil)
+    public func responseObject<T: BaseMappable>(_ url: URLRequestConvertible)
         -> Observable<(HTTPURLResponse, T)> {
             
-            return request(method, url, parameters: parameters, encoding: encoding, headers: headers)
+            return request(urlRequest: url)
+                .validate()
+                .debugLog()
                 .flatMap { request in
                     return request.rx.responseObject()
             }
     }
     
-    public func object<T: BaseMappable>(_ method: Alamofire.HTTPMethod,
-                                        _ url: URLConvertible,
-                                        _ parameters: [String: Any]? = nil,
-                                        encoding: ParameterEncoding = JSONEncoding.default,
-                                        headers: [String: String]? = nil)
+    public func object<T: BaseMappable>(_ url: URLRequestConvertible)
         -> Observable<T> {
-            
-            return request(method, url, parameters: parameters, encoding: encoding, headers: headers)
+            return request(urlRequest: url)
+                .validate()
+                .debugLog()
                 .flatMap { request in
                     return request.rx.object()
             }
     }
     
-    public func responseObjectArray<T: BaseMappable>(_ method: Alamofire.HTTPMethod,
-                                                     _ url: URLConvertible,
-                                                     _ parameters: [String: Any]? = nil,
-                                                     keyPath: String? = nil,
-                                                     encoding: ParameterEncoding = JSONEncoding.default,
-                                                     headers: [String: String]? = nil)
+    public func responseObjectArray<T: BaseMappable>(_ url: URLRequestConvertible, keyPath: String? = nil)
         -> Observable<(HTTPURLResponse, [T])> {
             
-            return request(method, url, parameters: parameters, encoding: encoding, headers: headers)
+            return request(urlRequest: url)
+                .validate()
+                .debugLog()
                 .flatMap { request in
                     return request.rx.responseObjectArray(keyPath: keyPath)
             }
     }
     
-    public func objectArray<T: BaseMappable>(_ method: Alamofire.HTTPMethod,
-                                             _ url: URLConvertible,
-                                             _ parameters: [String: Any]? = nil,
-                                             keyPath: String? = nil,
-                                             encoding: ParameterEncoding = JSONEncoding.default,
-                                             headers: [String: String]? = nil)
+    public func objectArray<T: BaseMappable>(_ url: URLRequestConvertible, keyPath: String? = nil)
         -> Observable<[T]> {
-            return request(
-                method,
-                url,
-                parameters: parameters,
-                encoding: encoding,
-                headers: headers
-                ).flatMap { request in
+            return request(urlRequest: url)
+                .validate()
+                .debugLog()
+                .flatMap { request in
                     return request.rx.objectArray(keyPath: keyPath)
             }
     }
@@ -79,14 +64,15 @@ extension Reactive where Base: SessionManager {
 
 extension Reactive where Base: DataRequest {
     
-    func responseObject<T: BaseMappable>(queue: DispatchQueue? = nil,
-                                         keyPath: String? = nil,
-                                         mapToObject object: T? = nil,
-                                         context: MapContext? = nil)
+    fileprivate func responseObject<T: BaseMappable>(queue: DispatchQueue = .main,
+                                                     keyPath: String? = nil,
+                                                     mapToObject object: T? = nil,
+                                                     context: MapContext? = nil)
         -> Observable<(HTTPURLResponse, T)> {
             
             return Observable.create { observer in
-                let dataRequest = self.base.responseObject(queue: queue, keyPath: keyPath, mapToObject: object, context: context) { (packedResponse: DataResponse<T>) in
+                
+                let dataRequest = self.base.responseObject(queue: queue, keyPath: keyPath, mapToObject: object, context: context) { packedResponse in
                     
                     switch packedResponse.result {
                     case .success(let result):
@@ -107,14 +93,14 @@ extension Reactive where Base: DataRequest {
             }
     }
     
-    func object<T: BaseMappable>(queue: DispatchQueue? = nil,
-                                 keyPath: String? = nil,
-                                 mapToObject object: T? = nil,
-                                 context: MapContext? = nil)
+    fileprivate func object<T: BaseMappable>(queue: DispatchQueue = .main,
+                                             keyPath: String? = nil,
+                                             mapToObject object: T? = nil,
+                                             context: MapContext? = nil)
         -> Observable<T> {
             
             return Observable.create { observer in
-                let dataRequest = self.base.responseObject { (packedResponse: DataResponse<T>) in
+                let dataRequest = self.base.responseObject(queue: queue, keyPath: keyPath, mapToObject: object, context: context) { (packedResponse: DataResponse<T, AFError>) in
                     switch packedResponse.result {
                     case .success(let result):
                         if packedResponse.response != nil {
@@ -134,13 +120,13 @@ extension Reactive where Base: DataRequest {
             }
     }
     
-    func responseObjectArray<T: BaseMappable>(queue: DispatchQueue? = nil,
-                                              keyPath: String? = nil,
-                                              context: MapContext? = nil)
+    fileprivate func responseObjectArray<T: BaseMappable>(queue: DispatchQueue = .main,
+                                                          keyPath: String? = nil,
+                                                          context: MapContext? = nil)
         -> Observable<(HTTPURLResponse, [T])> {
             
             return Observable.create { observer in
-                let dataRequest = self.base.responseArray(queue: queue, keyPath: keyPath, context: context) { (packedResponse: DataResponse<[T]>) in
+                let dataRequest = self.base.responseArray(queue: queue, keyPath: keyPath, context: context) { (packedResponse: DataResponse<[T], AFError>) in
                     
                     switch packedResponse.result {
                     case .success(let result):
@@ -161,13 +147,13 @@ extension Reactive where Base: DataRequest {
             }
     }
     
-    func objectArray<T: BaseMappable>(queue: DispatchQueue? = nil,
-                                      keyPath: String? = nil,
-                                      context: MapContext? = nil)
+    fileprivate func objectArray<T: BaseMappable>(queue: DispatchQueue = .main,
+                                                  keyPath: String? = nil,
+                                                  context: MapContext? = nil)
         -> Observable<[T]> {
             
             return Observable.create { observer in
-                let dataRequest = self.base.responseArray(queue: queue, keyPath: keyPath, context: context) { (packedResponse: DataResponse<[T]>) in
+                let dataRequest = self.base.responseArray(queue: queue, keyPath: keyPath, context: context) { (packedResponse: DataResponse<[T], AFError>) in
                     switch packedResponse.result {
                     case .success(let result):
                         if packedResponse.response != nil {

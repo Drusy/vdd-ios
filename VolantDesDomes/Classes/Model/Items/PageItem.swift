@@ -74,7 +74,7 @@ class PageItem {
         let item = PageItem(type: .home)
         
         item.title = "Accueil"
-        item.url = ApiRequest.hostURL
+        item.url = AlamofireService.hostURL
         item.isFullWidth = true
         item.image = #imageLiteral(resourceName: "page-tournaments")
 
@@ -85,7 +85,7 @@ class PageItem {
         let item = PageItem(type: .club)
         
         item.title = "Le Club"
-        item.url = "\(ApiRequest.hostURL)/index.php/le-club"
+        item.url = "\(AlamofireService.hostURL)/index.php/le-club"
         item.image = #imageLiteral(resourceName: "page-club")
         
         return item
@@ -95,7 +95,7 @@ class PageItem {
         let item = PageItem(type: .calendar)
         
         item.title = "Calendriers"
-        item.url = "\(ApiRequest.hostURL)/index.php/creneaux"
+        item.url = "\(AlamofireService.hostURL)/index.php/creneaux"
         item.image = #imageLiteral(resourceName: "page-calendar")
         
         return item
@@ -105,7 +105,7 @@ class PageItem {
         let item = PageItem(type: .tournaments)
         
         item.title = "Tournois"
-        item.url = "\(ApiRequest.hostURL)/index.php/inscriptions-tournois"
+        item.url = "\(AlamofireService.hostURL)/index.php/inscriptions-tournois"
         item.image = #imageLiteral(resourceName: "page-smash")
         
         return item
@@ -115,7 +115,7 @@ class PageItem {
         let item = PageItem(type: .contact)
         
         item.title = "Contact"
-        item.url = "\(ApiRequest.hostURL)/index.php/contact"
+        item.url = "\(AlamofireService.hostURL)/index.php/contact"
         item.image = #imageLiteral(resourceName: "page-contact")
         
         return item
@@ -125,7 +125,7 @@ class PageItem {
         let item = PageItem(type: .contact)
         
         item.title = "Inscription & Tarifs"
-        item.url = "\(ApiRequest.hostURL)/index.php/le-club/inscription-et-tarifs"
+        item.url = "\(AlamofireService.hostURL)/index.php/le-club/inscription-et-tarifs"
         item.image = #imageLiteral(resourceName: "page-price")
         
         return item
@@ -135,7 +135,7 @@ class PageItem {
         let item = PageItem(type: .shop)
         
         item.title = "Textile & Volants"
-        item.url = "\(ApiRequest.hostURL)/index.php/textile-et-volants"
+        item.url = "\(AlamofireService.hostURL)/index.php/textile-et-volants"
         item.image = #imageLiteral(resourceName: "page-shop")
         
         return item
@@ -146,7 +146,7 @@ class PageItem {
         
         item.title = "Statistiques"
         item.url = "http://badiste.fr/joueurs-club/vdd-535.html?nomenu=1"
-//        item.url = "\(ApiRequest.hostURL)/index.php/le-club/nos-joueurs"
+//        item.url = "\(AlamofireService.hostURL)/index.php/le-club/nos-joueurs"
         item.image = #imageLiteral(resourceName: "page-stats")
         
         return item

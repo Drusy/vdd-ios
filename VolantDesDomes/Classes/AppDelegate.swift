@@ -91,12 +91,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let oldPosts = realm.objects(WPPost.self)
         let oldPostsIdentifiers = oldPosts.map { $0.id }
+        let alamofireService = AlamofireService()
 
-        ApiRequest.request(with: WPPost.Router.getPage(page: 1, count: 10)).rx
-            .objectArray()
+        alamofireService.session.rx
+            .objectArray(WPPost.Router.getPage(page: 1, count: 10))
             .retry(.exponentialDelayed(maxCount: 3, initial: 1, multiplier: 1))
             .flatMap { (posts: [WPPost]) -> Observable<[WPPost]> in
-                return ApiRequest.mediasRequestObservable(for: posts).map { _ in posts }
+                return alamofireService.mediasRequestObservable(for: posts).map { _ in posts }
             }
             .observeOn(MainScheduler.instance)
             .subscribe(
@@ -107,7 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     print("Background fetch: \(newPosts.count) new posts")
                     
-                    if Defaults[.newPostsNotification] {
+                    if Defaults[\.newPostsNotification] {
                         if newPosts.isEmpty == false {
                             if let post = newPosts.first, newPosts.count == 1 {
                                 NotificationUtils.shared.scheduleLocalNotification(

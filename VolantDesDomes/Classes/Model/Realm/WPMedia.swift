@@ -112,11 +112,11 @@ extension WPMedia {
         // MARK: - URLRequestConvertible
         
         func asURLRequest() throws -> URLRequest {
-            let url = try ApiRequest.hostURL.asURL().appendingPathComponent(apiPath).appendingPathComponent(lastSegmentPath)
+            let url = try AlamofireService.hostURL.asURL().appendingPathComponent(apiPath).appendingPathComponent(lastSegmentPath)
             
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = method.rawValue
-            urlRequest.allHTTPHeaderFields = ApiRequest.headers
+            urlRequest.allHTTPHeaderFields = AlamofireService.headers
             
             switch self {
             case .getUIDs(let uids):

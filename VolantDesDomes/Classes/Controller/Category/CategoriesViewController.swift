@@ -119,10 +119,10 @@ class CategoriesViewController: AbstractViewController {
         refreshControl.rx.controlEvent(.valueChanged)
             .map { self.refreshControl.isRefreshing }
             .filter { $0 == true }
-            .flatMapLatest { [weak self] _ -> Observable<([WPCategory])> in
-                self?.tableView.allowsSelection = false
-                
-                return ApiRequest.request(with: WPCategory.Router.getAll).rx.objectArray()
+            .flatMapLatest { [weak self] _ -> Observable<[WPCategory]> in
+                guard let self = self else { return Observable<[WPCategory]>.just([]) }
+                self.tableView.allowsSelection = false
+                return self.alamofireService.session.rx.objectArray(WPCategory.Router.getAll)
             }
             .observeOn(MainScheduler.instance)
             .do(onError: { [weak self] error in
@@ -147,7 +147,7 @@ class CategoriesViewController: AbstractViewController {
     }
     
     func setCellOffset(_ cell: CategoryTableViewCell, at indexPath: IndexPath) {
-        guard Defaults[.categoryParallax] else { return }
+        guard Defaults[\.categoryParallax] else { return }
         
         let cellFrame = tableView.rectForRow(at: indexPath)
         let cellFrameInTable = tableView.convert(cellFrame, from: view)

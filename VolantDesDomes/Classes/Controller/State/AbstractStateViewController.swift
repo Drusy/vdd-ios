@@ -15,6 +15,7 @@ class AbstractStateViewController<State: Equatable>: StateViewController<State> 
     let disposeBag = DisposeBag()
     var didLoadOnce: Bool = false
     
+    lazy var alamofireService = AlamofireService()
     lazy var realm: Realm = {
         return try! Realm()
     }()

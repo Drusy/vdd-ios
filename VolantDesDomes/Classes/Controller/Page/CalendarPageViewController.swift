@@ -139,7 +139,7 @@ class CalendarPageViewController: AbstractViewController {
     }
     
     @IBAction func onCalendarTouched(_ sender: Any) {
-        guard let url = URL(string: "\(ApiRequest.hostURL)/index.php/creneaux") else { return }
+        guard let url = URL(string: "\(AlamofireService.hostURL)/index.php/creneaux") else { return }
         
         let pageViewController = PageDetailViewController(title: "Créneaux", url: url)
         navigationController?.pushViewController(pageViewController, animated: true)

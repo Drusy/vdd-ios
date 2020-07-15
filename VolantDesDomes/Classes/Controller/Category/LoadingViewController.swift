@@ -15,7 +15,7 @@ class LoadingViewController: AbstractViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Defaults[.appOpenCount] += 1
+        Defaults[\.appOpenCount] += 1
     }
 
     // MARK: -

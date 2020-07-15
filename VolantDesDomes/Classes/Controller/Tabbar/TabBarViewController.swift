@@ -54,9 +54,9 @@ class TabBarViewController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if  Defaults[.appOpenCount] >= 5 {
+        if  Defaults[\.appOpenCount] >= 5 {
             if #available(iOS 10.3, *){
-                Defaults[.appOpenCount] = 0
+                Defaults[\.appOpenCount] = 0
                 
                 SKStoreReviewController.requestReview()
             }

@@ -71,21 +71,21 @@ class PostsStateViewController: AbstractStateViewController<PostsState>, UISearc
     // MARK: -
     
     func load() {
-        var request: DataRequest
+        var request: URLRequestConvertible
         
         if let category = category {
-            request = ApiRequest.request(with: WPPost.Router.getCategoryPage(category: category,
-                                                                             page: 1,
-                                                                             count: PostsViewController.postsPerPage))
+            request = WPPost.Router.getCategoryPage(categoryId: category.id,
+                                                    page: 1,
+                                                    count: PostsViewController.postsPerPage)
         } else {
-            request = ApiRequest.request(with: WPPost.Router.getPage(page: 1,
-                                                                     count: PostsViewController.postsPerPage))
+            request = WPPost.Router.getPage(page: 1,
+                                            count: PostsViewController.postsPerPage)
         }
         
-        request.rx
-            .objectArray()
+        alamofireService.session.rx
+            .objectArray(request)
             .flatMap { (posts: [WPPost]) -> Observable<[WPPost]> in
-                return ApiRequest.mediasRequestObservable(for: posts).map { _ in posts }
+                return self.alamofireService.mediasRequestObservable(for: posts).map { _ in posts }
             }
             .observeOn(MainScheduler.instance)
             .subscribe(
@@ -115,14 +115,14 @@ class PostsStateViewController: AbstractStateViewController<PostsState>, UISearc
     override func loadAppearanceState() -> PostsState {
         if didLoadOnce && contentViewController.posts.isEmpty == false {
             return .ready
-        } else if Defaults[.forceCategoryLoading] == false && contentViewController.posts.isEmpty == false {
+        } else if Defaults[\.forceCategoryLoading] == false && contentViewController.posts.isEmpty == false {
             return .ready
         } else {
             return .loading
         }
     }
     
-    override func contentViewControllers(for state: PostsState) -> [UIViewController] {
+    override func children(for state: PostsState) -> [UIViewController] {
         switch state {
         case .loading:
             return [loadingViewController]

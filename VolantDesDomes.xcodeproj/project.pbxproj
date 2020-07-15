@@ -3,13 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		F922BCC5215506B2004AF3BF /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F922BCC4215506B2004AF3BF /* libsqlite3.tbd */; };
-		F92B9552213E85E00041027C /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F92B9551213E85DC0041027C /* Eureka.framework */; };
-		F92B9553213E85E00041027C /* Eureka.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F92B9551213E85DC0041027C /* Eureka.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F93709BF213940D800E96F94 /* PageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93709BE213940D800E96F94 /* PageItem.swift */; };
 		F93709C221394A8A00E96F94 /* PageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93709C021394A8A00E96F94 /* PageCollectionViewCell.swift */; };
 		F93709C321394A8A00E96F94 /* PageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F93709C121394A8A00E96F94 /* PageCollectionViewCell.xib */; };
@@ -30,36 +28,8 @@
 		F95615EE212714CC00458AD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F95615ED212714CC00458AD5 /* Assets.xcassets */; };
 		F95615F1212714CC00458AD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F95615EF212714CC00458AD5 /* LaunchScreen.storyboard */; };
 		F95615FC212714CC00458AD5 /* VolantDesDomesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95615FB212714CC00458AD5 /* VolantDesDomesTests.swift */; };
-		F95616192127240600458AD5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95616092127217F00458AD5 /* Alamofire.framework */; };
-		F956161A2127240600458AD5 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F95616092127217F00458AD5 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F956161B2127240600458AD5 /* AlamofireNetworkActivityIndicator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95616172127218100458AD5 /* AlamofireNetworkActivityIndicator.framework */; };
-		F956161C2127240600458AD5 /* AlamofireNetworkActivityIndicator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F95616172127218100458AD5 /* AlamofireNetworkActivityIndicator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F956161D2127240600458AD5 /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95616142127218000458AD5 /* AlamofireObjectMapper.framework */; };
-		F956161E2127240600458AD5 /* AlamofireObjectMapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F95616142127218000458AD5 /* AlamofireObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F956161F2127240600458AD5 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95616162127218100458AD5 /* Kingfisher.framework */; };
-		F95616202127240600458AD5 /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F95616162127218100458AD5 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F95616212127240600458AD5 /* MXParallaxHeader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95616122127218000458AD5 /* MXParallaxHeader.framework */; };
-		F95616222127240600458AD5 /* MXParallaxHeader.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F95616122127218000458AD5 /* MXParallaxHeader.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F95616232127240600458AD5 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F956160A2127217F00458AD5 /* ObjectMapper.framework */; };
-		F95616242127240600458AD5 /* ObjectMapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F956160A2127217F00458AD5 /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F95616252127240600458AD5 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F956160C2127217F00458AD5 /* Realm.framework */; };
-		F95616262127240600458AD5 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F956160C2127217F00458AD5 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F95616272127240600458AD5 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F956160B2127217F00458AD5 /* RealmSwift.framework */; };
-		F95616282127240600458AD5 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F956160B2127217F00458AD5 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F95616292127240600458AD5 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F956160D2127217F00458AD5 /* RxBlocking.framework */; };
-		F956162A2127240600458AD5 /* RxBlocking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F956160D2127217F00458AD5 /* RxBlocking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F956162B2127240600458AD5 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F956160E2127217F00458AD5 /* RxCocoa.framework */; };
-		F956162C2127240600458AD5 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F956160E2127217F00458AD5 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F956162D2127240600458AD5 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95616132127218000458AD5 /* RxSwift.framework */; };
-		F956162E2127240600458AD5 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F95616132127218000458AD5 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F956162F2127240600458AD5 /* RxSwiftExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95616152127218000458AD5 /* RxSwiftExt.framework */; };
-		F95616302127240600458AD5 /* RxSwiftExt.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F95616152127218000458AD5 /* RxSwiftExt.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F95616332127240700458AD5 /* Siren.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95616182127218100458AD5 /* Siren.framework */; };
-		F95616342127240700458AD5 /* Siren.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F95616182127218100458AD5 /* Siren.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F95616352127240700458AD5 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F956160F2127217F00458AD5 /* SVProgressHUD.framework */; };
 		F95616362127240700458AD5 /* SVProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F956160F2127217F00458AD5 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F95616372127240700458AD5 /* SwiftyUserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95616102127218000458AD5 /* SwiftyUserDefaults.framework */; };
-		F95616382127240700458AD5 /* SwiftyUserDefaults.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F95616102127218000458AD5 /* SwiftyUserDefaults.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F956163F212AAB7700458AD5 /* WPCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F956163E212AAB7700458AD5 /* WPCategory.swift */; };
 		F9561641212ACC5600458AD5 /* WPPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9561640212ACC5600458AD5 /* WPPost.swift */; };
 		F9561643212ACD3100458AD5 /* WPContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9561642212ACD3100458AD5 /* WPContent.swift */; };
@@ -68,17 +38,8 @@
 		F9561653212B182700458AD5 /* AlamofireObjectMapper+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F956164E212B182600458AD5 /* AlamofireObjectMapper+Rx.swift */; };
 		F9561654212B182700458AD5 /* DetachableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F956164F212B182700458AD5 /* DetachableObject.swift */; };
 		F9561656212B182700458AD5 /* RequestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9561651212B182700458AD5 /* RequestExtension.swift */; };
-		F9561657212B182700458AD5 /* RxAlamofire+Multipart.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9561652212B182700458AD5 /* RxAlamofire+Multipart.swift */; };
 		F956165B212B199A00458AD5 /* Queryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9561659212B199900458AD5 /* Queryable.swift */; };
 		F956165C212B199A00458AD5 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F956165A212B199A00458AD5 /* ApiRequest.swift */; };
-		F9561665212B286800458AD5 /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9561661212B286500458AD5 /* RxAlamofire.framework */; };
-		F9561666212B286800458AD5 /* RxAlamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F9561661212B286500458AD5 /* RxAlamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F9561667212B286800458AD5 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9561663212B286600458AD5 /* RxDataSources.framework */; };
-		F9561668212B286800458AD5 /* RxDataSources.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F9561663212B286600458AD5 /* RxDataSources.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F956166B212B286800458AD5 /* RxRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9561664212B286600458AD5 /* RxRealm.framework */; };
-		F956166C212B286800458AD5 /* RxRealm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F9561664212B286600458AD5 /* RxRealm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F956166E212B2BF100458AD5 /* Differentiator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F956166D212B2BED00458AD5 /* Differentiator.framework */; };
-		F956166F212B2BF100458AD5 /* Differentiator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F956166D212B2BED00458AD5 /* Differentiator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F9561672212B2C0F00458AD5 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9561671212B2C0F00458AD5 /* DownloadManager.swift */; };
 		F9561674212B2C2700458AD5 /* NotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9561673212B2C2700458AD5 /* NotificationNameExtension.swift */; };
 		F9561677212C06A400458AD5 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9561675212C06A400458AD5 /* LoadingViewController.swift */; };
@@ -93,10 +54,6 @@
 		F95AFB7721349C8C00FA5282 /* gutenberg.css in Resources */ = {isa = PBXBuildFile; fileRef = F95AFB7621349C8C00FA5282 /* gutenberg.css */; };
 		F95AFB792134A63700FA5282 /* custom.css in Resources */ = {isa = PBXBuildFile; fileRef = F95AFB782134A63700FA5282 /* custom.css */; };
 		F95AFB7B2134C21A00FA5282 /* StyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95AFB7A2134C21A00FA5282 /* StyleManager.swift */; };
-		F95AFB7D2134C2BB00FA5282 /* SwiftiumKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95AFB7C2134C2B400FA5282 /* SwiftiumKit.framework */; };
-		F95AFB7E2134C2BB00FA5282 /* SwiftiumKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F95AFB7C2134C2B400FA5282 /* SwiftiumKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F95AFB802134DB0800FA5282 /* SwiftyAttributes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95AFB7F2134DAF200FA5282 /* SwiftyAttributes.framework */; };
-		F95AFB812134DB0800FA5282 /* SwiftyAttributes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F95AFB7F2134DAF200FA5282 /* SwiftyAttributes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F95AFB832134DED900FA5282 /* WPMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95AFB822134DED900FA5282 /* WPMedia.swift */; };
 		F95AFB852134E0EF00FA5282 /* WPMediaDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95AFB842134E0EF00FA5282 /* WPMediaDetails.swift */; };
 		F95AFB872134E16C00FA5282 /* WPMediaSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95AFB862134E16C00FA5282 /* WPMediaSizes.swift */; };
@@ -106,8 +63,6 @@
 		F95AFB992136C17400FA5282 /* PagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95AFB972136C17400FA5282 /* PagesViewController.swift */; };
 		F95AFB9A2136C17400FA5282 /* PagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F95AFB982136C17400FA5282 /* PagesViewController.xib */; };
 		F96879D9212FE58500608642 /* CategoriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F96879D8212FE58500608642 /* CategoriesViewController.xib */; };
-		F96879DC212FFC5900608642 /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F96879DB212FFC5500608642 /* Hero.framework */; };
-		F96879DD212FFC5900608642 /* Hero.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F96879DB212FFC5500608642 /* Hero.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F96879E02130012C00608642 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96879DE2130012C00608642 /* CategoryTableViewCell.swift */; };
 		F96879E12130012C00608642 /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F96879DF2130012C00608642 /* CategoryTableViewCell.xib */; };
 		F96879ED2130128A00608642 /* CellIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96879EC2130128900608642 /* CellIdentifiable.swift */; };
@@ -119,18 +74,12 @@
 		F96879FA21304C1900608642 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96879F821304C1900608642 /* PostDetailViewController.swift */; };
 		F96879FB21304C1900608642 /* PostDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F96879F921304C1900608642 /* PostDetailViewController.xib */; };
 		F96879FF2133D79D00608642 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96879FE2133D79D00608642 /* UIViewExtension.swift */; };
-		F9687A012133DDAD00608642 /* StateViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9687A002133DD9C00608642 /* StateViewController.framework */; };
-		F9687A022133DDAD00608642 /* StateViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F9687A002133DD9C00608642 /* StateViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F9687A072133DF3C00608642 /* StateLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9687A052133DF3C00608642 /* StateLoadingViewController.swift */; };
 		F9687A082133DF3C00608642 /* StateLoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9687A062133DF3C00608642 /* StateLoadingViewController.xib */; };
 		F9687A0B2133E18500608642 /* StateErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9687A092133E18500608642 /* StateErrorViewController.swift */; };
 		F9687A0C2133E18500608642 /* StateErrorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9687A0A2133E18500608642 /* StateErrorViewController.xib */; };
 		F9687A0F2133EF0800608642 /* PostsStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9687A0D2133EF0800608642 /* PostsStateViewController.swift */; };
 		F9687A152133F02E00608642 /* AbstractStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9687A142133F02E00608642 /* AbstractStateViewController.swift */; };
-		F9687A1C2134072D00608642 /* ObjectMapperAdditions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9687A1A2134072100608642 /* ObjectMapperAdditions.framework */; };
-		F9687A1D2134072D00608642 /* ObjectMapperAdditions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F9687A1A2134072100608642 /* ObjectMapperAdditions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F9687A1E2134072D00608642 /* ObjectMapperAdditionsRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9687A1B2134072100608642 /* ObjectMapperAdditionsRealm.framework */; };
-		F9687A1F2134072D00608642 /* ObjectMapperAdditionsRealm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F9687A1B2134072100608642 /* ObjectMapperAdditionsRealm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F96DAD302136E5DE00621910 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96DAD2F2136E5DE00621910 /* TabBarViewController.swift */; };
 		F96DAD382137053500621910 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96DAD362137053500621910 /* SettingsViewController.swift */; };
 		F96DAD392137053500621910 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F96DAD372137053500621910 /* SettingsViewController.xib */; };
@@ -149,11 +98,37 @@
 		F9771F482153AC1200540546 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9771F3E2153AC1200540546 /* nanopb.framework */; };
 		F9771F492153AC1200540546 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9771F3F2153AC1200540546 /* FirebaseInstanceID.framework */; };
 		F9771F4A2153AC1200540546 /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9771F402153AC1200540546 /* FirebaseCoreDiagnostics.framework */; };
-		F98289742355C7A400283DA3 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F98289732355C7A100283DA3 /* RxRelay.framework */; };
-		F98289752355C7A400283DA3 /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F98289732355C7A100283DA3 /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F9DCB28E2140100B009C932B /* ActiveLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DCB28D21401005009C932B /* ActiveLabel.framework */; };
-		F9DCB28F2140100B009C932B /* ActiveLabel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F9DCB28D21401005009C932B /* ActiveLabel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F9DCB29321410BE0009C932B /* UIRefreshControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DCB29221410BE0009C932B /* UIRefreshControlExtension.swift */; };
+		F9E7F38624BF842A00C5DAAB /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = F9E7F38524BF842A00C5DAAB /* Realm */; };
+		F9E7F38824BF842A00C5DAAB /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F9E7F38724BF842A00C5DAAB /* RealmSwift */; };
+		F9E7F38B24BF845300C5DAAB /* Eureka in Frameworks */ = {isa = PBXBuildFile; productRef = F9E7F38A24BF845300C5DAAB /* Eureka */; };
+		F9E7F38E24BF848B00C5DAAB /* ActiveLabel in Frameworks */ = {isa = PBXBuildFile; productRef = F9E7F38D24BF848B00C5DAAB /* ActiveLabel */; };
+		F9E7F39124BF84A400C5DAAB /* SwiftyAttributes in Frameworks */ = {isa = PBXBuildFile; productRef = F9E7F39024BF84A400C5DAAB /* SwiftyAttributes */; };
+		F9E7F39424BF84BC00C5DAAB /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F9E7F39324BF84BC00C5DAAB /* Alamofire */; };
+		F9E7F39724BF84D000C5DAAB /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = F9E7F39624BF84D000C5DAAB /* ObjectMapper */; };
+		F9E7F39A24BF84FA00C5DAAB /* AlamofireNetworkActivityIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = F9E7F39924BF84FA00C5DAAB /* AlamofireNetworkActivityIndicator */; };
+		F9E7F39D24BF852F00C5DAAB /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F9E7F39C24BF852F00C5DAAB /* RxSwift */; };
+		F9E7F39F24BF852F00C5DAAB /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = F9E7F39E24BF852F00C5DAAB /* RxRelay */; };
+		F9E7F3A124BF852F00C5DAAB /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = F9E7F3A024BF852F00C5DAAB /* RxCocoa */; };
+		F9E7F3A324BF852F00C5DAAB /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = F9E7F3A224BF852F00C5DAAB /* RxBlocking */; };
+		F9E7F3A624BF856100C5DAAB /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F9E7F3A524BF856100C5DAAB /* RxAlamofire */; };
+		F9E7F3A924BF858C00C5DAAB /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = F9E7F3A824BF858C00C5DAAB /* Differentiator */; };
+		F9E7F3AB24BF858C00C5DAAB /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = F9E7F3AA24BF858C00C5DAAB /* RxDataSources */; };
+		F9E7F3AE24BF85A800C5DAAB /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = F9E7F3AD24BF85A800C5DAAB /* RxRealm */; };
+		F9E7F3B124BF85C600C5DAAB /* SwiftyUserDefaults in Frameworks */ = {isa = PBXBuildFile; productRef = F9E7F3B024BF85C600C5DAAB /* SwiftyUserDefaults */; };
+		F9E7F3B424BF85FF00C5DAAB /* Siren in Frameworks */ = {isa = PBXBuildFile; productRef = F9E7F3B324BF85FF00C5DAAB /* Siren */; };
+		F9E7F3B724BF862000C5DAAB /* SwiftiumKit in Frameworks */ = {isa = PBXBuildFile; productRef = F9E7F3B624BF862000C5DAAB /* SwiftiumKit */; };
+		F9E7F3BD24BF86C000C5DAAB /* RxSwiftExt in Frameworks */ = {isa = PBXBuildFile; productRef = F9E7F3BC24BF86C000C5DAAB /* RxSwiftExt */; };
+		F9E7F3C024BF872100C5DAAB /* AlamofireObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = F9E7F3BF24BF872100C5DAAB /* AlamofireObjectMapper */; };
+		F9E7F3C324BF87AF00C5DAAB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F9E7F3C224BF87AF00C5DAAB /* Kingfisher */; };
+		F9E7F3C624BF87F600C5DAAB /* MXParallaxHeader in Frameworks */ = {isa = PBXBuildFile; productRef = F9E7F3C524BF87F600C5DAAB /* MXParallaxHeader */; };
+		F9E7F3C924BF886B00C5DAAB /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = F9E7F3C824BF886B00C5DAAB /* Hero */; };
+		F9E7F3D224BF8BAA00C5DAAB /* TypeCastTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E7F3CD24BF8BA900C5DAAB /* TypeCastTransform.swift */; };
+		F9E7F3D324BF8BAA00C5DAAB /* RealmTypeCastTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E7F3CE24BF8BA900C5DAAB /* RealmTypeCastTransform.swift */; };
+		F9E7F3D424BF8BAA00C5DAAB /* TimestampDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E7F3CF24BF8BA900C5DAAB /* TimestampDateTransform.swift */; };
+		F9E7F3D524BF8BAA00C5DAAB /* ArrayObjectTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E7F3D024BF8BA900C5DAAB /* ArrayObjectTransform.swift */; };
+		F9E7F3D824BF90B900C5DAAB /* StateViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9E7F3CA24BF8A9900C5DAAB /* StateViewController.framework */; };
+		F9E7F3D924BF90B900C5DAAB /* StateViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F9E7F3CA24BF8A9900C5DAAB /* StateViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,34 +148,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F956166F212B2BF100458AD5 /* Differentiator.framework in Embed Frameworks */,
-				F956166C212B286800458AD5 /* RxRealm.framework in Embed Frameworks */,
-				F95616242127240600458AD5 /* ObjectMapper.framework in Embed Frameworks */,
-				F956161A2127240600458AD5 /* Alamofire.framework in Embed Frameworks */,
-				F98289752355C7A400283DA3 /* RxRelay.framework in Embed Frameworks */,
-				F956161E2127240600458AD5 /* AlamofireObjectMapper.framework in Embed Frameworks */,
-				F95AFB812134DB0800FA5282 /* SwiftyAttributes.framework in Embed Frameworks */,
-				F9687A022133DDAD00608642 /* StateViewController.framework in Embed Frameworks */,
-				F95616202127240600458AD5 /* Kingfisher.framework in Embed Frameworks */,
-				F95616302127240600458AD5 /* RxSwiftExt.framework in Embed Frameworks */,
-				F9DCB28F2140100B009C932B /* ActiveLabel.framework in Embed Frameworks */,
-				F92B9553213E85E00041027C /* Eureka.framework in Embed Frameworks */,
-				F95616382127240700458AD5 /* SwiftyUserDefaults.framework in Embed Frameworks */,
-				F95616262127240600458AD5 /* Realm.framework in Embed Frameworks */,
 				F95616362127240700458AD5 /* SVProgressHUD.framework in Embed Frameworks */,
-				F9687A1D2134072D00608642 /* ObjectMapperAdditions.framework in Embed Frameworks */,
-				F9687A1F2134072D00608642 /* ObjectMapperAdditionsRealm.framework in Embed Frameworks */,
-				F95AFB7E2134C2BB00FA5282 /* SwiftiumKit.framework in Embed Frameworks */,
-				F956161C2127240600458AD5 /* AlamofireNetworkActivityIndicator.framework in Embed Frameworks */,
-				F9561668212B286800458AD5 /* RxDataSources.framework in Embed Frameworks */,
-				F956162E2127240600458AD5 /* RxSwift.framework in Embed Frameworks */,
-				F95616282127240600458AD5 /* RealmSwift.framework in Embed Frameworks */,
-				F9561666212B286800458AD5 /* RxAlamofire.framework in Embed Frameworks */,
-				F95616222127240600458AD5 /* MXParallaxHeader.framework in Embed Frameworks */,
-				F95616342127240700458AD5 /* Siren.framework in Embed Frameworks */,
-				F956162C2127240600458AD5 /* RxCocoa.framework in Embed Frameworks */,
-				F956162A2127240600458AD5 /* RxBlocking.framework in Embed Frameworks */,
-				F96879DD212FFC5900608642 /* Hero.framework in Embed Frameworks */,
+				F9E7F3D924BF90B900C5DAAB /* StateViewController.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,7 +158,6 @@
 
 /* Begin PBXFileReference section */
 		F922BCC4215506B2004AF3BF /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		F92B9551213E85DC0041027C /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
 		F93709BE213940D800E96F94 /* PageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageItem.swift; sourceTree = "<group>"; };
 		F93709C021394A8A00E96F94 /* PageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCollectionViewCell.swift; sourceTree = "<group>"; };
 		F93709C121394A8A00E96F94 /* PageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PageCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -236,22 +184,7 @@
 		F95615FD212714CC00458AD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F956160721271B5F00458AD5 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		F95616082127215B00458AD5 /* Cartfile.resolved */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = "<group>"; };
-		F95616092127217F00458AD5 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		F956160A2127217F00458AD5 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
-		F956160B2127217F00458AD5 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
-		F956160C2127217F00458AD5 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
-		F956160D2127217F00458AD5 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
-		F956160E2127217F00458AD5 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		F956160F2127217F00458AD5 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
-		F95616102127218000458AD5 /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyUserDefaults.framework; path = Carthage/Build/iOS/SwiftyUserDefaults.framework; sourceTree = "<group>"; };
-		F95616112127218000458AD5 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
-		F95616122127218000458AD5 /* MXParallaxHeader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MXParallaxHeader.framework; path = Carthage/Build/iOS/MXParallaxHeader.framework; sourceTree = "<group>"; };
-		F95616132127218000458AD5 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
-		F95616142127218000458AD5 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = Carthage/Build/iOS/AlamofireObjectMapper.framework; sourceTree = "<group>"; };
-		F95616152127218000458AD5 /* RxSwiftExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwiftExt.framework; path = Carthage/Build/iOS/RxSwiftExt.framework; sourceTree = "<group>"; };
-		F95616162127218100458AD5 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
-		F95616172127218100458AD5 /* AlamofireNetworkActivityIndicator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireNetworkActivityIndicator.framework; path = Carthage/Build/iOS/AlamofireNetworkActivityIndicator.framework; sourceTree = "<group>"; };
-		F95616182127218100458AD5 /* Siren.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Siren.framework; path = Carthage/Build/iOS/Siren.framework; sourceTree = "<group>"; };
 		F956163E212AAB7700458AD5 /* WPCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WPCategory.swift; sourceTree = "<group>"; };
 		F9561640212ACC5600458AD5 /* WPPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WPPost.swift; sourceTree = "<group>"; };
 		F9561642212ACD3100458AD5 /* WPContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WPContent.swift; sourceTree = "<group>"; };
@@ -260,13 +193,8 @@
 		F956164E212B182600458AD5 /* AlamofireObjectMapper+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlamofireObjectMapper+Rx.swift"; sourceTree = "<group>"; };
 		F956164F212B182700458AD5 /* DetachableObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetachableObject.swift; sourceTree = "<group>"; };
 		F9561651212B182700458AD5 /* RequestExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestExtension.swift; sourceTree = "<group>"; };
-		F9561652212B182700458AD5 /* RxAlamofire+Multipart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RxAlamofire+Multipart.swift"; sourceTree = "<group>"; };
 		F9561659212B199900458AD5 /* Queryable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queryable.swift; sourceTree = "<group>"; };
 		F956165A212B199A00458AD5 /* ApiRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
-		F9561661212B286500458AD5 /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = Carthage/Build/iOS/RxAlamofire.framework; sourceTree = "<group>"; };
-		F9561663212B286600458AD5 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
-		F9561664212B286600458AD5 /* RxRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRealm.framework; path = Carthage/Build/iOS/RxRealm.framework; sourceTree = "<group>"; };
-		F956166D212B2BED00458AD5 /* Differentiator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Differentiator.framework; path = Carthage/Build/iOS/Differentiator.framework; sourceTree = "<group>"; };
 		F9561671212B2C0F00458AD5 /* DownloadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		F9561673212B2C2700458AD5 /* NotificationNameExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationNameExtension.swift; sourceTree = "<group>"; };
 		F9561675212C06A400458AD5 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
@@ -281,8 +209,6 @@
 		F95AFB7621349C8C00FA5282 /* gutenberg.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = gutenberg.css; sourceTree = "<group>"; };
 		F95AFB782134A63700FA5282 /* custom.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = custom.css; sourceTree = "<group>"; };
 		F95AFB7A2134C21A00FA5282 /* StyleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleManager.swift; sourceTree = "<group>"; };
-		F95AFB7C2134C2B400FA5282 /* SwiftiumKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftiumKit.framework; path = Carthage/Build/iOS/SwiftiumKit.framework; sourceTree = "<group>"; };
-		F95AFB7F2134DAF200FA5282 /* SwiftyAttributes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyAttributes.framework; path = Carthage/Build/iOS/SwiftyAttributes.framework; sourceTree = "<group>"; };
 		F95AFB822134DED900FA5282 /* WPMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WPMedia.swift; sourceTree = "<group>"; };
 		F95AFB842134E0EF00FA5282 /* WPMediaDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WPMediaDetails.swift; sourceTree = "<group>"; };
 		F95AFB862134E16C00FA5282 /* WPMediaSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WPMediaSizes.swift; sourceTree = "<group>"; };
@@ -292,7 +218,6 @@
 		F95AFB972136C17400FA5282 /* PagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesViewController.swift; sourceTree = "<group>"; };
 		F95AFB982136C17400FA5282 /* PagesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PagesViewController.xib; sourceTree = "<group>"; };
 		F96879D8212FE58500608642 /* CategoriesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesViewController.xib; sourceTree = "<group>"; };
-		F96879DB212FFC5500608642 /* Hero.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hero.framework; path = Carthage/Build/iOS/Hero.framework; sourceTree = "<group>"; };
 		F96879DE2130012C00608642 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		F96879DF2130012C00608642 /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTableViewCell.xib; sourceTree = "<group>"; };
 		F96879EC2130128900608642 /* CellIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellIdentifiable.swift; sourceTree = "<group>"; };
@@ -304,15 +229,12 @@
 		F96879F821304C1900608642 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		F96879F921304C1900608642 /* PostDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostDetailViewController.xib; sourceTree = "<group>"; };
 		F96879FE2133D79D00608642 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		F9687A002133DD9C00608642 /* StateViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StateViewController.framework; path = Carthage/Build/iOS/StateViewController.framework; sourceTree = "<group>"; };
 		F9687A052133DF3C00608642 /* StateLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateLoadingViewController.swift; sourceTree = "<group>"; };
 		F9687A062133DF3C00608642 /* StateLoadingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StateLoadingViewController.xib; sourceTree = "<group>"; };
 		F9687A092133E18500608642 /* StateErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateErrorViewController.swift; sourceTree = "<group>"; };
 		F9687A0A2133E18500608642 /* StateErrorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StateErrorViewController.xib; sourceTree = "<group>"; };
 		F9687A0D2133EF0800608642 /* PostsStateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsStateViewController.swift; sourceTree = "<group>"; };
 		F9687A142133F02E00608642 /* AbstractStateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractStateViewController.swift; sourceTree = "<group>"; };
-		F9687A1A2134072100608642 /* ObjectMapperAdditions.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapperAdditions.framework; path = Carthage/Build/iOS/ObjectMapperAdditions.framework; sourceTree = "<group>"; };
-		F9687A1B2134072100608642 /* ObjectMapperAdditionsRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapperAdditionsRealm.framework; path = Carthage/Build/iOS/ObjectMapperAdditionsRealm.framework; sourceTree = "<group>"; };
 		F96DAD2F2136E5DE00621910 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		F96DAD362137053500621910 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F96DAD372137053500621910 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
@@ -331,9 +253,12 @@
 		F9771F3E2153AC1200540546 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = nanopb.framework; sourceTree = "<group>"; };
 		F9771F3F2153AC1200540546 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		F9771F402153AC1200540546 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
-		F98289732355C7A100283DA3 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
-		F9DCB28D21401005009C932B /* ActiveLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ActiveLabel.framework; path = Carthage/Build/iOS/ActiveLabel.framework; sourceTree = "<group>"; };
 		F9DCB29221410BE0009C932B /* UIRefreshControlExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRefreshControlExtension.swift; sourceTree = "<group>"; };
+		F9E7F3CA24BF8A9900C5DAAB /* StateViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StateViewController.framework; path = Carthage/Build/iOS/StateViewController.framework; sourceTree = "<group>"; };
+		F9E7F3CD24BF8BA900C5DAAB /* TypeCastTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeCastTransform.swift; sourceTree = "<group>"; };
+		F9E7F3CE24BF8BA900C5DAAB /* RealmTypeCastTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmTypeCastTransform.swift; sourceTree = "<group>"; };
+		F9E7F3CF24BF8BA900C5DAAB /* TimestampDateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimestampDateTransform.swift; sourceTree = "<group>"; };
+		F9E7F3D024BF8BA900C5DAAB /* ArrayObjectTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayObjectTransform.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,45 +267,43 @@
 			buildActionMask = 2147483647;
 			files = (
 				F922BCC5215506B2004AF3BF /* libsqlite3.tbd in Frameworks */,
+				F9E7F39424BF84BC00C5DAAB /* Alamofire in Frameworks */,
 				F9771F482153AC1200540546 /* nanopb.framework in Frameworks */,
-				F956166E212B2BF100458AD5 /* Differentiator.framework in Frameworks */,
+				F9E7F39724BF84D000C5DAAB /* ObjectMapper in Frameworks */,
+				F9E7F3A324BF852F00C5DAAB /* RxBlocking in Frameworks */,
 				F9771F412153AC1200540546 /* Protobuf.framework in Frameworks */,
-				F98289742355C7A400283DA3 /* RxRelay.framework in Frameworks */,
+				F9E7F39D24BF852F00C5DAAB /* RxSwift in Frameworks */,
 				F9771F432153AC1200540546 /* GoogleAppMeasurement.framework in Frameworks */,
+				F9E7F3A124BF852F00C5DAAB /* RxCocoa in Frameworks */,
 				F9771F492153AC1200540546 /* FirebaseInstanceID.framework in Frameworks */,
-				F9687A012133DDAD00608642 /* StateViewController.framework in Frameworks */,
 				F9771F452153AC1200540546 /* FirebaseAnalytics.framework in Frameworks */,
-				F956166B212B286800458AD5 /* RxRealm.framework in Frameworks */,
-				F95616232127240600458AD5 /* ObjectMapper.framework in Frameworks */,
-				F95616192127240600458AD5 /* Alamofire.framework in Frameworks */,
+				F9E7F3BD24BF86C000C5DAAB /* RxSwiftExt in Frameworks */,
 				F956167F212C078300458AD5 /* Crashlytics.framework in Frameworks */,
-				F956161D2127240600458AD5 /* AlamofireObjectMapper.framework in Frameworks */,
+				F9E7F39A24BF84FA00C5DAAB /* AlamofireNetworkActivityIndicator in Frameworks */,
 				F9771F442153AC1200540546 /* FirebaseCore.framework in Frameworks */,
-				F9DCB28E2140100B009C932B /* ActiveLabel.framework in Frameworks */,
-				F956161F2127240600458AD5 /* Kingfisher.framework in Frameworks */,
-				F96879DC212FFC5900608642 /* Hero.framework in Frameworks */,
-				F956162F2127240600458AD5 /* RxSwiftExt.framework in Frameworks */,
-				F95616372127240700458AD5 /* SwiftyUserDefaults.framework in Frameworks */,
-				F95616252127240600458AD5 /* Realm.framework in Frameworks */,
+				F9E7F39F24BF852F00C5DAAB /* RxRelay in Frameworks */,
+				F9E7F3B424BF85FF00C5DAAB /* Siren in Frameworks */,
+				F9E7F39124BF84A400C5DAAB /* SwiftyAttributes in Frameworks */,
+				F9E7F3C324BF87AF00C5DAAB /* Kingfisher in Frameworks */,
+				F9E7F38624BF842A00C5DAAB /* Realm in Frameworks */,
 				F9771F462153AC1200540546 /* GoogleUtilities.framework in Frameworks */,
 				F95616352127240700458AD5 /* SVProgressHUD.framework in Frameworks */,
-				F956161B2127240600458AD5 /* AlamofireNetworkActivityIndicator.framework in Frameworks */,
-				F9561667212B286800458AD5 /* RxDataSources.framework in Frameworks */,
-				F956162D2127240600458AD5 /* RxSwift.framework in Frameworks */,
-				F92B9552213E85E00041027C /* Eureka.framework in Frameworks */,
+				F9E7F3AE24BF85A800C5DAAB /* RxRealm in Frameworks */,
+				F9E7F3A924BF858C00C5DAAB /* Differentiator in Frameworks */,
+				F9E7F3B724BF862000C5DAAB /* SwiftiumKit in Frameworks */,
+				F9E7F3D824BF90B900C5DAAB /* StateViewController.framework in Frameworks */,
 				F9771F472153AC1200540546 /* GoogleToolboxForMac.framework in Frameworks */,
-				F95616272127240600458AD5 /* RealmSwift.framework in Frameworks */,
-				F95AFB7D2134C2BB00FA5282 /* SwiftiumKit.framework in Frameworks */,
-				F9561665212B286800458AD5 /* RxAlamofire.framework in Frameworks */,
-				F95AFB802134DB0800FA5282 /* SwiftyAttributes.framework in Frameworks */,
-				F95616212127240600458AD5 /* MXParallaxHeader.framework in Frameworks */,
-				F95616332127240700458AD5 /* Siren.framework in Frameworks */,
-				F956162B2127240600458AD5 /* RxCocoa.framework in Frameworks */,
-				F9687A1E2134072D00608642 /* ObjectMapperAdditionsRealm.framework in Frameworks */,
-				F95616292127240600458AD5 /* RxBlocking.framework in Frameworks */,
+				F9E7F3AB24BF858C00C5DAAB /* RxDataSources in Frameworks */,
+				F9E7F38824BF842A00C5DAAB /* RealmSwift in Frameworks */,
+				F9E7F38B24BF845300C5DAAB /* Eureka in Frameworks */,
+				F9E7F3B124BF85C600C5DAAB /* SwiftyUserDefaults in Frameworks */,
+				F9E7F3C624BF87F600C5DAAB /* MXParallaxHeader in Frameworks */,
+				F9E7F38E24BF848B00C5DAAB /* ActiveLabel in Frameworks */,
+				F9E7F3C924BF886B00C5DAAB /* Hero in Frameworks */,
+				F9E7F3A624BF856100C5DAAB /* RxAlamofire in Frameworks */,
+				F9E7F3C024BF872100C5DAAB /* AlamofireObjectMapper in Frameworks */,
 				F9771F4A2153AC1200540546 /* FirebaseCoreDiagnostics.framework in Frameworks */,
 				F956167D212C076800458AD5 /* Fabric.framework in Frameworks */,
-				F9687A1C2134072D00608642 /* ObjectMapperAdditions.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,35 +408,8 @@
 			children = (
 				F956160721271B5F00458AD5 /* Cartfile */,
 				F95616082127215B00458AD5 /* Cartfile.resolved */,
-				F9DCB28D21401005009C932B /* ActiveLabel.framework */,
-				F92B9551213E85DC0041027C /* Eureka.framework */,
-				F95AFB7F2134DAF200FA5282 /* SwiftyAttributes.framework */,
-				F95AFB7C2134C2B400FA5282 /* SwiftiumKit.framework */,
-				F9687A1A2134072100608642 /* ObjectMapperAdditions.framework */,
-				F9687A1B2134072100608642 /* ObjectMapperAdditionsRealm.framework */,
-				F9687A002133DD9C00608642 /* StateViewController.framework */,
-				F96879DB212FFC5500608642 /* Hero.framework */,
-				F956166D212B2BED00458AD5 /* Differentiator.framework */,
-				F9561661212B286500458AD5 /* RxAlamofire.framework */,
-				F9561663212B286600458AD5 /* RxDataSources.framework */,
-				F9561664212B286600458AD5 /* RxRealm.framework */,
-				F95616092127217F00458AD5 /* Alamofire.framework */,
-				F95616172127218100458AD5 /* AlamofireNetworkActivityIndicator.framework */,
-				F95616142127218000458AD5 /* AlamofireObjectMapper.framework */,
-				F95616162127218100458AD5 /* Kingfisher.framework */,
-				F95616122127218000458AD5 /* MXParallaxHeader.framework */,
-				F956160A2127217F00458AD5 /* ObjectMapper.framework */,
-				F956160C2127217F00458AD5 /* Realm.framework */,
-				F956160B2127217F00458AD5 /* RealmSwift.framework */,
-				F956160D2127217F00458AD5 /* RxBlocking.framework */,
-				F956160E2127217F00458AD5 /* RxCocoa.framework */,
-				F98289732355C7A100283DA3 /* RxRelay.framework */,
-				F95616132127218000458AD5 /* RxSwift.framework */,
-				F95616152127218000458AD5 /* RxSwiftExt.framework */,
-				F95616112127218000458AD5 /* RxTest.framework */,
-				F95616182127218100458AD5 /* Siren.framework */,
+				F9E7F3CA24BF8A9900C5DAAB /* StateViewController.framework */,
 				F956160F2127217F00458AD5 /* SVProgressHUD.framework */,
-				F95616102127218000458AD5 /* SwiftyUserDefaults.framework */,
 			);
 			name = Carthage;
 			sourceTree = "<group>";
@@ -528,6 +424,7 @@
 				F9561658212B199000458AD5 /* Network */,
 				F956163D212AAB5F00458AD5 /* Model */,
 				F9561670212B2BFA00458AD5 /* Utils */,
+				F9E7F3CC24BF8BA900C5DAAB /* Transformers */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -582,7 +479,6 @@
 				F956164E212B182600458AD5 /* AlamofireObjectMapper+Rx.swift */,
 				F956164F212B182700458AD5 /* DetachableObject.swift */,
 				F9561651212B182700458AD5 /* RequestExtension.swift */,
-				F9561652212B182700458AD5 /* RxAlamofire+Multipart.swift */,
 				F95AFB68213438F600FA5282 /* StringExtension.swift */,
 				F9DCB29221410BE0009C932B /* UIRefreshControlExtension.swift */,
 			);
@@ -718,6 +614,17 @@
 			path = Firebase;
 			sourceTree = "<group>";
 		};
+		F9E7F3CC24BF8BA900C5DAAB /* Transformers */ = {
+			isa = PBXGroup;
+			children = (
+				F9E7F3CD24BF8BA900C5DAAB /* TypeCastTransform.swift */,
+				F9E7F3CE24BF8BA900C5DAAB /* RealmTypeCastTransform.swift */,
+				F9E7F3CF24BF8BA900C5DAAB /* TimestampDateTransform.swift */,
+				F9E7F3D024BF8BA900C5DAAB /* ArrayObjectTransform.swift */,
+			);
+			path = Transformers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -737,6 +644,32 @@
 			dependencies = (
 			);
 			name = VolantDesDomes;
+			packageProductDependencies = (
+				F9E7F38524BF842A00C5DAAB /* Realm */,
+				F9E7F38724BF842A00C5DAAB /* RealmSwift */,
+				F9E7F38A24BF845300C5DAAB /* Eureka */,
+				F9E7F38D24BF848B00C5DAAB /* ActiveLabel */,
+				F9E7F39024BF84A400C5DAAB /* SwiftyAttributes */,
+				F9E7F39324BF84BC00C5DAAB /* Alamofire */,
+				F9E7F39624BF84D000C5DAAB /* ObjectMapper */,
+				F9E7F39924BF84FA00C5DAAB /* AlamofireNetworkActivityIndicator */,
+				F9E7F39C24BF852F00C5DAAB /* RxSwift */,
+				F9E7F39E24BF852F00C5DAAB /* RxRelay */,
+				F9E7F3A024BF852F00C5DAAB /* RxCocoa */,
+				F9E7F3A224BF852F00C5DAAB /* RxBlocking */,
+				F9E7F3A524BF856100C5DAAB /* RxAlamofire */,
+				F9E7F3A824BF858C00C5DAAB /* Differentiator */,
+				F9E7F3AA24BF858C00C5DAAB /* RxDataSources */,
+				F9E7F3AD24BF85A800C5DAAB /* RxRealm */,
+				F9E7F3B024BF85C600C5DAAB /* SwiftyUserDefaults */,
+				F9E7F3B324BF85FF00C5DAAB /* Siren */,
+				F9E7F3B624BF862000C5DAAB /* SwiftiumKit */,
+				F9E7F3BC24BF86C000C5DAAB /* RxSwiftExt */,
+				F9E7F3BF24BF872100C5DAAB /* AlamofireObjectMapper */,
+				F9E7F3C224BF87AF00C5DAAB /* Kingfisher */,
+				F9E7F3C524BF87F600C5DAAB /* MXParallaxHeader */,
+				F9E7F3C824BF886B00C5DAAB /* Hero */,
+			);
 			productName = VolantDesDomes;
 			productReference = F95615E3212714CA00458AD5 /* VolantDesDomes.app */;
 			productType = "com.apple.product-type.application";
@@ -792,6 +725,27 @@
 				Base,
 			);
 			mainGroup = F95615DA212714CA00458AD5;
+			packageReferences = (
+				F9E7F38424BF842A00C5DAAB /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				F9E7F38924BF845300C5DAAB /* XCRemoteSwiftPackageReference "Eureka" */,
+				F9E7F38C24BF848B00C5DAAB /* XCRemoteSwiftPackageReference "ActiveLabel" */,
+				F9E7F38F24BF84A300C5DAAB /* XCRemoteSwiftPackageReference "SwiftyAttributes" */,
+				F9E7F39224BF84BC00C5DAAB /* XCRemoteSwiftPackageReference "Alamofire" */,
+				F9E7F39524BF84D000C5DAAB /* XCRemoteSwiftPackageReference "ObjectMapper" */,
+				F9E7F39824BF84FA00C5DAAB /* XCRemoteSwiftPackageReference "AlamofireNetworkActivityIndicator" */,
+				F9E7F39B24BF852F00C5DAAB /* XCRemoteSwiftPackageReference "RxSwift" */,
+				F9E7F3A424BF856100C5DAAB /* XCRemoteSwiftPackageReference "RxAlamofire" */,
+				F9E7F3A724BF858C00C5DAAB /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				F9E7F3AC24BF85A700C5DAAB /* XCRemoteSwiftPackageReference "RxRealm" */,
+				F9E7F3AF24BF85C600C5DAAB /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */,
+				F9E7F3B224BF85FF00C5DAAB /* XCRemoteSwiftPackageReference "Siren" */,
+				F9E7F3B524BF862000C5DAAB /* XCRemoteSwiftPackageReference "SwiftiumKit" */,
+				F9E7F3BB24BF86C000C5DAAB /* XCRemoteSwiftPackageReference "RxSwiftExt" */,
+				F9E7F3BE24BF872100C5DAAB /* XCRemoteSwiftPackageReference "AlamofireObjectMapper" */,
+				F9E7F3C124BF87AF00C5DAAB /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				F9E7F3C424BF87F600C5DAAB /* XCRemoteSwiftPackageReference "MXParallaxHeader" */,
+				F9E7F3C724BF886B00C5DAAB /* XCRemoteSwiftPackageReference "Hero" */,
+			);
 			productRefGroup = F95615E4212714CA00458AD5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -869,34 +823,8 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Differentiator.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxAlamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxRealm.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/AlamofireNetworkActivityIndicator.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/AlamofireObjectMapper.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/MXParallaxHeader.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxSwiftExt.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Siren.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SVProgressHUD.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftyUserDefaults.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Hero.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/StateViewController.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapperAdditions.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapperAdditionsRealm.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftiumKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftyAttributes.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Eureka.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ActiveLabel.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -924,6 +852,7 @@
 				F9561641212ACC5600458AD5 /* WPPost.swift in Sources */,
 				F93709CB2139844900E96F94 /* InterclubsPageViewController.swift in Sources */,
 				F95AFB962136BDFE00FA5282 /* NavigationController.swift in Sources */,
+				F9E7F3D224BF8BAA00C5DAAB /* TypeCastTransform.swift in Sources */,
 				F96879FA21304C1900608642 /* PostDetailViewController.swift in Sources */,
 				F93709D5213A8D6300E96F94 /* CalendarPageViewController.swift in Sources */,
 				F9561648212AEB2700458AD5 /* WPUser.swift in Sources */,
@@ -934,10 +863,10 @@
 				F9DCB29321410BE0009C932B /* UIRefreshControlExtension.swift in Sources */,
 				F9383155214001950011FA2B /* DefaultsKeyExtension.swift in Sources */,
 				F95AFB69213438F600FA5282 /* StringExtension.swift in Sources */,
+				F9E7F3D424BF8BAA00C5DAAB /* TimestampDateTransform.swift in Sources */,
 				F96879F02130497900608642 /* PostsViewController.swift in Sources */,
 				F9687A0F2133EF0800608642 /* PostsStateViewController.swift in Sources */,
 				F9561653212B182700458AD5 /* AlamofireObjectMapper+Rx.swift in Sources */,
-				F9561657212B182700458AD5 /* RxAlamofire+Multipart.swift in Sources */,
 				F96DAD4021373CB900621910 /* StateEmptyViewController.swift in Sources */,
 				F956164A212AEBBC00458AD5 /* WPAvatar.swift in Sources */,
 				F96DAD4321373D6900621910 /* FavoritesStateViewController.swift in Sources */,
@@ -952,12 +881,14 @@
 				F96879F321304A7C00608642 /* AbstractViewController.swift in Sources */,
 				F93709D1213993B900E96F94 /* DefaultTableViewCell.swift in Sources */,
 				F956165B212B199A00458AD5 /* Queryable.swift in Sources */,
+				F9E7F3D324BF8BAA00C5DAAB /* RealmTypeCastTransform.swift in Sources */,
 				F95AFB7B2134C21A00FA5282 /* StyleManager.swift in Sources */,
 				F9561643212ACD3100458AD5 /* WPContent.swift in Sources */,
 				F93709CE21398DCE00E96F94 /* InterclubItem.swift in Sources */,
 				F96DAD3B2137396100621910 /* FavoritesViewController.swift in Sources */,
 				F95AFB832134DED900FA5282 /* WPMedia.swift in Sources */,
 				F95615E7212714CA00458AD5 /* AppDelegate.swift in Sources */,
+				F9E7F3D524BF8BAA00C5DAAB /* ArrayObjectTransform.swift in Sources */,
 				F938315821400AD20011FA2B /* AboutViewController.swift in Sources */,
 				F9561672212B2C0F00458AD5 /* DownloadManager.swift in Sources */,
 				F96879E02130012C00608642 /* CategoryTableViewCell.swift in Sources */,
@@ -1117,7 +1048,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_TEAM = QH6KR5PAQ7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1130,7 +1061,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.volantdesdomes.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8ad14950-df73-41dd-b68a-5e4626febce5";
@@ -1146,7 +1077,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_TEAM = QH6KR5PAQ7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1159,7 +1090,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.volantdesdomes.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8ad14950-df73-41dd-b68a-5e4626febce5";
@@ -1242,6 +1173,284 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F9E7F38424BF842A00C5DAAB /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.3.0;
+			};
+		};
+		F9E7F38924BF845300C5DAAB /* XCRemoteSwiftPackageReference "Eureka" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/xmartlabs/Eureka";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.1;
+			};
+		};
+		F9E7F38C24BF848B00C5DAAB /* XCRemoteSwiftPackageReference "ActiveLabel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/optonaut/ActiveLabel.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+		F9E7F38F24BF84A300C5DAAB /* XCRemoteSwiftPackageReference "SwiftyAttributes" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/eddiekaiger/SwiftyAttributes";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.0;
+			};
+		};
+		F9E7F39224BF84BC00C5DAAB /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.1;
+			};
+		};
+		F9E7F39524BF84D000C5DAAB /* XCRemoteSwiftPackageReference "ObjectMapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tristanhimmelman/ObjectMapper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
+		F9E7F39824BF84FA00C5DAAB /* XCRemoteSwiftPackageReference "AlamofireNetworkActivityIndicator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireNetworkActivityIndicator";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.0;
+			};
+		};
+		F9E7F39B24BF852F00C5DAAB /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
+		F9E7F3A424BF856100C5DAAB /* XCRemoteSwiftPackageReference "RxAlamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxAlamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
+		F9E7F3A724BF858C00C5DAAB /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
+		F9E7F3AC24BF85A700C5DAAB /* XCRemoteSwiftPackageReference "RxRealm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxRealm";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.0;
+			};
+		};
+		F9E7F3AF24BF85C600C5DAAB /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sunshinejr/SwiftyUserDefaults";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		F9E7F3B224BF85FF00C5DAAB /* XCRemoteSwiftPackageReference "Siren" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ArtSabintsev/Siren";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.4;
+			};
+		};
+		F9E7F3B524BF862000C5DAAB /* XCRemoteSwiftPackageReference "SwiftiumKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/openium/SwiftiumKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
+		F9E7F3BB24BF86C000C5DAAB /* XCRemoteSwiftPackageReference "RxSwiftExt" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxSwiftExt";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.0;
+			};
+		};
+		F9E7F3BE24BF872100C5DAAB /* XCRemoteSwiftPackageReference "AlamofireObjectMapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/openium/AlamofireObjectMapper";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		F9E7F3C124BF87AF00C5DAAB /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.14.1;
+			};
+		};
+		F9E7F3C424BF87F600C5DAAB /* XCRemoteSwiftPackageReference "MXParallaxHeader" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maxep/MXParallaxHeader";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		F9E7F3C724BF886B00C5DAAB /* XCRemoteSwiftPackageReference "Hero" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/HeroTransitions/Hero";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F9E7F38524BF842A00C5DAAB /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E7F38424BF842A00C5DAAB /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		F9E7F38724BF842A00C5DAAB /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E7F38424BF842A00C5DAAB /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+		F9E7F38A24BF845300C5DAAB /* Eureka */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E7F38924BF845300C5DAAB /* XCRemoteSwiftPackageReference "Eureka" */;
+			productName = Eureka;
+		};
+		F9E7F38D24BF848B00C5DAAB /* ActiveLabel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E7F38C24BF848B00C5DAAB /* XCRemoteSwiftPackageReference "ActiveLabel" */;
+			productName = ActiveLabel;
+		};
+		F9E7F39024BF84A400C5DAAB /* SwiftyAttributes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E7F38F24BF84A300C5DAAB /* XCRemoteSwiftPackageReference "SwiftyAttributes" */;
+			productName = SwiftyAttributes;
+		};
+		F9E7F39324BF84BC00C5DAAB /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E7F39224BF84BC00C5DAAB /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		F9E7F39624BF84D000C5DAAB /* ObjectMapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E7F39524BF84D000C5DAAB /* XCRemoteSwiftPackageReference "ObjectMapper" */;
+			productName = ObjectMapper;
+		};
+		F9E7F39924BF84FA00C5DAAB /* AlamofireNetworkActivityIndicator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E7F39824BF84FA00C5DAAB /* XCRemoteSwiftPackageReference "AlamofireNetworkActivityIndicator" */;
+			productName = AlamofireNetworkActivityIndicator;
+		};
+		F9E7F39C24BF852F00C5DAAB /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E7F39B24BF852F00C5DAAB /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		F9E7F39E24BF852F00C5DAAB /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E7F39B24BF852F00C5DAAB /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		F9E7F3A024BF852F00C5DAAB /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E7F39B24BF852F00C5DAAB /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		F9E7F3A224BF852F00C5DAAB /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E7F39B24BF852F00C5DAAB /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		F9E7F3A524BF856100C5DAAB /* RxAlamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E7F3A424BF856100C5DAAB /* XCRemoteSwiftPackageReference "RxAlamofire" */;
+			productName = RxAlamofire;
+		};
+		F9E7F3A824BF858C00C5DAAB /* Differentiator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E7F3A724BF858C00C5DAAB /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = Differentiator;
+		};
+		F9E7F3AA24BF858C00C5DAAB /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E7F3A724BF858C00C5DAAB /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
+		};
+		F9E7F3AD24BF85A800C5DAAB /* RxRealm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E7F3AC24BF85A700C5DAAB /* XCRemoteSwiftPackageReference "RxRealm" */;
+			productName = RxRealm;
+		};
+		F9E7F3B024BF85C600C5DAAB /* SwiftyUserDefaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E7F3AF24BF85C600C5DAAB /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */;
+			productName = SwiftyUserDefaults;
+		};
+		F9E7F3B324BF85FF00C5DAAB /* Siren */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E7F3B224BF85FF00C5DAAB /* XCRemoteSwiftPackageReference "Siren" */;
+			productName = Siren;
+		};
+		F9E7F3B624BF862000C5DAAB /* SwiftiumKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E7F3B524BF862000C5DAAB /* XCRemoteSwiftPackageReference "SwiftiumKit" */;
+			productName = SwiftiumKit;
+		};
+		F9E7F3BC24BF86C000C5DAAB /* RxSwiftExt */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E7F3BB24BF86C000C5DAAB /* XCRemoteSwiftPackageReference "RxSwiftExt" */;
+			productName = RxSwiftExt;
+		};
+		F9E7F3BF24BF872100C5DAAB /* AlamofireObjectMapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E7F3BE24BF872100C5DAAB /* XCRemoteSwiftPackageReference "AlamofireObjectMapper" */;
+			productName = AlamofireObjectMapper;
+		};
+		F9E7F3C224BF87AF00C5DAAB /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E7F3C124BF87AF00C5DAAB /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		F9E7F3C524BF87F600C5DAAB /* MXParallaxHeader */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E7F3C424BF87F600C5DAAB /* XCRemoteSwiftPackageReference "MXParallaxHeader" */;
+			productName = MXParallaxHeader;
+		};
+		F9E7F3C824BF886B00C5DAAB /* Hero */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E7F3C724BF886B00C5DAAB /* XCRemoteSwiftPackageReference "Hero" */;
+			productName = Hero;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F95615DB212714CA00458AD5 /* Project object */;
 }

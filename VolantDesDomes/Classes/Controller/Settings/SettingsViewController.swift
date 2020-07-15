@@ -78,29 +78,29 @@ class SettingsViewController: FormViewController {
             <<< TextRow(SettingTag.licence.rawValue) {
                 $0.title = "Licence FFBad"
                 $0.placeholder = "Numero de licence"
-                $0.value = Defaults[.userFFBadLicence]
+                $0.value = Defaults[\.userFFBadLicence]
             }.onChange { row in
-                Defaults[.userFFBadLicence] = row.value
+                Defaults[\.userFFBadLicence] = row.value
             }
             <<< SwitchRow(SettingTag.categoryParallax.rawValue) {
                 $0.title = "Effets parallax"
-                $0.value = Defaults[.categoryParallax]
+                $0.value = Defaults[\.categoryParallax]
             }.onChange { row in
-                Defaults[.categoryParallax] = row.value ?? false
+                Defaults[\.categoryParallax] = row.value ?? false
             }
             <<< SwitchRow(SettingTag.newPostNotifications.rawValue) {
                 $0.title = "Notifications"
-                $0.value = Defaults[.newPostsNotification]
+                $0.value = Defaults[\.newPostsNotification]
             }.onChange { row in
-                Defaults[.newPostsNotification] = row.value ?? false
+                Defaults[\.newPostsNotification] = row.value ?? false
             }
             <<< SwitchRow(SettingTag.forceCategoryLoading.rawValue) {
                 $0.title = "Forcer le rafraichissement"
-                $0.value = Defaults[.forceCategoryLoading]
+                $0.value = Defaults[\.forceCategoryLoading]
                 }.onChange { row in
-                    Defaults[.forceCategoryLoading] = row.value ?? false
+                    Defaults[\.forceCategoryLoading] = row.value ?? false
                     
-                    if Defaults[.forceCategoryLoading] {
+                    if Defaults[\.forceCategoryLoading] {
                         SVProgressHUD.showInfo(withStatus: "Le téléchargement des articles se fera au premier plan")
                     } else {
                         SVProgressHUD.showInfo(withStatus: "Le téléchargement des articles se fera en tâche de fond")

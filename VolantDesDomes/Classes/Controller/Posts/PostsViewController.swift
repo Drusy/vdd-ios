@@ -111,7 +111,7 @@ class PostsViewController: AbstractViewController {
         if canRefresh {
             setupRefreshControl()
             
-            if Defaults[.forceCategoryLoading] == false {
+            if Defaults[\.forceCategoryLoading] == false {
                 refresh()
             }
         }
@@ -169,16 +169,16 @@ class PostsViewController: AbstractViewController {
             .disposed(by: disposeBag)
     }
     
-    func request() -> DataRequest {
-        var request: DataRequest
-
+    func request() -> URLRequestConvertible {
+        var request: URLRequestConvertible
+        
         if let category = category {
-            request = ApiRequest.request(with: WPPost.Router.getCategoryPage(category: category,
-                                                                             page: page,
-                                                                             count: PostsViewController.postsPerPage))
+            request = WPPost.Router.getCategoryPage(categoryId: category.id,
+                                                    page: page,
+                                                    count: PostsViewController.postsPerPage)
         } else {
-            request = ApiRequest.request(with: WPPost.Router.getPage(page: page,
-                                                                     count: PostsViewController.postsPerPage))
+            request = WPPost.Router.getPage(page: page,
+                                            count: PostsViewController.postsPerPage)
         }
         
         return request
@@ -204,10 +204,10 @@ class PostsViewController: AbstractViewController {
                 strongSelf.page = 1
                 strongSelf.tableView.allowsSelection = false
                 
-                return strongSelf.request().rx.objectArray()
+                return strongSelf.alamofireService.session.rx.objectArray(strongSelf.request())
             }
             .flatMap { (posts: [WPPost]) -> Observable<[WPPost]> in
-                return ApiRequest.mediasRequestObservable(for: posts).map { _ in posts }
+                return self.alamofireService.mediasRequestObservable(for: posts).map { _ in posts }
             }
             .observeOn(MainScheduler.instance)
             .subscribe(
@@ -230,10 +230,10 @@ class PostsViewController: AbstractViewController {
     func refresh() {
         page = 1
         
-        request().rx
-            .objectArray()
+        alamofireService.session.rx
+            .objectArray(request())
             .flatMap { (posts: [WPPost]) -> Observable<[WPPost]> in
-                return ApiRequest.mediasRequestObservable(for: posts).map { _ in posts }
+                return self.alamofireService.mediasRequestObservable(for: posts).map { _ in posts }
             }
             .observeOn(MainScheduler.instance)
             .subscribe(
@@ -252,10 +252,10 @@ class PostsViewController: AbstractViewController {
         isPaginating = true
         changeTableViewFooter(with: loadingFooterView)
         
-        request().rx
-            .objectArray()
+        alamofireService.session.rx
+            .objectArray(request())
             .flatMap { (posts: [WPPost]) -> Observable<[WPPost]> in
-                return ApiRequest.mediasRequestObservable(for: posts).map { _ in posts }
+                return self.alamofireService.mediasRequestObservable(for: posts).map { _ in posts }
             }
             .observeOn(MainScheduler.instance)
             .subscribe(

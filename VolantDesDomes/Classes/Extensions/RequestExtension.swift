@@ -7,14 +7,21 @@
 //
 
 import Alamofire
+import RxSwift
 
-extension Request {
-    @discardableResult
+extension DataRequest {
     public func debugLog() -> Self {
         #if DEBUG
-            debugPrint(self)
+        cURLDescription { curl in
+            print(curl)
+        }
         #endif
-        
         return self
+    }
+}
+
+extension ObservableType where Element == DataRequest {
+    public func debugLog() -> Observable<Element> {
+        return map { $0.debugLog() }
     }
 }

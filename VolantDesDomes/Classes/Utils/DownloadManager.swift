@@ -15,6 +15,8 @@ import ObjectMapper
 class DownloadManager {
     static let shared = DownloadManager()
     
+    lazy var alamofireService = AlamofireService()
+    
     private init() {
     }
     
@@ -23,8 +25,8 @@ class DownloadManager {
     func refresh() -> Completable {
         let realm = try! Realm()
         
-        let categories = ApiRequest.request(with: WPCategory.Router.getAll).rx
-            .objectArray()
+        let categories = alamofireService.session.rx
+            .objectArray(WPCategory.Router.getAll)
             .retry(.exponentialDelayed(maxCount: 3, initial: 1, multiplier: 1))
             .observeOn(MainScheduler.instance)
             .do(onNext: { (items: [WPCategory]) in
@@ -37,8 +39,8 @@ class DownloadManager {
                     .filter { $0.count > 0 }
                     .filter { $0.posts?.isEmpty ?? true }
                     .map { category in
-                        return ApiRequest.request(with: WPPost.Router.getCategoryPage(category: category, page: 1, count: 5)).rx
-                            .objectArray()
+                        return self.alamofireService.session.rx
+                            .objectArray(WPPost.Router.getCategoryPage(categoryId: category.id, page: 1, count: 5))
                             .retry(.exponentialDelayed(maxCount: 3, initial: 1, multiplier: 1))
                             .observeOn(MainScheduler.instance)
                             .do(onNext: { (items: [WPPost]) in
@@ -51,11 +53,12 @@ class DownloadManager {
                 return Observable.zip(observables)
             }
             .flatMap { (postsByCategory: [[WPPost]]) -> Observable<[WPMedia]> in
-                return ApiRequest.mediasRequestObservable(for: postsByCategory.flatMap { $0 })
+                return self.alamofireService
+                    .mediasRequestObservable(for: postsByCategory.flatMap { $0 })
         }
         
-        let users = ApiRequest.request(with: WPUser.Router.getAll).rx
-            .objectArray()
+        let users = alamofireService.session.rx
+            .objectArray(WPUser.Router.getAll)
             .retry(.exponentialDelayed(maxCount: 3, initial: 1, multiplier: 1))
             .observeOn(MainScheduler.instance)
             .do(onNext: { (items: [WPUser]) in

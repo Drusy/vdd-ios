@@ -87,7 +87,7 @@ class PagesViewController: AbstractViewController {
     // MARK: - Actions
     
     @objc func onWebsiteTouched() {
-        showSafariViewController(for: ApiRequest.hostURL)
+        showSafariViewController(for: AlamofireService.hostURL)
     }
 }
 

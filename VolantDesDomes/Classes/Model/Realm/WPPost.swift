@@ -10,7 +10,6 @@ import UIKit
 import ObjectMapper
 import RealmSwift
 import Alamofire
-import ObjectMapperAdditionsRealm
 
 // https://developer.wordpress.org/rest-api/reference/posts/
 class WPPost: Object, StaticMappable {
@@ -112,8 +111,8 @@ extension WPPost {
     enum Router: URLRequestConvertible, Queryable {
         case getAll
         case getPage(page: Int, count: Int)
-        case getCategory(WPCategory)
-        case getCategoryPage(category: WPCategory, page: Int, count: Int)
+        case getCategory(id: Int)
+        case getCategoryPage(categoryId: Int, page: Int, count: Int)
 
         var method: HTTPMethod {
             switch self {
@@ -145,22 +144,22 @@ extension WPPost {
         // MARK: - URLRequestConvertible
         
         func asURLRequest() throws -> URLRequest {
-            let url = try ApiRequest.hostURL.asURL().appendingPathComponent(apiPath).appendingPathComponent(lastSegmentPath)
+            let url = try AlamofireService.hostURL.asURL().appendingPathComponent(apiPath).appendingPathComponent(lastSegmentPath)
             
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = method.rawValue
-            urlRequest.allHTTPHeaderFields = ApiRequest.headers
+            urlRequest.allHTTPHeaderFields = AlamofireService.headers
             
             switch self {
             case .getCategory(let category):
                 let parameters: [String: Any] = [
-                    "categories": category.id
+                    "categories": category
                 ]
                 urlRequest = try encoding.encode(urlRequest, with: parameters)
                 
-            case .getCategoryPage(let category, let page, let count):
+            case .getCategoryPage(let categoryId, let page, let count):
                 let parameters: [String: Any] = [
-                    "categories": category.id,
+                    "categories": categoryId,
                     "per_page": count,
                     "page": page
                 ]

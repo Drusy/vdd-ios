@@ -1,2 +1,8 @@
 [submodule "Carthage/Checkouts/ObjectMapper"]
 	url = https://github.com/Hearst-DD/ObjectMapper.git
+[submodule "Carthage/Checkouts/SVProgressHUD"]
+	path = Carthage/Checkouts/SVProgressHUD
+	url = https://github.com/SVProgressHUD/SVProgressHUD.git
+[submodule "Carthage/Checkouts/StateViewController"]
+	path = Carthage/Checkouts/StateViewController
+	url = https://github.com/formbound/StateViewController.git

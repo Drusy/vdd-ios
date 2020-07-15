@@ -43,7 +43,9 @@ class InterclubItem {
             InterclubItem.vdd5Item(),
             InterclubItem.vdd6Item(),
             InterclubItem.vdd7Item(),
-            InterclubItem.vdd8Item()
+            InterclubItem.vdd8Item(),
+            InterclubItem.veteranItem(),
+            InterclubItem.loisirItem()
         ]
     }
     
@@ -70,7 +72,7 @@ class InterclubItem {
         
         item.title = "Nationale 2"
         item.subtitle = "VDD 1"
-        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/vdd1"
+        item.url = "\(ApiRequest.hostURL)/interclubs/vdd1"
 
         return item
     }
@@ -78,9 +80,9 @@ class InterclubItem {
     fileprivate static func vdd2Item() -> InterclubItem {
         let item = InterclubItem(type: .vdd2)
         
-        item.title = "Régionale 1"
+        item.title = "Pré-Nationale"
         item.subtitle = "VDD 2"
-        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/vdd2"
+        item.url = "\(ApiRequest.hostURL)/interclubs/vdd2"
         
         return item
     }
@@ -88,7 +90,7 @@ class InterclubItem {
     fileprivate static func vdd3Item() -> InterclubItem {
         let item = InterclubItem(type: .vdd3)
         
-        item.title = "Régionale 2"
+        item.title = "Régionale 1"
         item.subtitle = "VDD 3"
         item.url = "\(ApiRequest.hostURL)/index.php/interclubs/vdd3"
 
@@ -98,7 +100,7 @@ class InterclubItem {
     fileprivate static func vdd4Item() -> InterclubItem {
         let item = InterclubItem(type: .vdd4)
         
-        item.title = "Régionale 3"
+        item.title = "Départementale élite"
         item.subtitle = "VDD 4"
         item.url = "\(ApiRequest.hostURL)/index.php/interclubs/vdd4"
 
@@ -108,7 +110,7 @@ class InterclubItem {
     fileprivate static func vdd5Item() -> InterclubItem {
         let item = InterclubItem(type: .vdd5)
         
-        item.title = "Départementale élite"
+        item.title = "Départementale 1"
         item.subtitle = "VDD 5"
         item.url = "\(ApiRequest.hostURL)/index.php/interclubs/vdd5"
 
@@ -118,7 +120,7 @@ class InterclubItem {
     fileprivate static func vdd6Item() -> InterclubItem {
         let item = InterclubItem(type: .vdd6)
         
-        item.title = "Départementale 1"
+        item.title = "Départementale 3"
         item.subtitle = "VDD 6"
         item.url = "\(ApiRequest.hostURL)/index.php/interclubs/vdd6"
         
@@ -128,7 +130,7 @@ class InterclubItem {
     fileprivate static func vdd7Item() -> InterclubItem {
         let item = InterclubItem(type: .vdd7)
         
-        item.title = "Départementale 2"
+        item.title = "Départementale 4"
         item.subtitle = "VDD 7"
         item.url = "\(ApiRequest.hostURL)/index.php/interclubs/vdd7"
         
@@ -138,9 +140,29 @@ class InterclubItem {
     fileprivate static func vdd8Item() -> InterclubItem {
         let item = InterclubItem(type: .vdd8)
         
-        item.title = "Départementale 4/5"
+        item.title = "Départementale 4"
         item.subtitle = "VDD 8"
-        item.url = "\(ApiRequest.hostURL)/index.php/interclubs/vdd8"
+        item.url = "\(ApiRequest.hostURL)/interclubs/vdd8"
+        
+        return item
+    }
+    
+    fileprivate static func veteranItem() -> InterclubItem {
+        let item = InterclubItem(type: .vdd8)
+        
+        item.title = "Vétéran"
+        item.subtitle = nil
+        item.url = "\(ApiRequest.hostURL)/interclubs/interclubs-veteran/"
+        
+        return item
+    }
+    
+    fileprivate static func loisirItem() -> InterclubItem {
+        let item = InterclubItem(type: .vdd8)
+        
+        item.title = "Loisir"
+        item.subtitle = nil
+        item.url = "\(ApiRequest.hostURL)/interclubs/interclub-loisir/"
         
         return item
     }

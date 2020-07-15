@@ -145,7 +145,7 @@ class PageItem {
         let item = PageItem(type: .stats)
         
         item.title = "Statistiques"
-        item.url = "https://badiste.fr/joueurs-club/vdd-535.html?nomenu=1"
+        item.url = "http://badiste.fr/joueurs-club/vdd-535.html?nomenu=1"
 //        item.url = "\(ApiRequest.hostURL)/index.php/le-club/nos-joueurs"
         item.image = #imageLiteral(resourceName: "page-stats")
         
